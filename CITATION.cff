@@ -4,14 +4,14 @@ title: "Formal Resolution of the Riemann Hypothesis via Spectral Rigidity and En
 authors:
   - family-names: "Amry"
     given-names: "Muhammad Aidil"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+    orcid: "https://orcid.org/0009-0002-9718-9710"
     affiliation: "Sovereign Orchestrator Project"
 version: "1.0.0"
 date-released: "2026-09-20"
 type: "software"
 license: "MIT"
-repository: "https://github.com/[username]/riemann-hypothesis-formalization"
-url: "https://github.com/[username]/riemann-hypothesis-formalization"
+repository: "https://github.com/aidilamrym-ops/riemann-hypothesis-formalization"
+url: "https://github.com/aidilamrym-ops/riemann-hypothesis-formalization"
 description: |
   Complete formal verification pipeline for the Riemann Hypothesis combining Lean 4 
   deductive kernels and Z3 SMT spectral tribunals. Establishes a spectral rigidity 
