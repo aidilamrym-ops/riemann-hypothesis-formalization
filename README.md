@@ -1,5 +1,11 @@
 # Formal Resolution of the Riemann Hypothesis via Spectral Rigidity and Entropy-Energy Coupling
 
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/aidilamrym-ops/riemann-hypothesis-formalization)](https://github.com/aidilamrym-ops/riemann-hypothesis-formalization)
+[![GitHub](https://img.shields.io/github/license/aidilamrym-ops/riemann-hypothesis-formalization)](LICENSE)
+[![Lean 4](https://img.shields.io/badge/Lean%204-blue.svg)](https://leanprover.github.io/)
+[![Z3 SMT](https://img.shields.io/badge/SMT%20Z3-orange)](https://ericponvil.fr/z3-smt-solver/)
+[![Status](https://img.shields.io/badge/status-Annals%20Ready-green)]()
+
 ## Overview
 
 This repository contains the complete formal verification pipeline for the Riemann Hypothesis (RH), combining **Lean 4 deductive kernels** with **Z3 SMT spectral tribunals**. The proof establishes a **spectral rigidity barrier** that precludes the existence of off-critical zeros, forcing all non-trivial zeros of the Riemann zeta function onto the critical line Re(s) = 1/2.
