@@ -1,0 +1,22 @@
+[
+  {
+    "theorem": "diracKinetic_isSymm",
+    "status": "VERIFIED",
+    "description": "vecMulVec commutativity implies matrix symmetry"
+  },
+  {
+    "theorem": "fullDirac_trace_linear",
+    "status": "VERIFIED",
+    "description": "Trace additivity for composite Dirac operator"
+  },
+  {
+    "theorem": "kinetic_trace_pos",
+    "status": "VERIFIED",
+    "description": "Kinetic trace equals dimension N >= 1"
+  },
+  {
+    "theorem": "diracDiagonal_off_diag_symm",
+    "status": "VERIFIED",
+    "description": "Off-diagonal vanishing symmetry"
+  }
+]

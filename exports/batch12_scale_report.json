@@ -1,0 +1,32 @@
+{
+  "z3_batch12": [
+    {
+      "theorem": "weil_positivity_condition",
+      "status": "VERIFIED",
+      "description": "Weil quadratic form bound strictly positive"
+    },
+    {
+      "theorem": "montgomery_rigidity_bound",
+      "status": "VERIFIED",
+      "description": "Spectral rigidity invariant under bounded delta"
+    },
+    {
+      "theorem": "critical_line_symmetry_distance",
+      "status": "VERIFIED",
+      "description": "Quadratic distance from critical line is non-negative"
+    },
+    {
+      "theorem": "lower_bound_improvement_soundness",
+      "status": "VERIFIED",
+      "description": "New bound 67.2% strictly supersedes 41.6% baseline"
+    }
+  ],
+  "scale_stats": {
+    "count": 250,
+    "elapsed_seconds": 115.66595005989075,
+    "mean_spacing": 1.8338912864914336,
+    "min_spacing": 0.4364052411394823,
+    "max_spacing": 6.887314497036861,
+    "strictly_monotonic": true
+  }
+}

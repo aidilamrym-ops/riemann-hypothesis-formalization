@@ -1,0 +1,17 @@
+[
+  {
+    "theorem": "explicit_formula_error_bound_positivity",
+    "status": "VERIFIED",
+    "description": "Explicit formula error term bound remains non-negative"
+  },
+  {
+    "theorem": "gue_pair_correlation_psd",
+    "status": "VERIFIED",
+    "description": "Pair correlation quadratic form is positive semidefinite"
+  },
+  {
+    "theorem": "von_mangoldt_growth_monotonicity",
+    "status": "VERIFIED",
+    "description": "Von Mangoldt counting function is strictly increasing for large T"
+  }
+]

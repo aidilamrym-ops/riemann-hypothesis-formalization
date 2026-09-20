@@ -1,0 +1,37 @@
+[
+  {
+    "theorem": "diracDiagonal_eigenvalue_bounds_N5",
+    "status": "VERIFIED",
+    "description": "Diagonal operator eigenvalues bounded by [-N/2, N/2-1] for N=5"
+  },
+  {
+    "theorem": "diracKinetic_rank1_N3",
+    "status": "VERIFIED",
+    "description": "Kinetic operator is rank-1 for N=3 (all columns equal)"
+  },
+  {
+    "theorem": "dirac_scale_invariance_concrete",
+    "status": "VERIFIED",
+    "description": "Dirac operator eigenvalues scale linearly with positive constant"
+  },
+  {
+    "theorem": "dirac_spectral_moments_asymmetric",
+    "status": "VERIFIED",
+    "description": "Asymmetric spectrum moments: sum=-2.5, sum_sq=11.25 (N=5)"
+  },
+  {
+    "theorem": "kinetic_operator_psd_concrete",
+    "status": "VERIFIED",
+    "description": "Kinetic operator PSD: (sum x_i)^2 >= 0 for N=3"
+  },
+  {
+    "theorem": "full_dirac_trace_value_N5",
+    "status": "VERIFIED",
+    "description": "Full Dirac trace = N/2 for N=5 (diag -2.5 + kinetic 5 = 2.5)"
+  },
+  {
+    "theorem": "dirac_eigenvalue_spacing_unity",
+    "status": "VERIFIED",
+    "description": "Eigenvalue spacing = 1 for consecutive indices (N=5)"
+  }
+]

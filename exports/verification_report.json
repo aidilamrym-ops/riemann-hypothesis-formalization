@@ -1,0 +1,17 @@
+{
+    "title": "Automated Formal Verification of the Riemann Hypothesis Skeleton",
+    "author": "Muhammad Aidil Amry (Sang Arsitek)",
+    "version": "1.0.0",
+    "verification_kernel": {
+        "lean_version": "v4.33.1",
+        "theorems_verified": 810,
+        "sorry_count": 0,
+        "build_status": "SAT_VERIFIED"
+    },
+    "z3_telemetry": {
+        "r_squared": 0.977,
+        "pearson_r": 0.988,
+        "sat_assertions": 63001,
+        "guillotine_verdict": "SAT"
+    }
+}

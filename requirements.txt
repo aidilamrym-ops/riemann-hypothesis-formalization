@@ -1,0 +1,4 @@
+# Python dependencies for Z3 Tribunal and numerical verification
+z3-solver>=4.8.17
+mpmath>=1.3.0
+numpy>=1.24.0

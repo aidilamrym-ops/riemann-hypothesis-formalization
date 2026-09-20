@@ -1,0 +1,37 @@
+# Build artifacts
+lake-packages/
+.build/
+lake-manifest.json
+lakefile.olean
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.lnk
+
+# Temporary
+*.tmp
+*.bak
+*.log
+*.zip
+*.tar.gz
+
+# Zenodo upload bundles
+zenodo_*.zip
