@@ -141,4 +141,4 @@ MIT License — See LICENSE file.
 **Author**: Muhammad Aidil Amry (Sang Arsitek)  
 **ORCID**: 0009-0002-9718-9710  
 **Repository**: https://github.com/aidilamrym-ops/riemann-hypothesis-formalization  
-**Zenodo DOI**: [Pending upload]
+**Zenodo DOI**: [10.5281/zenodo.22852564](https://doi.org/10.5281/zenodo.22852564)
