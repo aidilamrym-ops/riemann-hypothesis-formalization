@@ -29,6 +29,7 @@ FINAL_RH_PROJECT/
 ├── lean4/AetherZ3Omega/Riemann/     # Lean 4 formal proofs (0 sorry)
 │   ├── Rigidity.lean                # Harmonic energy, entropy coupling, rigidity at infinity
 │   ├── BarrierTheorem.lean          # Axiomatic barrier theorem with Z3 interface
+│   ├── StressTest.lean              # Advanced epsilon rigidity stress test
 │   ├── CriticalLine.lean            # Prime error bounds, Hilbert-Polya scaffold
 │   ├── ZetaBasic.lean               # Zeta function foundations
 │   ├── ZetaAnalytic.lean            # Analytic continuation, functional equation
