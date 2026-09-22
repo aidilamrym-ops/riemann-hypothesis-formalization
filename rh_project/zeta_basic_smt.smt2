@@ -19,7 +19,7 @@
 (declare-fun delta () Real)
 (assert (> delta 0))
 (assert (= (+ 0.5 delta) 0.5))
-(check-sat
+(check-sat)
 ; Expected: unsat
 
 ; --- Theorem 3: th_potential_wall_barrier ---

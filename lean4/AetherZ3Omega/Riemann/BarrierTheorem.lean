@@ -9,6 +9,9 @@
   Author: ALMIGHTY (Sovereign Intellect)
 -/
 
+import Mathlib.Data.Real.Basic
+import Mathlib.Order.Basic
+
 open Classical
 
 namespace Barrier
@@ -18,11 +21,11 @@ structure Complex where
   re : Real
   im : Real
 
-def critical_line_distance (s : Complex) : Real :=
+noncomputable def critical_line_distance (s : Complex) : Real :=
   s.re - (1 / 2 : ℝ)
 
 -- Definisi murni aljabar untuk Harmonic Energy E = (σ - 1/2)²
-def harmonic_energy (s : Complex) : Real :=
+noncomputable def harmonic_energy (s : Complex) : Real :=
   (critical_line_distance s) * (critical_line_distance s)
 
 -- Fungsi konveks transendental untuk Batas Entropi: log(1 + E)
@@ -31,16 +34,16 @@ axiom log_one_plus (x : Real) : Real
 axiom log_bound_property (x : Real) : x > 0 → log_one_plus x < x
 
 -- Predikat untuk mendefinisikan titik nol non-trivial fungsi Zeta Riemann
-constant RiemannZetaZero : Complex → Prop
+opaque RiemannZetaZero : Complex → Prop
 
 -- Kerapatan makroskopis berbasis fungsi penghitung Von Mangoldt untuk T besar
-constant VonMangoldtDensity (T : Real) : Real
-constant LargeT (T : Real) : Prop
+opaque VonMangoldtDensity (T : Real) : Real
+opaque LargeT (T : Real) : Prop
 axiom von_mangoldt_strictly_increasing :
   ∀ T1 T2 : Real, LargeT T1 → T2 > T1 → VonMangoldtDensity T2 > VonMangoldtDensity T1
 
 -- 2. PREMIS EKUIVALENSI RIGIDITAS SPEKTRAL (VERIFIKASI Z3 TAUTOLOGY)
-constant SpectralRigidityInvariant (s : Complex) : Prop
+opaque SpectralRigidityInvariant (s : Complex) : Prop
 axiom rigidity_equivalence :
   ∀ s : Complex, RiemannZetaZero s → SpectralRigidityInvariant s →
     harmonic_energy s ≤ log_one_plus (harmonic_energy s)

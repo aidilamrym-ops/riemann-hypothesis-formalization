@@ -1,5 +1,6 @@
 # Build artifacts
 lake-packages/
+.lake/
 .build/
 lake-manifest.json
 lakefile.olean
@@ -32,6 +33,10 @@ Thumbs.db
 *.log
 *.zip
 *.tar.gz
+
+# Kernel validator build dir
+.kernel_build/
+.lean_kernel_probe.*
 
 # Zenodo upload bundles
 zenodo_*.zip
