@@ -7,8 +7,8 @@
 ## 1. POSISI SAAT INI (baseline yang sudah teruji)
 
 **Proyek kita (AetherZ3Omega):**
-- Lean 4.33.1, Mathlib `0df444a`: 62/62 modul rebuild, 0 sorry, 1 postulat `AetherZ3Omega.riemann_hypothesis`.
-- Z3: 72 klaim non-vacuous + 5 UNKNOWN (batch 14-17 = vacuous/circular, TIDAK citable).
+- Lean 4.33.1, Mathlib `0df444a`: 62/62 modul rebuild, 0 sorry, 1 postulat `AetherZ3Omega.riemann_hypothesis`; +`AetherZ3Omega.Riemann.CMTBounds` (2026-09-23).
+- Z3: 91 verifikasi terekam (86 UNSAT non-vacuous + 5 UNKNOWN NFE `p^(-s)` + 1 vacuous yang disengaja di batch15); batch 14-17 TIDAK citable.
 - Hilbert-Polya: OPEN (0-2/20 zero-correspondence).
 - Nilai nyata: (a) **audit pipeline** (kernel + mutation + vacuity + numeric + reproducibility, `run_external_audit.ps1` + CI), (b) framing conditional yang jujur.
 
@@ -40,7 +40,7 @@ Lanjutkan ke lampu hijau penuh:
 1. **Compile penuh 317/317 terhadap Mathlib kita** — DONE (cross-revision replica).
 2. **Axiom-audit 9 teorema inti** — DONE: foundation-only.
 3. **Scan defect pipeline kita atas source mereka** — DONE: 0 axiom/sorry/admit.
-4. *(opsional)* Numerik reproduce konstanta-konstanta mereka (lembar SymPy 31 checks) — belum.
+4. *(opsional)* Numerik reproduce konstanta-konstanta mereka (lembar SymPy 31 checks) — **DONE 2026-09-23:** `scripts/numeric_constants_check.py` (mpmath 40 digit): 4/4 desimal cocok (c₁*, 1/c₁*, 2−1/c₁*, 2c₁*−1), identitas Montgomery–Taylor cocok 1e-51, konsisten dengan bukti Lean.
 5. *(opsional)* Cek independence pemilihan kernel (di proyek kita sendiri diharapkan batch vakum yang lain).
 
 **Nilai:** proyek kita menjadi **auditor independen paper AI Math** — klaim yang terverifikasi machine-audit dengan toolchain yang berbeda dari penulis.
@@ -48,7 +48,13 @@ Lanjutkan ke lampu hijau penuh:
 ### Jalur B — Perbaiki ketelitian perhitungan analitik kita (paling jujur saat ini)
 Ganti pondasi toy-discrete dengan perhitungan nyata untuk klaim yang terekspos publik:
 1. Rekam dalam `run_external_audit.ps1` bahwa **batch 14-17 tidak citable** (sudah ada di FINAL_STATUS).
-2. Batch Z3 yang non-vacuous (72 klaim) → tambahkan **batas `-model`/label**: pastikan UNSAT tidak berasal dari division-by-zero atau NFE.
+2. **DONE 2026-09-23:** Batch Z3 → **batas `-model`/label** via `scripts/z3_division_safety.py`
+   (menggantikan `z3_vacuity_scan.py` yang ternyata **tidak pernah berfungsi** — injeksi `verify` ditimpa
+   oleh definisi modul sendiri & guard `__main__` tak terpicu, sehingga old scan selalu `calls=0`):
+   - 91 verifikasi terekam via `Solver.check`-level; 86 UNSAT **non-vacuous** (witness model disertakan, 53 label),
+     0 countermodel, 0 UNSAT **division-sensitive** (semua divisor dipaksa ≠ 0 oleh premises),
+     5 UNKNOWN = NFE/transcendental (`p^(-s)` simbolik, di luar QF_NRA) di batch 7/8 — bukan artefak.
+   - Hasil penuh: `exports/z3_division_safety.json`.
 3. **DONE 2026-09-23:** `cMT = √2·tan(1/√2)/(1+(1/√2)tan(1/√2))` dibuktikan di Lean
    (`lean4/AetherZ3Omega/Riemann/CMTBounds.lean`, module `AetherZ3Omega.Riemann.CMTBounds`):
    `2/3 < cMT ≤ 4/5`, `0 < cMT < 1`, dan dua proporsi Theorem D positif
@@ -75,8 +81,8 @@ Target realistis, bukan RH:
 
 ## 4. Keputusan yang disarankan
 
-1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + roadmap.
-2. **Berikutnya:** lanjutkan Jalur A opsional 4-5 (numerik konstanta paper + jejaring kerja) ATAU Jalur C item 1
+1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + roadmap + audit Z3 baru (division-safety/vacuity).
+2. **Berikutnya:** lanjutkan Jalur A item 5 (independence kernel/jejaring kerja) ATAU Jalur C item 1
    (bound eksplisit `ζ(1+ε)`/`|1/ζ(1+ε)|` di Lean, reusable) — keduanya menaikkan kredibilitas sebagai auditor.
 3. **Nanti:** Jalur B item 4 (numerik 10⁵ zero) hanya bila sumber daya memungkinkan.
 

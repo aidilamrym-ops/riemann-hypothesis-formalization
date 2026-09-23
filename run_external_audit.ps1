@@ -97,7 +97,7 @@ if (-not $SkipPython) {
         Write-Host ("  [{0}] {1}  {2}s" -f $rc, $b.Name, [math]::Round($sw.Elapsed.TotalSeconds,1))
     }
     Pop-Location
-    python scripts/z3_vacuity_scan.py
+    python scripts/z3_division_safety.py
 } else {
     Write-Host "--- P3 SKIPPED (SkipPython) ---" -ForegroundColor DarkGray
 }

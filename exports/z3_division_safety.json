@@ -1,0 +1,1950 @@
+{
+  "audit": "z3_division_safety_and_vacuity",
+  "engine": {
+    "method": "Solver.check-level recording; batch executed with __name__=='__main__' so main-guarded checks run",
+    "timeout_ms": 15000,
+    "note": "premises := all assertions except the last (the negation under test); guards: denominator != 0, symbolic/negative power base != 0, root base >= 0"
+  },
+  "batches": {
+    "z3_deep_loop_batch14": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "RUNNING DEEP SPECTRAL LOOP - BATCH 14",
+        "============================================================",
+        "[VERIFIED] harmonic_energy_contradiction: True",
+        "[VERIFIED] spectral_stability_axiom: True",
+        "[VERIFIED] off_critical_guillotine: True"
+      ],
+      "checks": [
+        {
+          "claim": "line27",
+          "file": "z3_deep_loop_batch14.py",
+          "line": 27,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "E": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line41",
+          "file": "z3_deep_loop_batch14.py",
+          "line": 41,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "energy": "1",
+            "sigma": "3/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line56",
+          "file": "z3_deep_loop_batch14.py",
+          "line": 56,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "is_zero": "True",
+            "s_re": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch1": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "[VERIFIED] add_commutativity",
+        "[VERIFIED] mul_commutativity",
+        "[VERIFIED] add_associativity",
+        "[VERIFIED] distributivity",
+        "[VERIFIED] square_nonneg",
+        "[VERIFIED] square_zero_iff_zero",
+        "Batch 1: 6/6 VERIFIED"
+      ],
+      "checks": [
+        {
+          "claim": "line24",
+          "file": "z3_verify_batch1.py",
+          "line": 24,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line31",
+          "file": "z3_verify_batch1.py",
+          "line": 31,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line39",
+          "file": "z3_verify_batch1.py",
+          "line": 39,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line46",
+          "file": "z3_verify_batch1.py",
+          "line": 46,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line54",
+          "file": "z3_verify_batch1.py",
+          "line": 54,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line62",
+          "file": "z3_verify_batch1.py",
+          "line": 62,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "a": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch10": {
+      "exec_error": null,
+      "stdout_tail": [
+        "[VERIFIED] diracDiagonal_eigenvalue_bounds_N5: Diagonal operator eigenvalues bounded by [-N/2, N/2-1] for N=5",
+        "[VERIFIED] diracKinetic_rank1_N3: Kinetic operator is rank-1 for N=3 (all columns equal)",
+        "[VERIFIED] dirac_scale_invariance_concrete: Dirac operator eigenvalues scale linearly with positive constant",
+        "[VERIFIED] dirac_spectral_moments_asymmetric: Asymmetric spectrum moments: sum=-2.5, sum_sq=11.25 (N=5)",
+        "[VERIFIED] kinetic_operator_psd_concrete: Kinetic operator PSD: (sum x_i)^2 >= 0 for N=3",
+        "[VERIFIED] full_dirac_trace_value_N5: Full Dirac trace = N/2 for N=5 (diag -2.5 + kinetic 5 = 2.5)",
+        "[VERIFIED] dirac_eigenvalue_spacing_unity: Eigenvalue spacing = 1 for consecutive indices (N=5)",
+        "============================================================"
+      ],
+      "checks": [
+        {
+          "claim": "line13",
+          "file": "z3_verify_batch10.py",
+          "line": 13,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line23",
+          "file": "z3_verify_batch10.py",
+          "line": 23,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 10,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "c00": "1",
+            "c01": "1",
+            "c02": "1",
+            "c10": "1",
+            "c11": "1",
+            "c12": "1",
+            "c20": "1",
+            "c21": "1",
+            "c22": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line32",
+          "file": "z3_verify_batch10.py",
+          "line": 32,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "c": "1",
+            "eig": "5/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line41",
+          "file": "z3_verify_batch10.py",
+          "line": 41,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 6,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "e1": "-5/2",
+            "e2": "-3/2",
+            "e3": "-1/2",
+            "e4": "1/2",
+            "e5": "3/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line48",
+          "file": "z3_verify_batch10.py",
+          "line": 48,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line56",
+          "file": "z3_verify_batch10.py",
+          "line": 56,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line69",
+          "file": "z3_verify_batch10.py",
+          "line": 69,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 5,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "s1": "1",
+            "s2": "1",
+            "s3": "1",
+            "s4": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch12_scale": {
+      "exec_error": null,
+      "stdout_tail": [
+        "[VERIFIED] critical_line_symmetry_distance: Quadratic distance from critical line is non-negative",
+        "[VERIFIED] lower_bound_improvement_soundness: New bound 67.2% strictly supersedes 41.6% baseline",
+        "============================================================",
+        "Sampling & validating zeros scaling up to 250 zeros...",
+        "Calculated 250 zeros in 65.58s.",
+        "Mean spacing: 1.8339, Min: 0.4364, Max: 6.8873",
+        "Strict monotonicity of imaginary parts: True",
+        "Report saved to ../exports/batch12_scale_report.json"
+      ],
+      "checks": [
+        {
+          "claim": "line30",
+          "file": "z3_verify_batch12_scale.py",
+          "line": 30,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "is_pos_definite": "1",
+            "q_val": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line47",
+          "file": "z3_verify_batch12_scale.py",
+          "line": 47,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "delta": "0",
+            "r2": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line63",
+          "file": "z3_verify_batch12_scale.py",
+          "line": 63,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "dist_half": "1/4",
+            "sigma": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line78",
+          "file": "z3_verify_batch12_scale.py",
+          "line": 78,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "p": "84/125"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch13_deep": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "RUNNING Z3 VERIFICATION BATCH 13 (DEEP EXPLORATION)",
+        "============================================================",
+        "[VERIFIED] explicit_formula_error_bound_positivity: Explicit formula error term bound remains non-negative",
+        "[VERIFIED] gue_pair_correlation_psd: Pair correlation quadratic form is positive semidefinite",
+        "[VERIFIED] von_mangoldt_growth_monotonicity: Von Mangoldt counting function is strictly increasing for large T",
+        "============================================================",
+        "Batch 13 report saved to ../exports/batch13_deep_report.json"
+      ],
+      "checks": [
+        {
+          "claim": "line31",
+          "file": "z3_verify_batch13_deep.py",
+          "line": 31,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 4,
+          "premises_consistent": null,
+          "vacuous": false,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [
+            {
+              "base": "x_val",
+              "kind": "base_nonneg_root"
+            }
+          ],
+          "division_sensitive": false,
+          "guarded_result": "unsat",
+          "note": "premises undecidable (QF_NRA incomplete); vacuity inconclusive"
+        },
+        {
+          "claim": "line47",
+          "file": "z3_verify_batch13_deep.py",
+          "line": 47,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "quad_form": "0",
+            "v1": "0",
+            "v2": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line68",
+          "file": "z3_verify_batch13_deep.py",
+          "line": 68,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 5,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "nt1": "10",
+            "nt2": "11",
+            "t1": "10",
+            "t2": "11"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch15_final": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "VERIFYING RIGIDITY FINAL BARRIER (BATCH 15)",
+        "============================================================",
+        "[VERIFIED] off_critical_zero_forbidden: True",
+        "[VERIFIED] critical_line_capture: True",
+        "[VERIFIED] global_energy_positivity: True"
+      ],
+      "checks": [
+        {
+          "claim": "line35",
+          "file": "z3_verify_batch15_final.py",
+          "line": 35,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": false,
+          "vacuous": true,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line45",
+          "file": "z3_verify_batch15_final.py",
+          "line": 45,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "s_re": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line54",
+          "file": "z3_verify_batch15_final.py",
+          "line": 54,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch16_infinity": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "VERIFYING RIGIDITY AT INFINITY (BATCH 16)",
+        "============================================================",
+        "[VERIFIED] von_mangoldt_monotonicity: True",
+        "[VERIFIED] entropy_bound_forces_zero_energy: True",
+        "[VERIFIED] uniform_rigidity_capture: True"
+      ],
+      "checks": [
+        {
+          "claim": "line29",
+          "file": "z3_verify_batch16_infinity.py",
+          "line": 29,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 5,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "N_T1": "2657",
+            "N_T2": "2658",
+            "T1": "2657",
+            "T2": "2658"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line44",
+          "file": "z3_verify_batch16_infinity.py",
+          "line": 44,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "E": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line63",
+          "file": "z3_verify_batch16_infinity.py",
+          "line": 63,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 5,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "T": "2657",
+            "sigma": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch17_barrier": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "VERIFYING BARRIER THEOREM AXIOMATIC CONSISTENCY (BATCH 17)",
+        "============================================================",
+        "[VERIFIED] log_bound_axiom_consistent: True",
+        "[VERIFIED] rigidity_forces_zero_energy: True",
+        "[VERIFIED] von_mangoldt_axiom_consistent: True",
+        "[VERIFIED] barrier_theorem_off_critical_forbidden: True",
+        "[VERIFIED] critical_line_capture_axiomatic: True"
+      ],
+      "checks": [
+        {
+          "claim": "line24",
+          "file": "z3_verify_batch17_barrier.py",
+          "line": 24,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "log1px": "0",
+            "x": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line37",
+          "file": "z3_verify_batch17_barrier.py",
+          "line": 37,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "E": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line52",
+          "file": "z3_verify_batch17_barrier.py",
+          "line": 52,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 5,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "D1": "2657",
+            "D2": "2658",
+            "T1": "2657",
+            "T2": "2658"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line68",
+          "file": "z3_verify_batch17_barrier.py",
+          "line": 68,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "sigma": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line76",
+          "file": "z3_verify_batch17_barrier.py",
+          "line": 76,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "sigma": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch2": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "[VERIFIED] modulus_sq_nonneg",
+        "[VERIFIED] critical_distance_zero",
+        "[VERIFIED] energy_nonneg",
+        "[VERIFIED] energy_zero_iff_dist_zero",
+        "[VERIFIED] energy_zero_iff_critical",
+        "[VERIFIED] conjugate_symmetry",
+        "Batch 2: 6/6 VERIFIED"
+      ],
+      "checks": [
+        {
+          "claim": "line23",
+          "file": "z3_verify_batch2.py",
+          "line": 23,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line33",
+          "file": "z3_verify_batch2.py",
+          "line": 33,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "sigma": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line40",
+          "file": "z3_verify_batch2.py",
+          "line": 40,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line48",
+          "file": "z3_verify_batch2.py",
+          "line": 48,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "sigma": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line56",
+          "file": "z3_verify_batch2.py",
+          "line": 56,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "sigma": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line64",
+          "file": "z3_verify_batch2.py",
+          "line": 64,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch6": {
+      "exec_error": null,
+      "stdout_tail": [
+        "  [OK] #22 t2_galois_sum                | 7T | a>=0 âˆ§ b>=0 -> a+b>=0",
+        "  [OK] #23 t3_galois_mul                | 7T | a>=0 âˆ§ b>=0 -> ab>=0",
+        "  [OK] #24 t31_cusp_bound               | 7T | |f| >= 0",
+        "  [OK] #25 t49_parabolic                | 7T | a<=b -> a<=b",
+        "========================================================================",
+        "  TOTAL: 25/25 VERIFIED | 0 FAILED",
+        "  CUMULATIVE Z3 VERIFIED: 123 THEOREMS",
+        "========================================================================"
+      ],
+      "checks": [
+        {
+          "claim": "s7k_energy_sq_nonneg",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0 â‰¤ EÂ²",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7k_hamiltonian_pos",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "pÂ² + qÂ² â‰¥ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7k_hamiltonian_bound",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "pq â‰¤ (pÂ²+qÂ²)/2",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [
+            {
+              "divisor": "2.0",
+              "premises_force_nonzero": null,
+              "guard_needed": false
+            }
+          ],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7k_hamiltonian_dissipative",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "-xÂ² â‰¤ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7k_lyapunov_sum",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0â‰¤a âˆ§ 0â‰¤b â†’ 0â‰¤a+b",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "k5a": "0",
+            "k5b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7l_energy_sq_nn",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0 â‰¤ EÂ²",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7l_energy_nn_sum",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0â‰¤a âˆ§ 0â‰¤b â†’ 0â‰¤a+b",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "l2a": "0",
+            "l2b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7l_energy_nn_mul",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0â‰¤a âˆ§ 0â‰¤b â†’ 0â‰¤ab",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "l3a": "0",
+            "l3b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7l_energy_bounded_below",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0 â‰¤ EÂ²",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "s7l_energy_cauchy",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "E1â‰¤E2 âˆ§ 0â‰¤E1 â†’ 0â‰¤E2",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "l51": "0",
+            "l52": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "m1_strip_zero_le",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0 â‰¤ tÂ²",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "m4_hdc_pos_def",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "vÂ² â‰¥ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "m7_swarm_eigenval",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "lÂ² â‰¥ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "m2_zero_real_part",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "0<Ïƒ<1 â†’ Ïƒ>0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "m4s": "1/2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "m3_pi_pos",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "xâ‰¥2 â†’ x>0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "m5": "2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "p21_sq_nonneg",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "aÂ² â‰¥ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "p29_abs_nn",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "|a| â‰¥ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "p35_abs_add",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "|a+b| â‰¤ |a|+|b|",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "p57_nn_add",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "aâ‰¥0 âˆ§ bâ‰¥0 â†’ a+bâ‰¥0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "p4a": "0",
+            "p4b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "p58_nn_mul",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "aâ‰¥0 âˆ§ bâ‰¥0 â†’ abâ‰¥0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "p5a": "0",
+            "p5b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "t1_galois_pos",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "Ï > 0 â†’ Ï > 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "t1": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "t2_galois_sum",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "aâ‰¥0 âˆ§ bâ‰¥0 â†’ a+bâ‰¥0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "t2a": "0",
+            "t2b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "t3_galois_mul",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "aâ‰¥0 âˆ§ bâ‰¥0 â†’ abâ‰¥0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "t3a": "0",
+            "t3b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "t31_cusp_bound",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "|f| â‰¥ 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "t49_parabolic",
+          "file": "z3_verify_batch6.py",
+          "line": 16,
+          "stmt": "aâ‰¤b â†’ aâ‰¤b",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "t5a": "0",
+            "t5b": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch7": {
+      "exec_error": null,
+      "stdout_tail": [
+        "  âœ“ # 8 zeta_two_approx                | ZB   | Î¶(2) = Ï€Â²/6 â‰ˆ 1.6449 (positive)",
+        "  âœ“ # 9 func_eq_self_consistency       | ZF   | 2 * Î“(0.5) * (2Ï€)^(-0.5) * cos(Ï€/4) = 1 (structurally required)",
+        "  âœ“ #10 zeta_nonzero_re_gt1            | ZB   | s > 1 -> Î¶(s) â‰  0 (via Euler product)",
+        "========================================================================",
+        "  TOTAL: 7/10 VERIFIED | 0 FAILED | 3 OTHER",
+        "  SUCCESS RATE: 70.0%",
+        "  CUMULATIVE Z3 VERIFIED: 135 THEOREMS",
+        "========================================================================"
+      ],
+      "checks": [
+        {
+          "claim": "euler_factor_pos",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "s > 1 -> 1 - 2^(-s) > 0",
+          "result": "unknown",
+          "reason_unknown": "unknown",
+          "n_assertions": 3,
+          "premises_consistent": null,
+          "vacuous": false,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": "NFE/transcendental: Power with symbolic real exponent (e.g. p^(-s)) is outside QF_NRA; Z3 cannot decide it (not a counterexample)"
+        },
+        {
+          "claim": "euler_factor_lt1",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "s > 1 -> 1 - 2^(-s) < 1",
+          "result": "unknown",
+          "reason_unknown": "unknown",
+          "n_assertions": 3,
+          "premises_consistent": null,
+          "vacuous": false,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": "NFE/transcendental: Power with symbolic real exponent (e.g. p^(-s)) is outside QF_NRA; Z3 cannot decide it (not a counterexample)"
+        },
+        {
+          "claim": "euler_factor_in_unit",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "p â‰¥ 2, s > 1 -> 0 < 1 - p^(-s) < 1",
+          "result": "unknown",
+          "reason_unknown": "unknown",
+          "n_assertions": 5,
+          "premises_consistent": null,
+          "vacuous": false,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": "NFE/transcendental: Power with symbolic real exponent (e.g. p^(-s)) is outside QF_NRA; Z3 cannot decide it (not a counterexample)"
+        },
+        {
+          "claim": "zeta_pos_for_s_gt1",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "s > 1 -> Î¶(s) > 0 (real, implied by Euler product positivity)",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "a7s": "2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "func_eq_re_sum",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "Re(s) + Re(1-s) = 1",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "d4a": "0",
+            "d4b": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "func_eq_cos_quarter",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "cos(Ï€ * 0.5 / 2) = cos(Ï€/4) = âˆš2/2 > 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "trivial_zero_neg_two",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "n â‰¥ 0 -> -2*(n+1) is negative",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "f6n": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "zeta_two_approx",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "Î¶(2) = Ï€Â²/6 â‰ˆ 1.6449 (positive)",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "func_eq_self_consistency",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "2 * Î“(0.5) * (2Ï€)^(-0.5) * cos(Ï€/4) = 1 (structurally required)",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "zeta_nonzero_re_gt1",
+          "file": "z3_verify_batch7.py",
+          "line": 24,
+          "stmt": "s > 1 -> Î¶(s) â‰  0 (via Euler product)",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "j10s": "2"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch8": {
+      "exec_error": null,
+      "stdout_tail": [
+        "  âœ“ #10 prod_nonzero_of_nonzero             | ZB   | a â‰  0 âˆ§ b â‰  0 âŸ¹ aÂ·b â‰  0",
+        "  ? #11 euler_factor_unit_interval          | ZB   | p â‰¥ 2, s > 1 âŸ¹ 0 < 1 - p^(-s) (< 1)",
+        "  âœ“ #12 trivial_zero_negative               | ZF   | n â‰¥ 0 âŸ¹ Re(-2(n+1)) < 0",
+        "========================================================================",
+        "  TOTAL: 10/12 VERIFIED | 0 FAILED | 2 OTHER",
+        "  SUCCESS RATE: 83.3%",
+        "  CUMULATIVE Z3 VERIFIED: 145 THEOREMS",
+        "========================================================================"
+      ],
+      "checks": [
+        {
+          "claim": "denom_pos_makes_div_pos",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "C > 0 âˆ§ logL > 0 âŸ¹ C/logL > 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "A_C": "1",
+            "A_log": "1"
+          },
+          "divisors": [
+            {
+              "divisor": "A_log",
+              "premises_force_nonzero": true,
+              "guard_needed": true
+            }
+          ],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": "unsat",
+          "note": null
+        },
+        {
+          "claim": "sub_lt_self_rhs",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "C/logL > 0 âŸ¹ 1 - C/logL < 1",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "A_C": "1",
+            "A_log": "1"
+          },
+          "divisors": [
+            {
+              "divisor": "A_log",
+              "premises_force_nonzero": true,
+              "guard_needed": true
+            }
+          ],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": "unsat",
+          "note": null
+        },
+        {
+          "claim": "bound_transitivity",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "s â‰¤ b âˆ§ b < 1 âŸ¹ s < 1",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 4,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "/0": "[(1, 1) -> 1, else -> 0]",
+            "A_C": "1",
+            "A_log": "1",
+            "A_s": "0"
+          },
+          "divisors": [
+            {
+              "divisor": "A_log",
+              "premises_force_nonzero": true,
+              "guard_needed": true
+            }
+          ],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": "unsat",
+          "note": null
+        },
+        {
+          "claim": "abs_two_shift",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "2 â‰¤ |t| + 2",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "monotone_log_pos",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "f2 > 0 âˆ§ f2 â‰¤ ft âŸ¹ ft > 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "B_f2": "1",
+            "B_ft": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line84",
+          "file": "z3_verify_batch8.py",
+          "line": 84,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "P": "False",
+            "Q": "False"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "critical_line_proxy",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "x = 1 âŸ¹ x â‰  0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "A_s": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "excluded_middle_strip",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "(s.re â‰¤ 1) âˆ¨ (s.re > 1)",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "euler_factor_nonzero",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "p â‰¥ 2, s > 1 âŸ¹ 1 - p^(-s) â‰  0",
+          "result": "unknown",
+          "reason_unknown": "unknown",
+          "n_assertions": 5,
+          "premises_consistent": null,
+          "vacuous": false,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": "NFE/transcendental: Power with symbolic real exponent (e.g. p^(-s)) is outside QF_NRA; Z3 cannot decide it (not a counterexample)"
+        },
+        {
+          "claim": "prod_nonzero_of_nonzero",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "a â‰  0 âˆ§ b â‰  0 âŸ¹ aÂ·b â‰  0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "A_s": "-1",
+            "F_q": "-1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "euler_factor_unit_interval",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "p â‰¥ 2, s > 1 âŸ¹ 0 < 1 - p^(-s) (< 1)",
+          "result": "unknown",
+          "reason_unknown": "unknown",
+          "n_assertions": 5,
+          "premises_consistent": null,
+          "vacuous": false,
+          "witness_model": null,
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": "NFE/transcendental: Power with symbolic real exponent (e.g. p^(-s)) is outside QF_NRA; Z3 cannot decide it (not a counterexample)"
+        },
+        {
+          "claim": "trivial_zero_negative",
+          "file": "z3_verify_batch8.py",
+          "line": 23,
+          "stmt": "n â‰¥ 0 âŸ¹ Re(-2(n+1)) < 0",
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "G_n": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    },
+    "z3_verify_batch9": {
+      "exec_error": null,
+      "stdout_tail": [
+        "============================================================",
+        "Z3 CROSS-VERIFICATION BATCH 9 RESULTS (PHASE 2)",
+        "============================================================",
+        "[VERIFIED] diracKinetic_isSymm: vecMulVec commutativity implies matrix symmetry",
+        "[VERIFIED] fullDirac_trace_linear: Trace additivity for composite Dirac operator",
+        "[VERIFIED] kinetic_trace_pos: Kinetic trace equals dimension N >= 1",
+        "[VERIFIED] diracDiagonal_off_diag_symm: Off-diagonal vanishing symmetry",
+        "============================================================"
+      ],
+      "checks": [
+        {
+          "claim": "line19",
+          "file": "z3_verify_batch9.py",
+          "line": 19,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 1,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {},
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line35",
+          "file": "z3_verify_batch9.py",
+          "line": 35,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 2,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "tr_A": "0",
+            "tr_A_plus_B": "0",
+            "tr_B": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line53",
+          "file": "z3_verify_batch9.py",
+          "line": 53,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "N": "1",
+            "kinetic_diag_sum": "1"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        },
+        {
+          "claim": "line69",
+          "file": "z3_verify_batch9.py",
+          "line": 69,
+          "stmt": null,
+          "result": "unsat",
+          "reason_unknown": null,
+          "n_assertions": 3,
+          "premises_consistent": true,
+          "vacuous": false,
+          "witness_model": {
+            "diag_ij": "0",
+            "diag_ji": "0"
+          },
+          "divisors": [],
+          "roots": [],
+          "division_sensitive": false,
+          "guarded_result": null,
+          "note": null
+        }
+      ]
+    }
+  },
+  "summary": {
+    "checks": 91,
+    "unsat": 86,
+    "sat": 0,
+    "unknown": 5,
+    "vacuous": 1,
+    "division_sensitive": 0,
+    "divisors_seen": 4,
+    "divisors_forced_nonzero": 3,
+    "divisors_needing_guard": 3,
+    "witnesses": 53,
+    "exec_errors": 0
+  }
+}
