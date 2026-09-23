@@ -1,23 +1,27 @@
 import Lean
 
 /-!
-# GNASE Absolute Axiom Registry ($A_3\Omega$)
-4 Absolute Axioms governing all formal proofs in ALMIGHTY.
-Any proof not descending from these axioms is rejected as an Epistemic Void.
+# GNASE Axiom Registry — JUJUR
+Semua aksioma palsu versi lama (`zero_leakage`, `kolmogorov_min`) DIBUANG
+karena menghasilkan inkonsistensi / klaim palsu.
+
+Satu-satunya aksioma/postulat terbuka dalam proyek ini adalah
+`AetherZ3Omega.riemann_hypothesis` (di `RhCore.lean`).
+
+File ini hanya berisi LEMMAS TERBUKTI dari logika dasar Lean 4.
 -/
 
 namespace Almighty.Axioms
 
-/-- A1: Zero Leakage / Isentropic Maintenance. -/
-axiom zero_leakage (α : Type) [Zero α] (m : α) : m = 0
+/-- Non-Contradiction: ¬(P ∧ ¬P) — terbukti dari logika klasik. -/
+theorem no_self_contradiction (P : Prop) : ¬ (P ∧ ¬ P) :=
+  fun h => h.2 h.1
 
-/-- A2: No Self Contradiction (Law of Non-Contradiction). -/
-axiom no_self_contradiction (P : Prop) : ¬ (P ∧ ¬ P)
+/-- Guillotine Law: dari P dan ¬P menghasilkan False. -/
+theorem guillotine_law (P : Prop) (hP : P) (hnP : ¬ P) : False :=
+  hnP hP
 
-/-- A3: The Guillotine Law (`[UNSAT = KILL]`). -/
-axiom guillotine_law (P : Prop) (hP : P) (hnP : ¬ P) : False
-
-/-- A4: Kolmogorov Complexity Confinement (`K(x) >= K(x_TOE)`). -/
-axiom kolmogorov_min (x : Nat) : x ≥ 1
+/-- Idempotensi refleksif: P → P (tanpa efek samping). -/
+theorem imply_reflexive (P : Prop) : P → P := fun h => h
 
 end Almighty.Axioms

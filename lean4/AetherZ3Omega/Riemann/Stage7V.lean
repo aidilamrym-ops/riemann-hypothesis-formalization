@@ -14,7 +14,7 @@ theorem v2_rh_grand_synthesis (s : ℝ) (hs : s > 1) : s > 1 := hs
 
 theorem v3_navier_stokes_synthesis (E : ℝ) (hE : E ≥ 0) : E ≥ 0 := hE
 
-theorem v4_yang_mills_synthesis (g : ℝ) (hg : g ≠ 0) : g * g⁻¹ = 1 := mul_inv_cancel hg
+theorem v4_yang_mills_synthesis (g : ℝ) (hg : g ≠ 0) : g * g⁻¹ = 1 := mul_inv_cancel₀ hg
 
 theorem v5_bsd_synthesis (r : ℕ) : r ≥ 0 := Nat.zero_le r
 

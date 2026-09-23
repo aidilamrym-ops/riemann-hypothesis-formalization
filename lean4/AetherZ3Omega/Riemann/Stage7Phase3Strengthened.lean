@@ -62,16 +62,22 @@ theorem phase3_energy_hamiltonian_connection
     (E0 * Real.exp (-lam * t)) + (p1 * q1) + (p2 * q2) ≤ E0 + (p1^2 + p2^2 + q1^2 + q2^2) / 2 :=
 by
   -- Step 1: Energy is nonneg
-  have hE_nonneg : E0 * Real.exp (-lam * t) ≥ 0 := energy_nonneg E0 lam t h_E0 h_lam h_t
+  have hE_nonneg : E0 * Real.exp (-lam * t) ≥ 0 :=
+    phase3_neural_ode_energy_nonneg E0 lam t h_E0 h_lam h_t
+  -- Step 1b: Energy is bounded above by E0 (exp(-lam*t) <= 1 for lam,t >= 0)
+  have h_neg : -lam * t ≤ 0 := by
+    have h_lt : lam * t ≥ 0 := mul_nonneg h_lam h_t
+    linarith
+  have h_exp_le : Real.exp (-lam * t) ≤ 1 := (Real.exp_le_one_iff).2 h_neg
+  have hE_ub : E0 * Real.exp (-lam * t) ≤ E0 :=
+    mul_le_of_le_one_right h_E0 h_exp_le
   -- Step 2: Apply AM-GM to each cross term
   have h1 : p1 * q1 ≤ (p1^2 + q1^2) / 2 := phase3_amgm_bound p1 q1
   have h2 : p2 * q2 ≤ (p2^2 + q2^2) / 2 := phase3_amgm_bound p2 q2
   -- Step 3: Sum all bounds
   have h_total_bound : (p1 * q1) + (p2 * q2) ≤ (p1^2 + q1^2) / 2 + (p2^2 + q2^2) / 2 := by linarith
   -- Step 4: Add energy term
-  have h_total_energy : E0 * Real.exp (-lam * t) + (p1 * q1) + (p2 * q2) ≤ E0 + (p1^2 + p2^2 + q1^2 + q2^2) / 2 := by
-    have h_E0_nonneg : E0 * Real.exp (-lam * t) ≥ 0 := hE_nonneg
-    linarith [h_total_bound, h_E0_nonneg]
+  nlinarith [h_total_bound, hE_ub]
 
 -- ═══════════════════════════════════════════════════════════════
 -- SUMMARY OF THE BRIDGE

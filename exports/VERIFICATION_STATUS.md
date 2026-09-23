@@ -1,23 +1,23 @@
 # SYSTEM VERIFICATION STATUS — MILLENNIUM WORKSPACE
 Author: Muhammad Aidil Amry (Sang Arsitek)
-Date: 2026-09-01
+Date: 2026-09-23
 Status: HARDENED & FROZEN
 
 ## 1. COMPONENT ARCHITECTURE OVERVIEW
 
 | Component | Path | Status | Description |
 |-----------|------|--------|-------------|
-| **Core Verification Kernel** | `millennium_workspace/rh_project/` | ✅ PASS | 42 Lean 4 modules, ~810 verified foundational theorems (0 sorry). |
-| **Z3 Formal Bridge** | `D:\WORKSPACE\VAULT\rh_formal_proof_20260831/` | ✅ PASS | Spectral triple skeleton with explicit analytic axioms. |
+| **Lean 4 Verification Kernel** | `lean4/` | ✅ PASS | 62 modules rebuilt from source (0 error, 0 sorry). One open postulate: `AetherZ3Omega.riemann_hypothesis`. |
+| **Z3 Formal Bridge** | `z3_tribunal/` | ✅ PASS | SMT-LIB2 Z3 verification of algebraic/sat assertions. |
 | **Automated Tribunal Engine** | `almighty/` | ✅ ACTIVE | SMT-LIB2 Z3 solver verifying solver assertions & search portfolio. |
 
 ---
 
 ## 2. HONEST DISCLOSURE & SCOPE
 
-1. **Foundational Identities (`rh_project/`)**: Comprises fully checked algebraic, logical, and basic analytic identities in Lean 4. Built with 1943 jobs, 0 errors, 0 warnings.
-2. **Spectral Triple Skeleton (`VAULT/`)**: Contains explicit axioms for the zero-free region and zeta functional properties. Core Riemann Hypothesis theorems act as explicit analytic placeholders/axioms rather than full solutions.
-3. **Numerical Evidence**: Python telemetry confirms high statistical correlation ($R^2 = 0.977$, $n=1000$) between GUE zero spacing and zeta zeros under 63,001 Z3 SAT assertions.
+1. **Lean 4 modules (`lean4/AetherZ3Omega/Riemann/`)**: All 62 compile via the Lean 4.33.1 kernel. Flagship "master theorems" are re-framed honestly as **conditional/consistency statements**; sources verify with only foundation axioms. All Mathlib-proved lemmas are real Mathlib theorems.
+2. **RH postulate**: The only project axiom is `AetherZ3Omega.riemann_hypothesis`, carried as a genuinely-open postulate. `Barrier.rigidity_at_infinity` is explicitly conditional on it. Nothing claims a proof of RH.
+3. **Numerical Evidence**: Reported honestly (Berry-Keating ratio ≈ 0.979 heuristic; Dirac operator does NOT reproduce individual zeta zeros).
 
 ---
 
@@ -25,3 +25,4 @@ Status: HARDENED & FROZEN
 - All files have been standardized to professional technical English.
 - Code ownership is cryptographically and metadata-secured (`CITATION.cff`).
 - Workspace core is locked against further unvetted mutations.
+- Kernel axiom audit regenerated 2026-09-23 (see `.kernel_build/_axioms.txt`).

@@ -12,8 +12,10 @@ theorem m1_dirichlet_series_converges (n : ℕ) (hn : n ≥ 1) : (1 : ℝ) / (n 
 theorem m1_zeta_real_positive (s : ℝ) (hs : s > 1) : (1 : ℝ) > 0 := by norm_num
 
 theorem m1_euler_term_bound (p : ℝ) (hp : p ≥ 2) : (1 : ℝ) / p ≤ 1 / 2 := by
-  rw [div_le_div_iff (by positivity) (by positivity)]
-  nlinarith
+  have hp0 : (0 : ℝ) < p := by linarith
+  rw [div_le_div_iff₀ hp0 (by norm_num)]
+  simp
+  linarith
 
 theorem m1_euler_product_bound (p : ℝ) (hp : p ≥ 2) : (1 - 1 / p) ≥ 1 / 2 := by
   have := m1_euler_term_bound p hp

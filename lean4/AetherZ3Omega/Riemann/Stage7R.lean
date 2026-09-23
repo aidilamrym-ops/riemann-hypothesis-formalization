@@ -5,30 +5,31 @@ namespace Stage7R
 
 -- Z3 SMT Basic Logic
 theorem r1_sat_true : True := trivial
-theorem r2_unsat_false : False → True := by intro h; absurd h (by trivial)
+theorem r2_unsat_false : False → True := by intro h; exact False.elim h
 theorem r3_sat_and : True ∧ True := ⟨trivial, trivial⟩
 theorem r4_sat_or : True ∨ False := Or.inl trivial
 theorem r5_sat_implies : True → True := fun h => h
-theorem r6_unsat_implies : False → True := by intro h; absurd h (by trivial)
+theorem r6_unsat_implies : False → True := by intro h; exact False.elim h
 theorem r7_not_true : ¬True → False := by intro h; exact h trivial
 theorem r8_not_false : ¬False := fun h => h
 theorem r9_and_true : True ∧ True ↔ True := ⟨fun ⟨_, _⟩ => trivial, fun _ => ⟨trivial, trivial⟩⟩
 theorem r10_or_true : True ∨ True ↔ True := ⟨fun h => trivial, fun _ => Or.inl trivial⟩
-theorem r11_and_false : False ∧ True ↔ False := ⟨fun h => h.1, fun _ => ⟨by trivial, by trivial⟩⟩
-theorem r12_or_false : False ∨ False ↔ False := ⟨fun h => h.elim (fun _ => trivial) (fun _ => trivial), fun _ => Or.inl trivial⟩
+theorem r11_and_false : False ∧ True ↔ False := ⟨fun h => h.1, fun h => False.elim h⟩
+theorem r12_or_false : False ∨ False ↔ False := ⟨fun h => h.elim (fun h => h) (fun h => h), fun h => False.elim h⟩
 
 -- Z3 QF_NRA (Quantifier-Free Nonlinear Real Arithmetic)
-theorem r13_qf_nra_sq_pos (x : ℝ) (hx : x ≠ 0) : x^2 > 0 := sq_pos_of_ne hx
+theorem r13_qf_nra_sq_pos (x : ℝ) (hx : x ≠ 0) : x^2 > 0 := sq_pos_of_ne_zero hx
 theorem r14_qf_nra_sq_nonneg (x : ℝ) : x^2 ≥ 0 := sq_nonneg x
 theorem r15_qf_nra_abs_nonneg (x : ℝ) : |x| ≥ 0 := abs_nonneg x
 theorem r16_qf_nra_abs_sq (x : ℝ) : |x|^2 = x^2 := sq_abs x
 theorem r17_qf_nra_abs_mul (a b : ℝ) : |a * b| = |a| * |b| := abs_mul a b
 theorem r18_qf_nra_abs_add (a b : ℝ) : |a + b| ≤ |a| + |b| := abs_add_le a b
 theorem r19_qf_nra_abs_sub (a b : ℝ) : |a - b| ≤ |a| + |b| := by
-  rw [sub_eq_add_neg]; exact abs_add_le a (-b)
+  have h : |a + (-b)| ≤ |a| + |b| := by simpa [abs_neg] using abs_add_le a (-b)
+  simpa [sub_eq_add_neg] using h
 theorem r20_qf_nra_le_iff_abs (a b : ℝ) : |a| ≤ b ↔ -b ≤ a ∧ a ≤ b := abs_le
 theorem r21_qf_nra_lt_iff_abs (a b : ℝ) : |a| < b ↔ -b < a ∧ a < b := abs_lt
-theorem r22_qf_nra_mul_self_nonneg (x : ℝ) : x * x ≥ 0 := sq_nonneg x
+theorem r22_qf_nra_mul_self_nonneg (x : ℝ) : x * x ≥ 0 := by simpa [pow_two] using sq_nonneg x
 theorem r23_qf_nra_sum_sq_nonneg (x y : ℝ) : x^2 + y^2 ≥ 0 := by nlinarith [sq_nonneg x, sq_nonneg y]
 theorem r24_qf_nra_diff_sq (a b : ℝ) : a^2 - b^2 = (a + b) * (a - b) := by ring
 theorem r25_qf_nra_sum_sq_le (a b : ℝ) : (a + b)^2 ≤ 2 * (a^2 + b^2) := by nlinarith [sq_nonneg (a - b)]
@@ -44,19 +45,22 @@ theorem r29_qf_nra_sq_lt_sq (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) : a^2 < b^
   constructor <;> intro h <;> nlinarith [sq_nonneg (a - b)]
 
 -- Z3 QF_LRA (Quantifier-Free Linear Real Arithmetic)
-theorem r30_qf_lra_add_le (a b c : ℝ) (h : a ≤ b) : a + c ≤ b + c := add_le_add_left h
-theorem r31_qf_lra_sub_le (a b c : ℝ) (h : a ≤ b) : a - c ≤ b - c := sub_le_sub_left h
+theorem r30_qf_lra_add_le (a b c : ℝ) (h : a ≤ b) : a + c ≤ b + c := add_le_add_left h c
+theorem r31_qf_lra_sub_le (a b c : ℝ) (h : a ≤ b) : a - c ≤ b - c := sub_le_sub_right h c
 theorem r32_qf_lra_mul_le (a b c : ℝ) (h : a ≤ b) (hc : 0 ≤ c) : c * a ≤ c * b := mul_le_mul_of_nonneg_left h hc
-theorem r33_qf_lra_neg_mul_le (a b c : ℝ) (h : a ≤ b) (hc : c ≤ 0) : c * a ≤ c * b := mul_le_mul_of_nonneg_right h (by linarith)
+theorem r33_qf_lra_neg_mul_le (a b c : ℝ) (h : a ≤ b) (hc : c ≤ 0) : c * b ≤ c * a := by
+  exact mul_le_mul_of_nonpos_left h hc
 theorem r34_qf_lra_trans_le (a b c : ℝ) (h1 : a ≤ b) (h2 : b ≤ c) : a ≤ c := le_trans h1 h2
 theorem r35_qf_lra_lt_trans (a b c : ℝ) (h1 : a < b) (h2 : b < c) : a < c := lt_trans h1 h2
-theorem r36_qf_lra_add_lt (a b c : ℝ) (h : a < b) : a + c < b + c := add_lt_add_left h
-theorem r37_qf_lra_mul_lt (a b c : ℝ) (h : a < b) (hc : 0 < c) : c * a < c * b := mul_lt_mul_of_pos_left h hc
-theorem r38_qf_lra_div_lt (a b c : ℝ) (h : a < b) (hc : 0 < c) : a / c < b / c := div_lt_div_of_pos h hc
+theorem r36_qf_lra_add_lt (a b c : ℝ) (h : a < b) : a + c < b + c := add_lt_add_left h c
+theorem r37_qf_lra_mul_lt (a b c : ℝ) (h : a < b) (hc : 0 < c) : c * a < c * b := by
+  exact mul_lt_mul_of_pos_left h hc
+theorem r38_qf_lra_div_lt (a b c : ℝ) (h : a < b) (hc : 0 < c) : a / c < b / c := by
+  exact div_lt_div_of_pos_right h hc
 theorem r39_qf_lra_inv_lt (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : a⁻¹ < b⁻¹ ↔ b < a := by
-  rw [inv_lt_inv ha hb]
+  rw [inv_lt_inv₀ ha hb]
 theorem r40_qf_lra_inv_le (a b : ℝ) (ha : 0 < a) (hb : 0 < b) : a⁻¹ ≤ b⁻¹ ↔ b ≤ a := by
-  rw [inv_le_inv ha hb]
+  rw [inv_le_inv₀ ha hb]
 
 -- Z3 QF_NIA (Quantifier-Free Integer Arithmetic)
 theorem r41_qf_nia_add_pos (a b : ℕ) : (a + b : ℕ) > 0 → a > 0 ∨ b > 0 := by

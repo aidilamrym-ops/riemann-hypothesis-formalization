@@ -1,4 +1,4 @@
-import ConreyZeroFree
+import AetherZ3Omega.Riemann.ConreyZeroFree
 
 /-
   Sovereign Formalization: Stage7J.lean (v3 — ZERO-SORRY via Mathlib proven)

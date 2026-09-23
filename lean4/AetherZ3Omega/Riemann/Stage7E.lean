@@ -1,5 +1,5 @@
 import Mathlib.Analysis.InnerProductSpace.Basic
-import Mathlib.Topology.Algebra.Order
+import Mathlib.Topology.Order
 
 -- === STAGE 7E: HODGE CONJECTURE FOUNDATIONS ===
 -- STATUS: PLACEHOLDER (Tingkat 3) — scaffolding aksioma, mayoritas "True := by trivial".

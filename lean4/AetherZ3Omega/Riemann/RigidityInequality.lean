@@ -11,7 +11,7 @@
 
 import Mathlib.NumberTheory.LSeries.RiemannZeta
 import Mathlib.NumberTheory.LSeries.ZetaZeros
-import Rigidity
+import AetherZ3Omega.Riemann.Rigidity
 
 namespace RigidityInequality
 

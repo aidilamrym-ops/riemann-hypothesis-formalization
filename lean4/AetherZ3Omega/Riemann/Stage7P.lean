@@ -11,12 +11,12 @@ theorem p5_add_zero (a : ℝ) : a + 0 = a := add_zero a
 theorem p6_zero_add (a : ℝ) : 0 + a = a := zero_add a
 theorem p7_mul_one (a : ℝ) : a * 1 = a := mul_one a
 theorem p8_one_mul (a : ℝ) : 1 * a = a := one_mul a
-theorem p9_add_neg (a : ℝ) : a + (-a) = 0 := add_neg_self a
-theorem p10_neg_add (a : ℝ) : -a + a = 0 := neg_add_self a
+theorem p9_add_neg (a : ℝ) : a + (-a) = 0 := add_neg_cancel a
+theorem p10_neg_add (a : ℝ) : -a + a = 0 := neg_add_cancel a
 theorem p11_sub_eq_add_neg (a b : ℝ) : a - b = a + (-b) := sub_eq_add_neg a b
 theorem p12_neg_neg (a : ℝ) : -(-a) = a := neg_neg a
 theorem p13_sub_self (a : ℝ) : a - a = 0 := sub_self a
-theorem p14_add_sub_cancel (a b : ℝ) : a + b - b = a := add_sub_cancel a b
+theorem p14_add_sub_cancel (a b : ℝ) : a + b - b = a := by ring
 theorem p15_sub_add_cancel (a b : ℝ) : a - b + b = a := sub_add_cancel a b
 theorem p16_add_sub_right (a b c : ℝ) : a + (b - c) = a + b - c := add_sub a b c
 theorem p17_mul_distrib (a b c : ℝ) : a * (b + c) = a * b + a * c := mul_add a b c
@@ -39,7 +39,7 @@ theorem p33_abs_eq_zero (a : ℝ) : |a| = 0 ↔ a = 0 := abs_eq_zero
 theorem p34_abs_mul (a b : ℝ) : |a * b| = |a| * |b| := abs_mul a b
 theorem p35_abs_add_le (a b : ℝ) : |a + b| ≤ |a| + |b| := abs_add_le a b
 theorem p36_abs_neg (a : ℝ) : |-a| = |a| := abs_neg a
-theorem p37_abs_abs (a : ℝ) : ||a|| = |a| := abs_abs a
+theorem p37_abs_abs (a : ℝ) : |(|a|)| = |a| := abs_abs a
 theorem p38_abs_one : |(1 : ℝ)| = 1 := abs_one
 theorem p39_abs_pow (a : ℝ) (n : ℕ) : |a^n| = |a|^n := abs_pow a n
 theorem p40_abs_sub_comm (a b : ℝ) : |a - b| = |b - a| := abs_sub_comm a b
@@ -56,9 +56,9 @@ theorem p50_min_comm (a b : ℝ) : min a b = min b a := min_comm a b
 theorem p51_le_antisymm {a b : ℝ} (h1 : a ≤ b) (h2 : b ≤ a) : a = b := le_antisymm h1 h2
 theorem p52_lt_iff_le_ne {a b : ℝ} : a < b ↔ a ≤ b ∧ a ≠ b := lt_iff_le_and_ne
 theorem p53_le_total (a b : ℝ) : a ≤ b ∨ b ≤ a := le_total a b
-theorem p54_lt_or_gt (a b : ℝ) : a < b ∨ a > b := lt_or_gt
+theorem p54_lt_or_gt (a b : ℝ) (h : a ≠ b) : a < b ∨ a > b := lt_or_gt_of_ne h
 theorem p55_eq_or_ne (a b : ℝ) : a = b ∨ a ≠ b := em (a = b)
-theorem p56_le_or_ge (a b : ℝ) : a ≤ b ∨ a ≥ b := le_or_ge a b
+theorem p56_le_or_ge (a b : ℝ) : a ≤ b ∨ a ≥ b := le_total a b
 theorem p57_nn_add (a b : ℝ) : a ≥ 0 → b ≥ 0 → a + b ≥ 0 := add_nonneg
 theorem p58_nn_mul (a b : ℝ) : a ≥ 0 → b ≥ 0 → a * b ≥ 0 := mul_nonneg
 theorem p59_pos_add (a b : ℝ) : a > 0 → b > 0 → a + b > 0 := add_pos
@@ -75,7 +75,7 @@ theorem p69_div_pos {a b : ℝ} (ha : a > 0) (hb : b > 0) : a / b > 0 := div_pos
 theorem p70_inv_nonneg {a : ℝ} (ha : a ≥ 0) : a⁻¹ ≥ 0 := inv_nonneg.mpr ha
 theorem p71_inv_pos {a : ℝ} (ha : a > 0) : a⁻¹ > 0 := inv_pos.mpr ha
 theorem p72_pos_imp_inv_pos {a : ℝ} (ha : a > 0) : a⁻¹ > 0 := inv_pos.mpr ha
-theorem p73_pos_imp_pos_sq {a : ℝ} (ha : a > 0) : a^2 > 0 := sq_pos_of_ne ha.ne.symm
+theorem p73_pos_imp_pos_sq {a : ℝ} (ha : a > 0) : a^2 > 0 := sq_pos_iff.mpr ha.ne.symm
 theorem p74_ne_zero_imp_sq_pos {a : ℝ} (ha : a ≠ 0) : a^2 > 0 := sq_pos_iff.mpr ha
 theorem p75_mul_le_mul_left {a b c : ℝ} (h : a ≤ b) (hc : c ≥ 0) : c * a ≤ c * b :=
   mul_le_mul_of_nonneg_left h hc
@@ -86,9 +86,9 @@ theorem p77_mul_lt_mul_left {a b c : ℝ} (h : a < b) (hc : c > 0) : c * a < c *
 theorem p78_mul_lt_mul_right {a b c : ℝ} (h : a < b) (hc : c > 0) : a * c < b * c :=
   mul_lt_mul_of_pos_right h hc
 theorem p79_div_le_div_right {a b c : ℝ} (h : a ≤ b) (hc : c > 0) : a / c ≤ b / c :=
-  div_le_div_of_le hc h
+  (div_le_div_iff_of_pos_right hc).mpr h
 theorem p80_div_lt_div_right {a b c : ℝ} (h : a < b) (hc : c > 0) : a / c < b / c :=
-  div_lt_div_of_lt hc h
+  (div_lt_div_iff_of_pos_right hc).mpr h
 theorem p81_max_le_iff {a b c : ℝ} : max a b ≤ c ↔ a ≤ c ∧ b ≤ c := max_le_iff
 theorem p82_le_min_iff {a b c : ℝ} : c ≤ min a b ↔ c ≤ a ∧ c ≤ b := le_min_iff
 theorem p83_lt_max_iff {a b c : ℝ} : a < max b c ↔ a < b ∨ a < c := lt_max_iff
@@ -99,13 +99,13 @@ theorem p86_le_min_abs {a b c : ℝ} (h1 : c ≤ |a|) (h2 : c ≤ |b|) : c ≤ m
   exact le_min h1 h2
 theorem p87_abs_sub_le (a b c : ℝ) (h : |a - b| ≤ c) : |a - b| ≤ c := h
 theorem p88_triangle_ineq {a b : ℝ} : |a + b| ≤ |a| + |b| := abs_add_le a b
-theorem p89_reverse_triangle {a b : ℝ} : |a| - |b| ≤ |a - b| := by
-  linarith [abs_add_le (a - b) b, abs_nonneg b]
+theorem p89_reverse_triangle {a b : ℝ} : |a| - |b| ≤ |a - b| :=
+  abs_sub_abs_le_abs_sub a b
 theorem p90_abs_eq_abs_sq (a b : ℝ) (h : |a| = |b|) : a^2 = b^2 := by
   rw [← sq_abs a, ← sq_abs b, h]
-theorem p91_factorial_pos (n : ℕ) : n ! > 0 := Nat.factorial_pos n
-theorem p92_factorial_ge_self (n : ℕ) : n ! ≥ n := Nat.self_le_factorial n
-theorem p93_factorial_ge_one (n : ℕ) : n ! ≥ 1 := Nat.factorial_pos n
+theorem p91_factorial_pos (n : ℕ) : Nat.factorial n > 0 := Nat.factorial_pos n
+theorem p92_factorial_ge_self (n : ℕ) : Nat.factorial n ≥ n := Nat.self_le_factorial n
+theorem p93_factorial_ge_one (n : ℕ) : Nat.factorial n ≥ 1 := Nat.succ_le_of_lt (Nat.factorial_pos n)
 theorem p94_nat_pow_pos (n : ℕ) (m : ℕ) (h : n > 0) : (n : ℝ) ^ m > 0 := by
   positivity
 theorem p95_le_of_sub_nonneg {a b : ℝ} (h : a - b ≥ 0) : a ≥ b := by linarith
@@ -113,7 +113,7 @@ theorem p96_sub_nonneg_of_le {a b : ℝ} (h : a ≥ b) : a - b ≥ 0 := sub_nonn
 theorem p97_nn_sub_nn {a b : ℝ} (ha : a ≥ 0) (hb : b ≥ 0) : a - b ≥ -b := by
   linarith [sq_nonneg a]
 theorem p98_nn_sq_le_sq_add_one (n : ℕ) : (n : ℝ)^2 ≤ (n + 1)^2 := by
-  nlinarith [sq_nonneg (n + 1), sq_nonneg n]
+  nlinarith [sq_nonneg (n : ℝ), sq_nonneg (n + 1 : ℝ), show (0 : ℝ) ≤ n by positivity]
 theorem p99_nat_div_le (a b : ℕ) (h : b > 0) : a / b ≤ a := Nat.div_le_self a b
 theorem p100_nat_mod_lt (a b : ℕ) (h : b > 0) : a % b < b := Nat.mod_lt a h
 theorem p101_nn_div_nn {a b : ℕ} (ha : a > 0) (hb : b > 0) : (a / b : ℝ) ≥ 0 := by
@@ -124,7 +124,7 @@ theorem p104_min_le_of_le_left {a b c : ℝ} (h : a ≤ b) : min a c ≤ b := le
 theorem p105_min_le_of_le_right {a b c : ℝ} (h : a ≤ c) : min b a ≤ c := le_trans (min_le_right b a) h
 theorem p106_nn_sq_le_sq_of_nn {a : ℝ} (ha : 0 ≤ a) : a^2 ≥ 0 := sq_nonneg a
 theorem p107_nn_sq_add_sq_nn {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) : a^2 + b^2 ≥ 0 := by nlinarith [sq_nonneg a, sq_nonneg b]
-theorem p108_mul_nn_sq {a : ℝ} (ha : 0 ≤ a) : a * a = a^2 := sq a
+theorem p108_mul_nn_sq {a : ℝ} (ha : 0 ≤ a) : a * a = a^2 := by ring
 theorem p109_nn_add_mul_le {a b : ℝ} (ha : 0 ≤ a) (hb : 0 ≤ b) : 0 ≤ a * b := mul_nonneg ha hb
 theorem p110_nn_abs (a : ℝ) : 0 ≤ |a| := abs_nonneg a
 theorem p111_nn_abs_sq (a : ℝ) : 0 ≤ |a|^2 := sq_nonneg (|a|)
@@ -133,11 +133,14 @@ theorem p113_abs_eq_zero {a : ℝ} : |a| = 0 ↔ a = 0 := abs_eq_zero
 theorem p114_ne_imp_abs_pos {a : ℝ} (h : a ≠ 0) : |a| > 0 := abs_pos.mpr h
 theorem p115_abs_le_abs_add_abs (a b : ℝ) : |a + b| ≤ |a| + |b| := abs_add_le a b
 theorem p116_abs_sub_le_abs_add (a b : ℝ) : |a - b| ≤ |a| + |b| := by
-  rw [sub_eq_add_neg]; exact abs_add_le a (-b)
+  rw [sub_eq_add_neg]; simpa [abs_neg] using abs_add_le a (-b)
 theorem p117_nn_imp_sq_nn {a : ℝ} (h : a ≥ 0) : a^2 ≥ 0 := sq_nonneg a
 theorem p118_abs_eq_of_sq_eq {a b : ℝ} (h : a^2 = b^2) : |a| = |b| := by
-  rw [← sq_abs a, ← sq_abs b]; exact congr_arg Real.sqrt h
+  rw [← sq_eq_sq_iff_abs_eq_abs]
+  exact h
 theorem p119_imp_sq_nn_or {a : ℝ} : a^2 ≥ 0 := sq_nonneg a
-theorem p120_nn_mul_sq_nn {a : ℝ} (ha : a ≥ 0) : a * a ≥ 0 := sq_nonneg a
+theorem p120_nn_mul_sq_nn {a : ℝ} (ha : a ≥ 0) : a * a ≥ 0 := by
+  rw [← pow_two]
+  exact sq_nonneg a
 
 end Stage7P

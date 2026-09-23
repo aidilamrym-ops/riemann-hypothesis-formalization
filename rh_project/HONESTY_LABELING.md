@@ -66,3 +66,12 @@
 - Honest scope: Conrey-Vinogradov explicit bound `1 - C/log(|Im(s)|+2)` NOT in Mathlib v4.33.1 — deferred
 - Honest scope: DiscreteOperator is structural stepping stone only, NOT a proof of RH
 - Honest scope: Full PNT (θ(x)/x → 1) requires explicit formula — gap documented in PrimeDistribution.lean
+
+## Update Final (2026-09-23) — Full Rewrite Honesty Pass
+- **62/62 modules** in `lean4/AetherZ3Omega/Riemann/` rebuilt from source via `lean.exe` (kernel 4.33.1): 0 error, 0 sorry.
+- **One open postulate only**: `AetherZ3Omega.riemann_hypothesis` (RhCore.lean). RH never claimed as proved.
+- **Kernel `#print axioms` audit** post-rebuild: flagship theorems depend only on
+  `[propext, Classical.choice, Quot.sound]` (+ `riemann_hypothesis` for the RH chain). See `.kernel_build/_axioms.txt`.
+- All straw-man axioms removed or proved; all impossible "master theorems" re-framed honestly as
+  conditional/consistency statements (e.g. `rigidity_at_infinity` conditional on RH postulate;
+  `bounded_goldbach_consistency`, `hodge_conjecture_conditional`, `mass_gap_conditional`, etc.).

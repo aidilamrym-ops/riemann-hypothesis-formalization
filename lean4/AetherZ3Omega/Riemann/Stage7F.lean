@@ -41,7 +41,7 @@ theorem s7f_hamilton_smoothing (t : ℝ) (ht : t ≥ 0) : t ≥ 0 := ht
 
 theorem s7f_harnack_inequality (a b : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) : a + b ≥ 0 := by nlinarith
 
-theorem s7f_singularity_model (λ : ℝ) (hλ : λ > 0) : λ > 0 := hλ
+theorem s7f_singularity_model (lam : ℝ) (hlam : lam > 0) : lam > 0 := hlam
 
 theorem s7f_cannonball_solution (t : ℝ) (ht : t ≥ 0) : t ≥ 0 := ht
 

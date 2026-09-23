@@ -17,7 +17,7 @@
   LAW OF THE GUILLOTINE: Every theorem is proven by Lean 4 kernel.
   No sorry. No axiom. No by-trivial placeholder.
   
-  Author: ALMIGHTY (Sovereign Intellect)
+  Author: RIEMANN HUMILITY PROJECT
   Workspace: rh_project / Millennium Workspace
 -/
 
@@ -31,23 +31,24 @@ open Complex Set
 -- ================================================================
 -- LEMMA 1: Trivial zeros are infinite
 -- ================================================================
--- The map n ↦ -(2*(n+1)) is injective from ℕ to ℂ
+-- The map n ↦ -2*(n+1) is injective from ℕ to ℂ
 -- Its image is infinite
 
 theorem trivial_zero_injective :
-    Function.Injective (fun n : ℕ => (-(2 * (n + 1 : ℕ) : ℂ) : ℂ)) := by
+    Function.Injective (fun n : ℕ => (-2 * (n + 1 : ℕ) : ℂ)) := by
   intro n m h
-  -- h : -(2*(n+1)) = -(2*(m+1))
-  -- Therefore n = m
-  simp only [neg_inj, complexOfReal_inj, Nat.cast_inj, mul_eq_mul_left_iff, 
-    Nat.succ_ne_zero, or_false] at h
-  exact h
+  have hre := congrArg Complex.re h
+  norm_num at hre
+  omega
 
 theorem trivial_zeros_infinite :
-    Infinite {s : ℂ | ∃ n : ℕ, s = -(2 * (n + 1 : ℕ) : ℂ)} := by
-  exact infinite_of_injective_forall_mem _
-    trivial_zero_injective
-    (fun n => ⟨n, rfl⟩)
+    Set.Infinite {s : ℂ | ∃ n : ℕ, s = (-2 * (n + 1 : ℕ) : ℂ)} := by
+  exact Set.infinite_of_injective_forall_mem
+    trivial_zero_injective (fun n : ℕ => ⟨n, rfl⟩)
+
+theorem trivial_zeros_unbounded :
+    Infinite {s : ℂ | ∃ n : ℕ, s = (-2 * (n + 1 : ℕ) : ℂ)} := by
+  exact Set.Infinite.to_subtype trivial_zeros_infinite
 
 -- ================================================================
 -- LEMMA 2: Trivial zeros are zeta zeros
@@ -55,13 +56,12 @@ theorem trivial_zeros_infinite :
 -- ζ(-2(n+1)) = 0 for all n ≥ 0 (proven by Mathlib)
 
 theorem trivial_zero_is_zeta_zero (n : ℕ) :
-    riemannZeta (-(2 * (n + 1 : ℕ) : ℂ)) = 0 :=
-  riemannZeta_neg_two_mul_nat_add_one n
+    riemannZeta (-2 * (n + 1 : ℕ) : ℂ) = 0 := by
+  simpa [Nat.cast_add] using riemannZeta_neg_two_mul_nat_add_one n
 
 theorem trivial_zeros_subset :
-    {s : ℂ | ∃ n : ℕ, s = -(2 * (n + 1 : ℕ) : ℂ)} ⊆ riemannZetaZeros := by
-  intro s ⟨n, hn⟩
-  rw [hn, mem_setOf_eq]
+    {s : ℂ | ∃ n : ℕ, s = (-2 * (n + 1 : ℕ) : ℂ)} ⊆ riemannZetaZeros := by
+  rintro s ⟨n, rfl⟩
   exact trivial_zero_is_zeta_zero n
 
 -- ================================================================
@@ -69,8 +69,11 @@ theorem trivial_zeros_subset :
 -- ================================================================
 -- Subset of an infinite set is infinite (monotonicity of Infinite)
 
+theorem zeta_zeros_infinite_subset : Set.Infinite riemannZetaZeros := by
+  exact Set.Infinite.mono trivial_zeros_subset trivial_zeros_infinite
+
 theorem zeta_zeros_infinite : Infinite riemannZetaZeros :=
-  Infinite.mono trivial_zeros_subset trivial_zeros_infinite
+  Set.Infinite.to_subtype zeta_zeros_infinite_subset
 
 -- ================================================================
 -- MAIN THEOREM: Finite-Dimensional Obstruction
@@ -81,22 +84,15 @@ theorem zeta_zeros_infinite : Infinite riemannZetaZeros :=
 theorem finite_dim_obstruction (N : ℕ) :
     ¬∃ f : ↥riemannZetaZeros → Fin N, Function.Injective f := by
   intro ⟨f, hf⟩
-  -- f is injective from ↥riemannZetaZeros to Fin N
-  -- Fin N has N elements (finite)
-  -- ↥riemannZetaZeros is infinite (zeta_zeros_infinite)
-  -- Injection from infinite to finite is impossible
-  have hfin : Finite (Fin N) := Fin.finite
-  have hinf : Infinite ↥riemannZetaZeros := zeta_zeros_infinite
-  -- Finite.of_injective requires Finite domain, but we have Infinite domain
-  -- Use contradiction: injective map from infinite to finite => finite subset of finite => infinite = finite
-  exact absurd (hinf.finite_of_injective f hf) hinf
+  have hF : Finite ↥riemannZetaZeros := Finite.of_injective f hf
+  exact zeta_zeros_infinite.not_finite hF
 
 -- ================================================================
 -- COROLLARY: Specifically rules out the Dirac operator approach
 -- ================================================================
 
-theorem dirac_obstruction (N : ℕ) 
-    (H : Matrix (Fin N) (Fin N) ℝ) [H.IsHermitian] :
+theorem dirac_obstruction (N : ℕ)
+    (H : Matrix (Fin N) (Fin N) ℝ) (hH : H.IsHermitian) :
     ¬∃ f : ↥riemannZetaZeros → Fin N, Function.Injective f :=
   finite_dim_obstruction N
 
@@ -108,6 +104,6 @@ theorem no_surjection_to_infinite (N : ℕ) :
     ¬∃ f : Fin N → ↥riemannZetaZeros, Function.Surjective f := by
   intro ⟨f, hf⟩
   have : Finite ↥riemannZetaZeros := Finite.of_surjective f hf
-  exact zeta_zeros_infinite this
+  exact zeta_zeros_infinite.not_finite this
 
 end Obstruction

@@ -1,5 +1,7 @@
 import Mathlib.Analysis.InnerProductSpace.Basic
-import Mathlib.NumberTheory.ArithmeticFunction
+import Mathlib.NumberTheory.ArithmeticFunction.Defs
+import Mathlib.NumberTheory.ArithmeticFunction.Moebius
+import Mathlib.Algebra.Squarefree.Basic
 
 -- === STAGE 7C: ANALYTIC NUMBER THEORY & PRIME DISTRIBUTION ===
 -- Hardened: Chebyshev functions, von Mangoldt, Mobius, Dirichlet series, Perron, zero-free region
@@ -20,8 +22,8 @@ theorem s7c_von_mangoldt_zero_one (n : ℕ) (hn : n = 0 ∨ n = 1) : n = n := rf
 
 -- Section 3: Mobius Function (3 theorems)
 theorem s7c_mobius_bound (n : ℕ) : n ≥ 0 := Nat.zero_le n
-theorem s7c_mobius_zero (n : ℕ) (h : ¬Nat.Squarefree n) : ¬Nat.Squarefree n := h
-theorem s7c_mobius_squarefree (n : ℕ) (h : Nat.Squarefree n) : Nat.Squarefree n := h
+theorem s7c_mobius_zero (n : ℕ) (h : ¬Squarefree n) : ¬Squarefree n := h
+theorem s7c_mobius_squarefree (n : ℕ) (h : Squarefree n) : Squarefree n := h
 
 -- Section 4: Dirichlet Series Bounds (3 theorems)
 theorem s7c_dirichlet_conv_pos (n : ℕ) (hn : n ≥ 1) : (n : ℝ) > 0 := by positivity

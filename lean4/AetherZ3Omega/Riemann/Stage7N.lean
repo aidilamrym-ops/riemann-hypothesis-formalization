@@ -6,10 +6,13 @@ namespace Stage7NHardened
 theorem n1_sq_nonneg (x : ℝ) : 0 ≤ x^2 := sq_nonneg x
 theorem n2_abs_nonneg (x : ℝ) : 0 ≤ |x| := abs_nonneg x
 theorem n3_abs_le_add (a b : ℝ) : |a + b| ≤ |a| + |b| := abs_add_le a b
-theorem n4_abs_sub_le (a b : ℝ) : ||a| - |b|| ≤ |a - b| := by
-  have := abs_add_le (a - b) b
-  have := abs_nonneg a
-  linarith
+theorem n4_abs_sub_le (a b : ℝ) : |(|a| - |b|)| ≤ |a - b| := by
+  rw [abs_le]
+  constructor
+  · have h := abs_sub_abs_le_abs_sub b a
+    rw [abs_sub_comm] at h
+    linarith
+  · exact abs_sub_abs_le_abs_sub a b
 theorem n5_abs_mul (a b : ℝ) : |a * b| = |a| * |b| := abs_mul a b
 theorem n6_abs_neg (a : ℝ) : |-a| = |a| := abs_neg a
 theorem n7_abs_pos_of_ne (a : ℝ) (h : a ≠ 0) : 0 < |a| := abs_pos.mpr h
@@ -31,8 +34,9 @@ theorem n24_cauchy_2d (a b c d : ℝ) : (a*c + b*d)^2 ≤ (a^2 + b^2)*(c^2 + d^2
   nlinarith
 
 theorem n25_young (a b : ℝ) : a*b ≤ a^2/2 + b^2/2 := by
-  have := n23_am_gm_2 a b (abs_nonneg a) (abs_nonneg b)
-  linarith [sq_nonneg a, sq_nonneg b]
+  have h : 2 * a * b ≤ a^2 + b^2 := by nlinarith [sq_nonneg (a - b)]
+  field_simp [show (2 : ℝ) ≠ 0 by norm_num]
+  nlinarith
 
 theorem n26_triangle_sq (a b : ℝ) : (a + b)^2 ≤ 2*(a^2 + b^2) := by
   have : 0 ≤ (a - b)^2 := sq_nonneg (a - b)

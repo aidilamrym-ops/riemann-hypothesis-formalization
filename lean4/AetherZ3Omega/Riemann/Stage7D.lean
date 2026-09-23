@@ -24,8 +24,8 @@ theorem s7d_lseries_euler_product_pos (p : ℝ) (hp : p ≥ 2) : (1 : ℝ) / (1 
   have h₃ : (1 : ℝ) - 1 / p > 0 := by linarith
   have h₄ : (1 : ℝ) / (1 - 1 / p) > 1 := by
     rw [gt_iff_lt]
-    rw [lt_div_iff h₃]
-    nlinarith
+    rw [one_lt_div h₃]
+    linarith
   exact h₄
 
 -- Section 2: Elliptic Curve L-Function (5 theorems)

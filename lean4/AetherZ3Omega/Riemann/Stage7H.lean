@@ -1,5 +1,5 @@
 import Mathlib.Analysis.InnerProductSpace.Basic
-import Mathlib.Combinatorics.Graph
+import Mathlib.Combinatorics.SimpleGraph.Basic
 
 -- === STAGE 7H: IHARA SPECTRUM & CRITICAL CIRCLE ===
 -- STATUS: PLACEHOLDER (Tingkat 3) — scaffolding aksioma, mayoritas "True := by trivial".
@@ -20,7 +20,7 @@ theorem s7h_ihara_poles (q : ℕ) (hq : q > 1) : q > 1 := hq
 
 theorem s7h_ihara_bass_theorem (d : ℕ) (hd : d > 1) : d > 1 := hd
 
-theorem s7h_ihara_spectral_gap (λ₂ : ℝ) (hλ₂ : λ₂ > 0) : λ₂ > 0 := hλ₂
+theorem s7h_ihara_spectral_gap (lam : Real) (hlam : lam > 0) : lam > 0 := hlam
 
 -- Section 2: Ramanujan Graphs (5 theorems)
 -- Ramanujan bound: optimal spectral gap for expander graphs.
@@ -28,7 +28,7 @@ theorem s7h_ihara_spectral_gap (λ₂ : ℝ) (hλ₂ : λ₂ > 0) : λ₂ > 0 :=
 
 theorem s7h_ramanujan_bound (d : ℕ) (hd : d > 1) : d > 1 := hd
 
-theorem s7h_ramanujan_expander (λ : ℝ) (hλ : |λ| ≤ 2 * Real.sqrt (d - 1)) (d : ℕ)
+theorem s7h_ramanujan_expander (lam : ℝ) (hlam : |lam| ≤ 2 * Real.sqrt (d - 1)) (d : ℕ)
     (hd : d > 1) : d > 1 := hd
 
 theorem s7h_ramanujan_lubotzky (p q : ℕ) (hp : p > 2) (hq : q > 2) (hpq : Nat.Prime p)
@@ -41,9 +41,9 @@ theorem s7h_ramanujan_spectral (d : ℕ) (hd : d ≥ 3) : d ≥ 3 := hd
 -- Section 3: Random Graph Spectra (5 theorems)
 -- Eigenvalue bounds, spectral radius, concentration inequalities.
 
-theorem s7h_random_graph_eigenvalue (λ : ℝ) : λ = λ := rfl
+theorem s7h_random_graph_eigenvalue (lam : ℝ) : lam = lam := rfl
 
-theorem s7h_random_graph_spectral_radius (λ : ℝ) (hλ : λ ≥ 0) : λ ≥ 0 := hλ
+theorem s7h_random_graph_spectral_radius (lam : ℝ) (hlam : lam ≥ 0) : lam ≥ 0 := hlam
 
 theorem s7h_random_graph_concentration (p : ℝ) (hp : 0 < p ∧ p < 1) : 0 < p := hp.1
 
@@ -86,7 +86,7 @@ theorem s7h_swarm_hamiltonian_potential (V : ℝ) (hV : V ≥ 0) : V ≥ 0 := hV
 
 theorem s7h_swarm_hamiltonian_stability (ε : ℝ) (hε : 0 < ε) : 0 < ε := hε
 
-theorem s7h_swarm_hamiltonian_eigenvalue (λ : ℝ) (hλ : λ ≥ 0) : λ ≥ 0 := hλ
+theorem s7h_swarm_hamiltonian_eigenvalue (lam : ℝ) (hlam : lam ≥ 0) : lam ≥ 0 := hlam
 
 theorem s7h_swarm_hamiltonian_spectral (r : ℝ) (hr : r > 0) : r > 0 := hr
 

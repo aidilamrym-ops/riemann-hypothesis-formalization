@@ -31,21 +31,23 @@ theorem u9_fredholm_sum (a b : ℝ) : a + b - b = a := by ring
 theorem u10_fredholm_bundle (n : ℕ) : n * 1 = n := by ring
 
 theorem u11_fredholm_det (x : ℝ) (h : x ≠ 0) : x * x⁻¹ = 1 := by
-  exact mul_inv_cancel h
+  exact mul_inv_cancel₀ h
 
 theorem u12_fredholm_resolvent (x : ℝ) (h : x ≠ 0) : x⁻¹ * x = 1 := by
-  exact inv_mul_cancel h
+  exact inv_mul_cancel₀ h
 
 theorem u13_fredholm_spectrum (x : ℝ) (hx : x ≥ 0) : x ≥ 0 := hx
 
 theorem u14_fredholm_essential_spec (x : ℝ) : x ≥ 0 ∨ x < 0 := by
-  exact le_or_lt x 0
+  by_cases hx : x ≥ 0
+  · exact Or.inl hx
+  · exact Or.inr (lt_of_not_ge hx)
 
 theorem u15_fredholm_fredholm_alt (a b : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) : a + b ≥ 0 := by
   nlinarith
 
 theorem u16_fredholm_pseudo_inv (x : ℝ) (h : x ≠ 0) : x⁻¹ * x = 1 := by
-  exact inv_mul_cancel h
+  exact inv_mul_cancel₀ h
 
 theorem u17_fredholm_trace_class (n : ℕ) : n ≥ 0 := Nat.zero_le n
 
@@ -68,7 +70,7 @@ theorem u25_fredholm_heat_kernel (t : ℝ) (ht : t > 0) : t > 0 := ht
 theorem u26_fredholm_zeta_regularization (s : ℝ) (hs : s > 1) : s > 1 := hs
 
 theorem u27_fredholm_determinant_line (x : ℝ) (hx : x ≠ 0) : x * x⁻¹ = 1 := by
-  exact mul_inv_cancel hx
+  exact mul_inv_cancel₀ hx
 
 theorem u28_fredholm_super_trace (n : ℤ) : n - n = 0 := by omega
 
@@ -90,7 +92,10 @@ theorem u34_cstar_submultiplicative (a b : ℝ) : |a * b| = |a| * |b| := abs_mul
 
 theorem u35_cstar_completeness (P : Prop) : P → P := fun h => h
 
-theorem u36_cstar_spectrum_nonempty (x : ℝ) : x ≥ 0 ∨ x < 0 := by exact le_or_lt x 0
+theorem u36_cstar_spectrum_nonempty (x : ℝ) : x ≥ 0 ∨ x < 0 := by
+  by_cases hx : x ≥ 0
+  · exact Or.inl hx
+  · exact Or.inr (lt_of_not_ge hx)
 
 theorem u37_cstar_spectral_radius (x : ℝ) (hx : x ≥ 0) : |x| = x := abs_of_nonneg hx
 
@@ -126,7 +131,7 @@ theorem u52_cstar_group_algebra (n : ℕ) : n * 0 = 0 := by ring
 
 theorem u53_cstar_toeplitz_algebra (x : ℝ) : x + (-x) = 0 := by ring
 
-theorem u54_cstar_cuntz_algebra (x : ℝ) (hx : x ≠ 0) : x * x⁻¹ = 1 := mul_inv_cancel hx
+theorem u54_cstar_cuntz_algebra (x : ℝ) (hx : x ≠ 0) : x * x⁻¹ = 1 := mul_inv_cancel₀ hx
 
 theorem u55_cstar_af_algebra (n : ℕ) : n = n := rfl
 
@@ -162,7 +167,10 @@ theorem u68_vna_factor_type_iii (x : ℝ) : x = 0 ∨ x ≠ 0 := by exact eq_or_
 
 theorem u69_vna_projection_lattice (a b : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) : a + b ≥ 0 := by nlinarith
 
-theorem u70_vna_comparison_theory (a b : ℝ) : a ≤ b ∨ b < a := le_or_lt a b
+theorem u70_vna_comparison_theory (a b : ℝ) : a ≤ b ∨ b < a := by
+  by_cases hab : a ≤ b
+  · exact Or.inl hab
+  · exact Or.inr (lt_of_not_ge hab)
 
 theorem u71_vna_dimension_theory (x : ℝ) (hx : x ≥ 0) : x ≥ 0 := hx
 
@@ -186,7 +194,7 @@ theorem u80_vna_planar_algebra (x : ℝ) : x * 1 = x := by ring
 
 theorem u81_vna_modular_category (n : ℕ) : n = n := rfl
 
-theorem u82_vna_quantum_group_link (q : ℝ) (hq : q ≠ 0) : q * q⁻¹ = 1 := mul_inv_cancel hq
+theorem u82_vna_quantum_group_link (q : ℝ) (hq : q ≠ 0) : q * q⁻¹ = 1 := mul_inv_cancel₀ hq
 
 theorem u83_vna_free_probability (a b : ℝ) : a * b = b * a := mul_comm a b
 
@@ -223,9 +231,12 @@ theorem u105_ncg_dixmier_trace (x : ℝ) : |x| ≥ 0 := abs_nonneg x
 theorem u106_ncg_zeta_function (s : ℝ) (hs : s > 1) : s > 1 := hs
 theorem u107_ncg_heat_expansion (t : ℝ) (ht : t > 0) : t > 0 := ht
 theorem u108_ncg_spectral_action (x : ℝ) : x^2 ≥ 0 := sq_nonneg x
-theorem u109_ncg_gauge_theory (g : ℝ) (hg : g ≠ 0) : g * g⁻¹ = 1 := mul_inv_cancel hg
+theorem u109_ncg_gauge_theory (g : ℝ) (hg : g ≠ 0) : g * g⁻¹ = 1 := mul_inv_cancel₀ hg
 theorem u110_ncg_standard_model_link (v : ℝ) : v = v := rfl
-theorem u111_ncg_gravity_link (g : ℝ) : g ≥ 0 ∨ g < 0 := le_or_lt g 0
+theorem u111_ncg_gravity_link (g : ℝ) : g ≥ 0 ∨ g < 0 := by
+  by_cases hx : g ≥ 0
+  · exact Or.inl hx
+  · exact Or.inr (lt_of_not_ge hx)
 theorem u112_ncg_cosmology_link (Λ : ℝ) : Λ = Λ := rfl
 theorem u113_ncg_foliation_theory (n : ℕ) : n ≥ 0 := Nat.zero_le n
 theorem u114_ncg_groupoid_algebra (n : ℕ) : n + 0 = n := by omega
@@ -242,12 +253,12 @@ theorem u122_pdo_asymptotic_expand (n : ℕ) : n ≥ 0 := Nat.zero_le n
 theorem u123_pdo_continuity (x : ℝ) : x + 0 = x := by ring
 theorem u124_pdo_composition (a b : ℝ) : (a * b) = b * a := mul_comm a b
 theorem u125_pdo_adjoint (x : ℝ) : x * 1 = x := by ring
-theorem u126_pdo_elliptic_op (a : ℝ) (ha : a ≠ 0) : a * a⁻¹ = 1 := mul_inv_cancel ha
-theorem u127_pdo_parametrix (a : ℝ) (ha : a ≠ 0) : a⁻¹ * a = 1 := inv_mul_cancel ha
+theorem u126_pdo_elliptic_op (a : ℝ) (ha : a ≠ 0) : a * a⁻¹ = 1 := mul_inv_cancel₀ ha
+theorem u127_pdo_parametrix (a : ℝ) (ha : a ≠ 0) : a⁻¹ * a = 1 := inv_mul_cancel₀ ha
 theorem u128_pdo_sobolev_map (s : ℝ) (hs : s > 0) : s > 0 := hs
 theorem u129_pdo_index_bundle (n : ℕ) : n = n := rfl
 theorem u130_pdo_zeta_function (s : ℝ) (hs : s > 1) : s > 1 := hs
-theorem u131_pdo_determinant (x : ℝ) (hx : x ≠ 0) : x * x⁻¹ = 1 := mul_inv_cancel hx
+theorem u131_pdo_determinant (x : ℝ) (hx : x ≠ 0) : x * x⁻¹ = 1 := mul_inv_cancel₀ hx
 theorem u132_pdo_analytic_torsion (x : ℝ) : |x| ≥ 0 := abs_nonneg x
 theorem u133_pdo_heat_kernel (t : ℝ) (ht : t > 0) : t > 0 := ht
 theorem u134_pdo_wave_front_set (x : ℝ) : x = x := rfl
