@@ -95,6 +95,41 @@
     },
     "conclusion": "The paper needs bounds on ζ / 1/ζ in the 1+ε regime (approach to the critical line). These are now formally proven from Mathlib's analytic zeta, so downstream inequalities that cite them are sound a fortiori."
   },
+  "kernel_independence": {
+    "audit": "Jalur A item 5 — independence of kernel selection",
+    "motivation": "Z3 tribunal batches 7/8 encode the Euler-product kernel factor claims p^(-s); all five came back UNKNOWN as NFE (Power with symbolic real exponent, outside QF_NRA) for the bounded sample 2 ≤ p < 10, 1 < s < 10",
+    "unknown_claims_now_proved": {
+      "batch7_euler_factor_pos": "s > 1 ⊢ 1 - 2^(-s) > 0",
+      "batch7_euler_factor_lt1": "s > 1 ⊢ 1 - 2^(-s) < 1",
+      "batch7_euler_factor_in_unit": "p ≥ 2, s > 1 ⊢ 0 < 1 - p^(-s) < 1",
+      "batch8_euler_factor_nonzero": "p ≥ 2, s > 1 ⊢ 1 - p^(-s) ≠ 0",
+      "batch8_euler_factor_unit_interval": "p ≥ 2, s > 1 ⊢ 0 < 1 - p^(-s)"
+    },
+    "lean_proof": {
+      "module": "AetherZ3Omega.Riemann.KernelIndependence (lean4/, Mathlib 0df444a, Lean v4.33.1)",
+      "universal_theorems": [
+        "rpow_neg_unit_interval: ∀ p ≥ 2, ∀ s > 1: 0 < p^(-s) < 1",
+        "euler_factor_pos / euler_factor_lt_one / euler_factor_unit_interval",
+        "euler_factor_ne_zero",
+        "euler_renorm_factor_gt_one: (1 - p^(-s))⁻¹ > 1",
+        "base-two specialisations (batch7 exact forms)"
+      ],
+      "lemma_sources": ["Real.rpow_pos_of_pos", "Real.one_lt_rpow", "Real.rpow_le_rpow", "Real.rpow_neg", "inv_lt_one_of_one_lt₀", "one_lt_inv₀"],
+      "axiom_footprint": "[propext, Classical.choice, Quot.sound] (verified via #print axioms on all eight theorems; independent of AetherZ3Omega.riemann_hypothesis postulate)",
+      "independence_statement": "the claims hold for EVERY admissible kernel parameter (p ≥ 2, s > 1) — not merely the bounded instances Z3 sampled — so the Euler-product kernel analysis is independent of the concrete kernel selection"
+    },
+    "vacuity_independence": "no OTHER vacuous batch in the project besides the intentional batch15 barrier_axiom (circular); kernel batches share no code with batch15 (no cross-batch imports), so kernel claims do not depend on vacuous premises",
+    "numeric_cross_check": {
+      "script": "scripts/kernel_independence_check.py (mpmath 40 digits)",
+      "points_sampled": 90,
+      "domain": "primes [2..29] × s ∈ {1.01, 1.1, 1.25, 1.5, 1.99, 2, 3, 5, 10}",
+      "observed_factor_range": "0.5034537523 < 1 - p^(-s) < 1.000000000 (within (0,1))",
+      "renormalisation_min": "(1 - p^(-s))⁻¹ > 1",
+      "passed": true,
+      "note": "sampled cross-check only; the Lean universal theorem is the binding proof"
+    },
+    "zero_gap_closure": "the five UNKNOWN verdicts are no longer evidence gaps: Z3's unknown reflects a decider limitation (symbolic transcendental), and the underlying claims are proven for all admissible kernels"
+  },
   "source_scan": {
     "method": "scan_defects.py-style token audit after stripping /- -/ and -- comments",
     "axiom_declarations_in_code": 0,

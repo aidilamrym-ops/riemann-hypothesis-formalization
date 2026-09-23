@@ -15,6 +15,8 @@
 #                                       catches -> detector is necessary)
 #    P3  Z3       every z3_tribunal batch, plus vacuity audit
 #    P4  NUMERIC  spectral_verification.py + real_computation_audit.py
+#    P5  KERNEL   numeric cross-check of Euler-factor universal bounds
+#                 (Lean: AetherZ3Omega.Riemann.KernelIndependence)
 #
 #  Artifacts: exports/verification_report.json (regenerated) and the
 #             .kernel_build/ working tree (git-ignored).
@@ -114,6 +116,19 @@ if (-not $SkipPython) {
     Pop-Location
 } else {
     Write-Host "--- P4 SKIPPED (SkipPython) ---" -ForegroundColor DarkGray
+}
+
+# ---------------------------------------------------------------
+# P5: KERNEL-INDEPENDENCE (Euler factor universal bounds)
+#     Z3 batch7/8 UNKNOWN kernel claims p^(-s) are NFE; Lean proves
+#     them universally (AetherZ3Omega.Riemann.KernelIndependence) and
+#     this step numerically cross-checks a sample of the domain.
+# ---------------------------------------------------------------
+if (-not $SkipPython) {
+    Write-Host "--- P5 KERNEL-INDEPENDENCE (numeric cross-check) ---" -ForegroundColor Cyan
+    python scripts/kernel_independence_check.py
+} else {
+    Write-Host "--- P5 SKIPPED (SkipPython) ---" -ForegroundColor DarkGray
 }
 
 # ---------------------------------------------------------------

@@ -1,0 +1,39 @@
+{
+  "audit": "kernel_independence_numeric",
+  "digits": 40,
+  "domain_sampled": {
+    "primes": [
+      2,
+      3,
+      5,
+      7,
+      11,
+      13,
+      17,
+      19,
+      23,
+      29
+    ],
+    "s_values": [
+      "1.01",
+      "1.1",
+      "1.25",
+      "1.5",
+      "1.99",
+      "2",
+      "3",
+      "5",
+      "10"
+    ],
+    "points": 90,
+    "note": "Lean universal proof covers ALL p >= 2, s > 1; this sweep samples the domain as an independent cross-check"
+  },
+  "check": "for each (p, s): 0 < p^(-s) < 1  and  0 < 1 - p^(-s) < 1  and  (1-p^(-s))^(-1) > 1",
+  "observed": {
+    "min_factor": "0.5034537523",
+    "max_factor": "1.000000000",
+    "min_renorm": "1.000000000"
+  },
+  "passed": true,
+  "failures": []
+}

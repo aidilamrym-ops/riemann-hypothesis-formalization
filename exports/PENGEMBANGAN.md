@@ -7,7 +7,7 @@
 ## 1. POSISI SAAT INI (baseline yang sudah teruji)
 
 **Proyek kita (AetherZ3Omega):**
-- Lean 4.33.1, Mathlib `0df444a`: 64/64 modul rebuild, 0 sorry, 1 postulat `AetherZ3Omega.riemann_hypothesis`; +`AetherZ3Omega.Riemann.CMTBounds` dan +`AetherZ3Omega.Riemann.ZetaBounds` (2026-09-23).
+- Lean 4.33.1, Mathlib `0df444a`: 65/65 modul rebuild, 0 sorry, 1 postulat `AetherZ3Omega.riemann_hypothesis`; +`CMTBounds`, +`ZetaBounds`, +`KernelIndependence` (2026-09-23).
 - Z3: 91 verifikasi terekam (86 UNSAT non-vacuous + 5 UNKNOWN NFE `p^(-s)` + 1 vacuous yang disengaja di batch15); batch 14-17 TIDAK citable.
 - Hilbert-Polya: OPEN (0-2/20 zero-correspondence).
 - Nilai nyata: (a) **audit pipeline** (kernel + mutation + vacuity + numeric + reproducibility, `run_external_audit.ps1` + CI), (b) framing conditional yang jujur.
@@ -35,13 +35,18 @@
 
 ## 3. ROAD MAP (4 jalur, urut nilai)
 
-### Jalur A — Karakter Paper Anthropic (sudah 80% jalan)
-Lanjutkan ke lampu hijau penuh:
+### Jalur A — Karakter Paper Anthropic (selesai 5/5, 2026-09-23)
 1. **Compile penuh 317/317 terhadap Mathlib kita** — DONE (cross-revision replica).
 2. **Axiom-audit 9 teorema inti** — DONE: foundation-only.
 3. **Scan defect pipeline kita atas source mereka** — DONE: 0 axiom/sorry/admit.
 4. *(opsional)* Numerik reproduce konstanta-konstanta mereka (lembar SymPy 31 checks) — **DONE 2026-09-23:** `scripts/numeric_constants_check.py` (mpmath 40 digit): 4/4 desimal cocok (c₁*, 1/c₁*, 2−1/c₁*, 2c₁*−1), identitas Montgomery–Taylor cocok 1e-51, konsisten dengan bukti Lean.
-5. *(opsional)* Cek independence pemilihan kernel (di proyek kita sendiri diharapkan batch vakum yang lain).
+5. **DONE 2026-09-23:** Independence pemilihan kernel — 5 klaim kernel UNKNOWN (`euler_factor_pos/lt1/in_unit` batch7, `euler_factor_nonzero/unit_interval` batch8) dibuktikan **universal** di Lean
+   (`lean4/AetherZ3Omega/Riemann/KernelIndependence.lean`, module `AetherZ3Omega.Riemann.KernelIndependence`):
+   ∀ p ≥ 2, s > 1: `0 < p^(-s) < 1`, `0 < 1-p^(-s) < 1`, `1-p^(-s) ≠ 0`, `(1-p^(-s))⁻¹ > 1`
+   — aksioma foundation-only, tak bergantung postulat RH; hasil tak bergantung nilai kernel konkret
+   (bukan hanya sampel `2 ≤ p < 10` yang dipakai Z3). Vakuum tetap hanya 1 (batch15, disengaja);
+   batch 7/8 tak berbagi kode dengan batch15 (no cross-import). Cross-check numerik 90 poin PASS
+   (`scripts/kernel_independence_check.py`, P5 di `run_external_audit.ps1`).
 
 **Nilai:** proyek kita menjadi **auditor independen paper AI Math** — klaim yang terverifikasi machine-audit dengan toolchain yang berbeda dari penulis.
 
@@ -86,9 +91,8 @@ Target realistis, bukan RH:
 
 ## 4. Keputusan yang disarankan
 
-1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + roadmap + audit Z3 baru (division-safety/vacuity) + `ZetaBounds.lean`.
-2. **Berikutnya:** lanjutkan Jalur A item 5 (independence kernel/jejaring kerja) ATAU Jalur C item 2
-   (Hardy-ζ titik-titik positif) — keduanya menaikkan kredibilitas sebagai auditor.
-3. **Nanti:** Jalur B item 4 (numerik 10⁵ zero) hanya bila sumber daya memungkinkan.
+1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + `ZetaBounds.lean` + `KernelIndependence.lean` + roadmap + audit Z3 (division-safety/vacuity) + P5 pipeline.
+2. **Berikutnya:** Jalur A tuntas (item 1-5); lanjutkan **Jalur C item 2** (Hardy-ζ titik-titik positif, small formalization) ATAU **Jalur B item 4** (numerik 10⁵ zero, bila sumber daya) — keduanya menaikkan kredibilitas sebagai auditor.
+3. **Nanti:** Jalur D (publishing artifact & tawaran audit ke pengelola).
 
 > Prinsip: **Segala sesuatu yang diklaim "verified" harus terverifikasi oleh kernel/decider/numerik-that-can-be-challenged. Segala sesuatu yang belum, diberi label "open".**
