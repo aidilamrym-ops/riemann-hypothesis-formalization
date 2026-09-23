@@ -362,7 +362,7 @@
         "[VERIFIED] lower_bound_improvement_soundness: New bound 67.2% strictly supersedes 41.6% baseline",
         "============================================================",
         "Sampling & validating zeros scaling up to 250 zeros...",
-        "Calculated 250 zeros in 65.58s.",
+        "Calculated 250 zeros in 77.18s.",
         "Mean spacing: 1.8339, Min: 0.4364, Max: 6.8873",
         "Strict monotonicity of imaginary parts: True",
         "Report saved to ../exports/batch12_scale_report.json"

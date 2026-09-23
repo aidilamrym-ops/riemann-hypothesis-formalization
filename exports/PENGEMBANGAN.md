@@ -7,7 +7,7 @@
 ## 1. POSISI SAAT INI (baseline yang sudah teruji)
 
 **Proyek kita (AetherZ3Omega):**
-- Lean 4.33.1, Mathlib `0df444a`: 62/62 modul rebuild, 0 sorry, 1 postulat `AetherZ3Omega.riemann_hypothesis`; +`AetherZ3Omega.Riemann.CMTBounds` (2026-09-23).
+- Lean 4.33.1, Mathlib `0df444a`: 64/64 modul rebuild, 0 sorry, 1 postulat `AetherZ3Omega.riemann_hypothesis`; +`AetherZ3Omega.Riemann.CMTBounds` dan +`AetherZ3Omega.Riemann.ZetaBounds` (2026-09-23).
 - Z3: 91 verifikasi terekam (86 UNSAT non-vacuous + 5 UNKNOWN NFE `p^(-s)` + 1 vacuous yang disengaja di batch15); batch 14-17 TIDAK citable.
 - Hilbert-Polya: OPEN (0-2/20 zero-correspondence).
 - Nilai nyata: (a) **audit pipeline** (kernel + mutation + vacuity + numeric + reproducibility, `run_external_audit.ps1` + CI), (b) framing conditional yang jujur.
@@ -66,7 +66,12 @@ Ganti pondasi toy-discrete dengan perhitungan nyata untuk klaim yang terekspos p
 
 ### Jalur C — Matematika baru (amatir, berisiko, nilai besar bila berhasil)
 Target realistis, bukan RH:
-1. **Helper constant bounds independent**: mis. batas eksplisit `ζ(1+ε)` / `|1/ζ(1+ε)|` yang lebih tajam dari trivial, dibuktikan di Lean — reusable untuk jalur A maupun paper lain.
+1. **DONE 2026-09-23:** Helper constant bounds independent — batas eksplisit `ζ(1+ε)` / `|1/ζ(1+ε)|`
+   dibuktikan di Lean (`lean4/AetherZ3Omega/Riemann/ZetaBounds.lean`, module `AetherZ3Omega.Riemann.ZetaBounds`):
+   untuk `1 < s` dan `ε > 0`:
+   `1 ≤ ζ(s) ≤ s/(s-1)`, `ζ(1+ε) ≤ (1+ε)/ε`, `|1/ζ(1+ε)| ≤ 1`, dari ζ analitik Mathlib
+   (`zeta_eq_tsum_one_div_nat_add_one_cpow` + `ZetaAsymptotics.zeta_limit_aux1`) — aksioma hanya
+   `[propext, Classical.choice, Quot.sound]`, tidak tergantung postulat RH proyek; reusable untuk Jalur A maupun paper lain.
 2. **Hardy-ζ titik-titik positif**: formalisasi kecil (bukan penuh) bahwa ada banyak s = 1/2 + it dengan ζ ≠ 0 pada batas tertentu — input untuk memahami mengapa N0/N naik.
 3. Jika tertarik ke arah Hilbert-Polya: buktikan **non-keberadaan** operator finite-dim yang cocok dengan spektrum tak-hingga (hasil negatif yang dapat dipublikasi).
 
@@ -81,9 +86,9 @@ Target realistis, bukan RH:
 
 ## 4. Keputusan yang disarankan
 
-1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + roadmap + audit Z3 baru (division-safety/vacuity).
-2. **Berikutnya:** lanjutkan Jalur A item 5 (independence kernel/jejaring kerja) ATAU Jalur C item 1
-   (bound eksplisit `ζ(1+ε)`/`|1/ζ(1+ε)|` di Lean, reusable) — keduanya menaikkan kredibilitas sebagai auditor.
+1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + roadmap + audit Z3 baru (division-safety/vacuity) + `ZetaBounds.lean`.
+2. **Berikutnya:** lanjutkan Jalur A item 5 (independence kernel/jejaring kerja) ATAU Jalur C item 2
+   (Hardy-ζ titik-titik positif) — keduanya menaikkan kredibilitas sebagai auditor.
 3. **Nanti:** Jalur B item 4 (numerik 10⁵ zero) hanya bila sumber daya memungkinkan.
 
 > Prinsip: **Segala sesuatu yang diklaim "verified" harus terverifikasi oleh kernel/decider/numerik-that-can-be-challenged. Segala sesuatu yang belum, diberi label "open".**

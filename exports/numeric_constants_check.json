@@ -1,0 +1,17 @@
+{
+  "digits": 40,
+  "match_tolerance": "0.000005",
+  "cMT_closed_form": "0.7532960679",
+  "one_over_cMT": "1.327499296",
+  "one_over_cMT_via_MontgomeryTaylor": "1.327499296",
+  "one_over_cMT_alt": "2.154998593",
+  "two_minus_one_over_cMT": "0.6725007037",
+  "two_cMT_minus_one": "0.5065921357",
+  "matches_paper_c1star": true,
+  "matches_paper_one_over_cMT": true,
+  "matches_paper_prop1": true,
+  "matches_paper_prop2": true,
+  "lean_bounds_respected": true,
+  "paper_defs_note": "paper: c1*=2.tan(1/sqrt2)/(sqrt2+tan(1/sqrt2))=sqrt2.tan(1/sqrt2)/(1+(1/sqrt2).tan(1/sqrt2)); 1/c1* = 1/2 + 2^-1/2 . cot(2^-1/2)",
+  "abs_diff_one_over_cMT_vs_MontgomeryTaylor": "2.6727647100922e-51"
+}
