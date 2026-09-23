@@ -40,6 +40,24 @@
     "result": "exactly [propext, Classical.choice, Quot.sound] in every case; no sorryAx, no project axiom",
     "matches_anthropic_claim": true
   },
+  "cmt_lean_bounds": {
+    "module": "AetherZ3Omega.Riemann.CMTBounds (lean4/, Mathlib 0df444a, Lean v4.33.1)",
+    "proved": {
+      "cMT_gt_two_thirds": "2/3 < cMT = √2·tan(1/√2)/(1+(1/√2)·tan(1/√2))",
+      "cMT_le_four_fifths": "cMT ≤ 4/5",
+      "cMT_pos": "0 < cMT",
+      "cMT_lt_one": "cMT < 1",
+      "inv_cMT_lt_three_halves": "1/cMT < 3/2",
+      "prop_two_minus_inv_cMT_gt": "2 − 1/c₁* > 1/2  (Theorem D proportion 1)",
+      "prop_two_mul_cMT_minus_one_gt": "2c₁* − 1 > 1/3  (Theorem D proportion 2)"
+    },
+    "lemma_sources": [
+      "Real.lt_tan (lower: x < tan x on (0,π/2))",
+      "Real.one_sub_sq_div_two_le_cos + Real.sin_le (upper: tan x ≤ (4/3)x for x=1/√2)",
+      "Real.sq_sqrt, div_le_div_iff₀, div_lt_div_iff₀ (Mathlib order/field)"],
+    "axiom_footprint": "[propext, Classical.choice, Quot.sound] (verified via #print axioms; independent of AetherZ3Omega.riemann_hypothesis postulate)",
+    "conclusion": "The Montgomery–Taylor constant c₁* is a genuine probability-like proportion: bounded away from 0 and from 1 by computer-checked proofs, with all three Theorem-D proportions strictly positive (non-vacuous)."
+  },
   "source_scan": {
     "method": "scan_defects.py-style token audit after stripping /- -/ and -- comments",
     "axiom_declarations_in_code": 0,

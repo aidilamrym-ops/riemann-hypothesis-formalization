@@ -49,7 +49,11 @@ Lanjutkan ke lampu hijau penuh:
 Ganti pondasi toy-discrete dengan perhitungan nyata untuk klaim yang terekspos publik:
 1. Rekam dalam `run_external_audit.ps1` bahwa **batch 14-17 tidak citable** (sudah ada di FINAL_STATUS).
 2. Batch Z3 yang non-vacuous (72 klaim) → tambahkan **batas `-model`/label**: pastikan UNSAT tidak berasal dari division-by-zero atau NFE.
-3. Untuk setiap faktor `cMT = √2·tan(1/√2)/(1+(1/√2)tan(1/√2))` → buktikan di Lean (bukan Z3), sebagai substitusi postulate.
+3. **DONE 2026-09-23:** `cMT = √2·tan(1/√2)/(1+(1/√2)tan(1/√2))` dibuktikan di Lean
+   (`lean4/AetherZ3Omega/Riemann/CMTBounds.lean`, module `AetherZ3Omega.Riemann.CMTBounds`):
+   `2/3 < cMT ≤ 4/5`, `0 < cMT < 1`, dan dua proporsi Theorem D positif
+   (`2 − 1/c₁* > 1/2`, `2c₁* − 1 > 1/3`) — aksioma hanya `[propext, Classical.choice, Quot.sound]`,
+   tidak tergantung postulat RH proyek.
 4. Numerik: naikkan pengujian spectral dari 20 → probe 10⁵ zero (memperkuat atau menghentikan).
 
 **Nilai:** menutup satu-satunya celah yang bisa dibantah reviewer: "claim numerik tanpa bukti analitik".
@@ -71,8 +75,9 @@ Target realistis, bukan RH:
 
 ## 4. Keputusan yang disarankan
 
-1. **Sekarang:** commit hasil audit independen (`papers/`, `exports/zeta23_independent_audit.json`) + catatan roadmap ini.
-2. **Berikutnya:** jalankan Jalur B item 3 (Lean-proof untuk cMT), karena menutup celah paling mudah dibantah.
-3. **Nanti:** Jalur A opsional 4-5 (numerik konstanta + jejaring kerja); Jalur C hanya bila eksplorasi matematikan diminta.
+1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + roadmap.
+2. **Berikutnya:** lanjutkan Jalur A opsional 4-5 (numerik konstanta paper + jejaring kerja) ATAU Jalur C item 1
+   (bound eksplisit `ζ(1+ε)`/`|1/ζ(1+ε)|` di Lean, reusable) — keduanya menaikkan kredibilitas sebagai auditor.
+3. **Nanti:** Jalur B item 4 (numerik 10⁵ zero) hanya bila sumber daya memungkinkan.
 
 > Prinsip: **Segala sesuatu yang diklaim "verified" harus terverifikasi oleh kernel/decider/numerik-that-can-be-challenged. Segala sesuatu yang belum, diberi label "open".**
