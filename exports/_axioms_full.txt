@@ -1,0 +1,459 @@
+﻿'Sovereign.Hodge.CycleClassMap.noConfusionType' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.casesOn' does not depend on any axioms
+'AetherZ3Omega.Riemann.qadar_functional_equation_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.zeta_analytic_on_compl_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition.noConfusionType' does not depend on any axioms
+'Sovereign.Zeta.spacing_vs_zerofree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition.casesOn' does not depend on any axioms
+'Almighty.no_self_contradiction' does not depend on any axioms
+'Sovereign.Hodge.SmoothProjectiveVariety.mk' does not depend on any axioms
+'Sovereign.YangMills.GaugeField.noConfusion' does not depend on any axioms
+'Sovereign.Zeta.zeta_ne_zero_one_le_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.IMV.isentropic_purge' does not depend on any axioms
+'Sovereign.BSD.tamagawa_product' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.NonTrivialZero.mk._flat_ctor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.mk.noConfusion' does not depend on any axioms
+'Sovereign.BSD.RankEquality' does not depend on any axioms
+'Sovereign.YangMills.GaugeField.casesOn' does not depend on any axioms
+'Sovereign.Hodge.SmoothProjectiveVariety._sizeOf_inst' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.hodgeNumbers' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.rec' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold._sizeOf_inst' does not depend on any axioms
+'Sovereign.Hodge.SmoothProjectiveVariety.noConfusion' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.B' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.ctorIdx' does not depend on any axioms
+'Sovereign.Primes.von_mangoldt_bound_condition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.mk.inj' does not depend on any axioms
+'Barrier.Complex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.gamma' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Goldbach.BoundedGoldbachBound' depends on axioms: [propext]
+'Sovereign.BSD.bsd_rank_zero_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.carrier' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.mk._flat_ctor' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:96:14: warning: `Sovereign.Poincare.RiemannianManifold._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.Hodge.lefschetz_divisors_hodge_conditional' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.mk.sizeOf_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.zeta_zero_set_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.bsd_rank_one_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.IMV.bind_unbind' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.mk.injEq' depends on axioms: [propext]
+'Sovereign.ExplicitFormula.NonTrivialZero.im' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.rec' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass.noConfusionType' does not depend on any axioms
+'Sovereign.BSD.BsdFormula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.recOn' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass._sizeOf_inst' does not depend on any axioms
+'Sovereign.Zeta.nontriv_zero_in_strip' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass.mk.injEq' depends on axioms: [propext]
+'Barrier.RiemannZetaZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Primes.psi_lower_bound_linear' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.GaugeField.mk._flat_ctor' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold.mk.noConfusion' does not depend on any axioms
+'Sovereign.Poincare.poincare_3d_conditional' does not depend on any axioms
+'Almighty.state_transition_safe' does not depend on any axioms
+'AetherZ3Omega.Riemann.hp_spectrum_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition.recOn' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.mk.noConfusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.ContinuumLimitStatement' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.mk.noConfusion' does not depend on any axioms
+'Sovereign.YangMills.GaugeField._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:123:14: warning: `Sovereign.YangMills.GaugeField._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Barrier.log_one_plus_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.completed_zeta_fun_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.recOn' does not depend on any axioms
+'Almighty.DSC.commit_iff_threshold' does not depend on any axioms
+'Sovereign.Hodge.SmoothProjectiveVariety' does not depend on any axioms
+'Sovereign.BSD.rank_equality_consistency' does not depend on any axioms
+'Sovereign.Zeta.no_zero_on_critical_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.old_absolute_barrier_is_inconsistent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Barrier.critical_line_distance._proof_1' depends on axioms: [propext]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:132:14: warning: `Barrier.critical_line_distance._proof_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.ExplicitFormula.NonTrivialZero.re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.EllipticCurveQ.casesOn' does not depend on any axioms
+'Almighty.PilarMorphism.p3_isentropic_containment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.continuum_limit_conditional' does not depend on any axioms
+'Sovereign.BSD.algebraic_rank' does not depend on any axioms
+'Sovereign.YangMills.GaugeField.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.Goldbach.bounded_goldbach_mono' depends on axioms: [propext]
+'Sovereign.Poincare.RicciFlowSolution.ctorIdx' does not depend on any axioms
+'AetherZ3Omega.zetaEnergy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.NonTrivialZero.casesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.mk' does not depend on any axioms
+'Sovereign.BSD.regulator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.noConfusion' does not depend on any axioms
+'Almighty.DSC.blacklisted_no_weight' does not depend on any axioms
+'Almighty.PilarMorphism.p8_topological_spectrum' does not depend on any axioms
+'Almighty.SHF.tactic_failure_recovery' does not depend on any axioms
+'Almighty.Axioms.no_self_contradiction' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero._sizeOf_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:150:14: warning: `Sovereign.ExplicitFormula.NonTrivialZero._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.Zeta.zeta_ne_zero_one_lt_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.CycleClassMap._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:152:14: warning: `Sovereign.Hodge.CycleClassMap._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.ExplicitFormula.NonTrivialZero.recOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.casesOn' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold.dim' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:158:14: warning: `Sovereign.BSD.EllipticCurveQ._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Almighty.excluded_middle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.GaugeField.noConfusionType' does not depend on any axioms
+'Barrier.critical_line_distance.eq_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.zetaEnergy_log_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.sha_order' does not depend on any axioms
+'AetherZ3Omega.Riemann.critical_line_threshold_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.real_period' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.mass_gap_implies_exponential_decay_conditional.match_1_1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.mk.injEq' depends on axioms: [propext]
+'Sovereign.ExplicitFormula.NonTrivialZero.mk.sizeOf_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum._sizeOf_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:169:14: warning: `AetherZ3Omega.Riemann.HilbertPolyaSpectrum._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'AetherZ3Omega.Riemann.CriticalLine' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition._sizeOf_inst' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.rec' does not depend on any axioms
+'Almighty.identity_preserved' does not depend on any axioms
+'Barrier.harmonic_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.reduced_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.rec' does not depend on any axioms
+'Sovereign.YangMills.GaugeField.rec' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.mk._flat_ctor' does not depend on any axioms
+'Sovereign.ExplicitFormula.pnt_under_rh_error_term_consistency' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Barrier.advanced_epsilon_rigidity_leakage' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Poincare.RicciFlowSolution.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.ExplicitFormula.log_integral._proof_1' depends on axioms: [propext]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:183:14: warning: `Sovereign.ExplicitFormula.log_integral._proof_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.casesOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Barrier.SpectralRigidityInvariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.DSC.empty_assertions_sat' does not depend on any axioms
+'AetherZ3Omega.zeta_zero_set_discrete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.zetaEnergy._proof_1' depends on axioms: [propext]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:188:14: warning: `AetherZ3Omega.zetaEnergy._proof_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'AetherZ3Omega.zero_is_not_zeta_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.zetaEnergy.eq_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RicciFlowSolution.noConfusionType' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.mk.noConfusion' does not depend on any axioms
+'Almighty.PilarMorphism.p2_topos_coherence' does not depend on any axioms
+'AetherZ3Omega.zeta_pole_residue_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.IMV.bundle_majority_same' does not depend on any axioms
+'Sovereign.YangMills.ConfinementAreaLaw' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.CycleClassMap.mk.sizeOf_spec' does not depend on any axioms
+'AetherZ3Omega.Riemann.primeErrorTermBounded_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Goldbach.goldbach_bounded_conditional' depends on axioms: [propext]
+'AetherZ3Omega.barrier_from_riemann_hypothesis' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Poincare.reduced_volume_monotonicity_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.EllipticCurveQ.ctorIdx' does not depend on any axioms
+'Sovereign.BSD.ap_coefficient' depends on axioms: [propext]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum._sizeOf_inst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.EllipticCurveQ' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.recOn' does not depend on any axioms
+'Almighty.memory_integrity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Almighty.memory_integrity._native.native_decide.ax_1_1]
+'Sovereign.Hodge.hodge_conjecture_conditional' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap._sizeOf_inst' does not depend on any axioms
+'Sovereign.BSD.L_function' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RicciFlowSolution.mk._flat_ctor' does not depend on any axioms
+'AetherZ3Omega.zeta_zero_set_compact_finite' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.GaugeField.recOn' does not depend on any axioms
+'Barrier.rigidity_at_infinity' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Almighty.SHF.no_sorry_allowed' does not depend on any axioms
+'Almighty.DSC.contradictory_unsat' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold.noConfusionType' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.mk.noConfusion' does not depend on any axioms
+'Sovereign.YangMills.MassGapStatement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.DIMENSION' does not depend on any axioms
+'AetherZ3Omega.completed_zeta_zero_neg_equiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.recOn' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap' does not depend on any axioms
+'Almighty.PILLAR_COUNT' does not depend on any axioms
+'Almighty.PilarMorphism.p5_confinement' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold.casesOn' does not depend on any axioms
+'Sovereign.YangMills.GaugeField.ctorIdx' does not depend on any axioms
+'Sovereign.Primes.von_mangoldt_valid' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Primes.von_mangoldt_bound_condition._proof_1' depends on axioms: [propext]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:230:14: warning: `Sovereign.Primes.von_mangoldt_bound_condition._proof_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.Zeta.no_zero_right_half_plane' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.DSC.unanimous_consensus' does not depend on any axioms
+'Barrier.LargeT' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.rec' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.mk.inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.EllipticCurveQ.noConfusionType' does not depend on any axioms
+'Sovereign.ExplicitFormula.log_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.von_mangoldt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.NonTrivialZero._sizeOf_inst' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.Poincare4DStatement' does not depend on any axioms
+'Sovereign.Poincare.ricci_flow_short_time_conditional' does not depend on any axioms
+'Almighty.Axioms.guillotine_law' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.mk' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.mk' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.recOn' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.CycleClassMap.rec' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.Axioms.imply_reflexive' does not depend on any axioms
+'AetherZ3Omega.riemann_hypothesis' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Hodge.hodge_number' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.wilson_loop' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.IMV.similarity_maximal' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.mk._flat_ctor' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.noConfusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.riemannZeroRealPart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.pillar_count_positive' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.noConfusion' does not depend on any axioms
+'Sovereign.Zeta.zero_set_closed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.yang_mills_action' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Barrier.critical_line_distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.mk.noConfusion' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution._sizeOf_inst' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.ctorIdx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.mk._flat_ctor' does not depend on any axioms
+'AetherZ3Omega.zetaEnergy_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:269:14: warning: `Sovereign.Hodge.HodgeDecomposition._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.Zeta.zero_set_discrete' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Barrier.harmonic_energy.eq_1' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.maxT' depends on axioms: [propext]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.noConfusionType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.noConfusionType' does not depend on any axioms
+'AetherZ3Omega.zeta_dirichlet_series' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.mk.inj' does not depend on any axioms
+'Sovereign.Hodge.hodge_index_conditional' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.noConfusionType' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.NonTrivialZero.mk.noConfusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.zero_leakage' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:281:14: warning: `Sovereign.Poincare.RicciFlowSolution._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.Hodge.SmoothProjectiveVariety.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.ExplicitFormula.explicit_formula_bound_consistency' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Poincare.Poincare3DStatement' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.mk' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.casesOn' does not depend on any axioms
+'Sovereign.Zeta.zero_implies_re_le_one_or_trivial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.ExplicitFormulaBound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.trivial_zeta_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.NonTrivialZero.mk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass.ctorIdx' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.gamma_countable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.dimension_positive' does not depend on any axioms
+'Sovereign.YangMills.gauge_group' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeClass._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:295:14: warning: `Sovereign.Hodge.HodgeClass._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.YangMills.confinement_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety._sizeOf_1' does not depend on any axioms
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:297:14: warning: `Sovereign.Hodge.SmoothProjectiveVariety._sizeOf_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Barrier.log_one_plus' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.PilarMorphism.p4_cognitive_cosmology' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.mk.inj' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.gamma_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.SHF.patch_preserves_proposition' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.mk.injEq' depends on axioms: [propext]
+'Sovereign.Hodge.CycleClassMap.mk.injEq' depends on axioms: [propext]
+'Sovereign.Goldbach.bounded_goldbach_consistency' depends on axioms: [propext]
+'Sovereign.YangMills.GaugeField' does not depend on any axioms
+'Sovereign.BSD.bsd_rank_zero_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.GaugeField.mk' does not depend on any axioms
+'Sovereign.YangMills.mass_gap_implies_exponential_decay_conditional' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Almighty.guillotine_law' does not depend on any axioms
+'AetherZ3Omega.entropy_barrier_entails_critical_line' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.ctorIdx' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition.noConfusion' does not depend on any axioms
+'Sovereign.BSD.EllipticCurveQ.mk.inj' does not depend on any axioms
+'Almighty.PilarMorphism.p6_consciousness_iso' does not depend on any axioms
+'Sovereign.Hodge.SmoothProjectiveVariety.ctorIdx' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.ctorIdx' does not depend on any axioms
+'Sovereign.BSD.analytic_rank' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.noConfusion' does not depend on any axioms
+'Almighty.memory_integrity._native.native_decide.ax_1_1' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound,
+ Almighty.memory_integrity._native.native_decide.ax_1_1]
+'Sovereign.BSD.EllipticCurveQ.recOn' does not depend on any axioms
+'Sovereign.YangMills.GaugeField._sizeOf_inst' does not depend on any axioms
+'Sovereign.Zeta.riemannZeta_neg_two_mul_nat_add_one'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.mk.inj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.rec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Zeta.density_spacing_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Poincare.RiemannianManifold.ctorIdx' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass.mk' does not depend on any axioms
+'AetherZ3Omega.zeta_value_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Zeta.zero_free_region' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.mk._flat_ctor' does not depend on any axioms
+'Sovereign.Poincare.poincare_4d_conditional' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.initial_metric' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass.noConfusion' does not depend on any axioms
+'Barrier.rigidity_consistency' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold.mk._flat_ctor' does not depend on any axioms
+'Sovereign.Hodge.HodgeClass.rec' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.mk.injEq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.dimension' does not depend on any axioms
+'Sovereign.Zeta.finite_zeros_in_compact' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.PilarMorphism.p7_langlands_z3' does not depend on any axioms
+'AetherZ3Omega.Riemann.maxZeros' depends on axioms: [propext]
+'Sovereign.ExplicitFormula.prime_number_theorem_error_term_consistency' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Poincare.RicciFlowSolution.mk.inj' does not depend on any axioms
+'Sovereign.Poincare.RiemannianManifold.mk.injEq' depends on axioms: [propext]
+'Sovereign.Hodge.CycleClassMap.mk' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.noConfusion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.trivial_zeros_off_critical_line' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeConjectureStatement' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.recOn' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.SmoothProjectiveVariety.mk.inj' does not depend on any axioms
+'Sovereign.YangMills.mass_gap_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.EllipticCurveQ._sizeOf_inst' does not depend on any axioms
+'Sovereign.ExplicitFormula.NonTrivialZero.h_re' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.mk._flat_ctor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.field_strength' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.carrier' does not depend on any axioms
+'Sovereign.Hodge.HodgeDecomposition.mk.sizeOf_spec' does not depend on any axioms
+'Sovereign.BSD.torsion_order' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.mk.inj' does not depend on any axioms
+'Sovereign.Hodge.CycleClassMap.mk.noConfusion' does not depend on any axioms
+'Sovereign.Hodge.SmoothProjectiveVariety.casesOn' does not depend on any axioms
+'Almighty.no_self_contradiction.match_1_1' does not depend on any axioms
+'AetherZ3Omega.Riemann.HilbertPolyaSpectrum.mk.injEq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.IMV.committed_entry_has_hash' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.BSD.EllipticCurveQ.A' does not depend on any axioms
+'Sovereign.Poincare.RicciFlowSolution.noConfusion' does not depend on any axioms
+'Sovereign.Zeta.riemannZeta_one_ne_zero'' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.HodgeDecomposition.mk.injEq' depends on axioms: [propext]
+'Sovereign.Zeta.zero_free_region._proof_1' depends on axioms: [propext]
+C:\Users\usER\oracle-toe\FINAL_RH_PROJECT\.kernel_build\sweep\_driver_full.lean:371:14: warning: `Sovereign.Zeta.zero_free_region._proof_1` refers to an auto-generated auxiliary declaration. These are not stable across refactors; consider using a different approach.
+
+Note: This linter can be disabled with `set_option linter.auxLemma false`
+'Sovereign.ExplicitFormula.chebyshev_psi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Almighty.PilarMorphism.p1_fluid_immersion' does not depend on any axioms
+'th_exp_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_neg_eq_inv' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_mul_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_ineq_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_exp_ineq_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_sq_sum_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_sq_sum_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_diff_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_diff_sq_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_sum_sq_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_sq_abs_leq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_am_gm_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_cauchy_schwarz_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_int_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_logic_id' does not depend on any axioms
+'th_logic_trans' does not depend on any axioms
+'th_logic_imp_refl' does not depend on any axioms
+'th_logic_or_id' does not depend on any axioms
+'th_logic_and_id' does not depend on any axioms
+'th_comb_0' does not depend on any axioms
+'th_comb_succ' does not depend on any axioms
+'th_comb_naturals' does not depend on any axioms
+'th_induction_three' does not depend on any axioms
+'th_sum_naturals_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_topology_nis' does not depend on any axioms
+'th_topology_complement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_topology_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_analysis_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_analysis_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_analysis_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_analysis_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_factorial_nonneg' does not depend on any axioms
+'th_power_two_even' depends on axioms: [propext, Quot.sound]
+'th_triangle_ineq_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_triangle_ineq_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_safe_route_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_safe_route_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_basic_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_basic_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_monitor_ok' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_monitor_const' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_final_eval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_final_route' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_storage_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_storage_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_credits_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_validation_pass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_resolution_done' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_conclusion_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_conclusion_route' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_conclusion_ok' does not depend on any axioms
+'th_uncertainty_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_resolution_final' does not depend on any axioms
+'th_status_done' does not depend on any axioms
+'th_pilar1_ns_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_pilar2_topos_coherence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_pilar3_isentropic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_pilar4_memory_alloc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_pilar5_meissner_shield' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_pilar6_godel_loop' does not depend on any axioms
+'th_pilar7_langlands_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_pilar8_ihara_critical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'th_z3_seal_alpha' does not depend on any axioms
+'th_z3_seal_beta' does not depend on any axioms
+'th_z3_seal_gamma' does not depend on any axioms
+'th_z3_seal_delta' does not depend on any axioms
+'th_z3_seal_omega' does not depend on any axioms
+'th_gnase_omega_satisfiable' does not depend on any axioms

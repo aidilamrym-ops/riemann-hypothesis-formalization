@@ -1,0 +1,132 @@
+{
+  "report": "z3_tribunal_vacuity_audit",
+  "title": "Z3 Tribunal Vacuity & Soundness Audit (Phase 3)",
+  "date": "2026-09-23",
+  "method": "Re-execution of every batch end-to-end plus independent Z3 satisfiability check of each claim's premise set. A claim is marked VACUOUS if its own premises are unsatisfiable (so the theorem holds for a vacuous reason); CIRCULAR if an axiom encoding the target conclusion is injected as a premise; NON-VACUOUS if premises are satisfiable and premises + negated conclusion are unsatisfiable.",
+  "batches": [
+    {
+      "name": "z3_verify_batch1.py",
+      "claims_total": 6,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS",
+      "notes": "Basic real-arithmetic field facts (commutativity, associativity, distributivity, square nonneg). Sound but elementary; no RH content."
+    },
+    {
+      "name": "z3_verify_batch2.py",
+      "claims_total": 6,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS",
+      "notes": "Modulus-square nonnegativity and energy-vs-distance equivalences for a formal energy model. Elementary real/abs facts."
+    },
+    {
+      "name": "z3_verify_batch6.py",
+      "claims_total": 25,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS",
+      "notes": "Stage 7K/7L/7M/7P/7T lemmas: squares nonneg, sums/products of nonnegatives, abs bounds, Cauchy. Elementary arithmetic; sound."
+    },
+    {
+      "name": "z3_verify_batch7.py",
+      "claims_total": 10,
+      "verdict": "7 VERIFIED, 3 UNKNOWN",
+      "vacuity": "3 items UNKNOWN (not vacuous; Z3 cannot decide 2^(-s) with real s); rest NON-VACUOUS",
+      "notes": "Euler-factor bounds hit unknown: Z3 (nonlinear real arithmetic) cannot solve p^(-s) with transcendental exponent. Honest unknown, banner prints 7/10 and 3 OTHER."
+    },
+    {
+      "name": "z3_verify_batch8.py",
+      "claims_total": 12,
+      "verdict": "10 VERIFIED, 2 UNKNOWN",
+      "vacuity": "2 items UNKNOWN (same transcendental-exponent cause); rest NON-VACUOUS",
+      "notes": "Zero-free region / nonvanishing scaffolding (order/log/abs/transitivity) and abstract modus-tollens. The euler-factor nonzero/unit-interval claims are UNKNOWN."
+    },
+    {
+      "name": "z3_verify_batch9.py",
+      "claims_total": 4,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS",
+      "notes": "Symbolic Dirac-operator algebra over Reals (off-diagonal symmetry, trace linearity). Statements are high-level abstractions, not the actual operator identities proven in Lean."
+    },
+    {
+      "name": "z3_verify_batch10.py",
+      "claims_total": 7,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS",
+      "notes": "Concrete N=3,5 spectral tables (explicitly supplied eigenvalue tuples, spacing=1, psd check of a quadratic). Sound but the numbers are asserted, not computed here."
+    },
+    {
+      "name": "z3_verify_batch12_scale.py",
+      "claims_total": 4,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS (item 3 is trivially self-referential: it asserts dist_half>=0 as premise)",
+      "notes": "Weil-positivity and rigidity is a toy encoding (r2 -> arithmetic bound) and lower-bound 0.672>=0.416. Scale telemetry: 250 mpmath.zetazero k values truly computed, strictly monotonic, mean spacing 1.8339 (expected ~1.835)."
+    },
+    {
+      "name": "z3_verify_batch13_deep.py",
+      "claims_total": 3,
+      "verdict": "ALL CLEAN",
+      "vacuity": "NON-VACUOUS",
+      "notes": "Explicit-formula error bound nonneg (c*Sqrt(x)>=0), pair-correlation quadratic form = (v1+v2)^2 >= 0, von-Mangoldt monotone via identity substitution nt==t. Sound arithmetic abstractions."
+    },
+    {
+      "name": "z3_deep_loop_batch14.py",
+      "claims_total": 3,
+      "verdict": "3 marked VERIFIED but UNSOUND",
+      "vacuity": "2 VACUOUS, 1 CIRCULAR",
+      "findings": [
+        "harmonic_energy_contradiction: VACUOUS. Premises E>0 and E<E are jointly unsatisfiable in Reals; independent check returns unsat.",
+        "spectral_stability_axiom: VACUOUS. Premises energy==(sigma-0.5)^2, energy>0, energy<=0 have no real model; independent check returns unsat.",
+        "off_critical_guillotine: CIRCULAR. It injects Implies(is_zero, E==0) (the conclusion 'zeros are on critical line') as a premise, then derives that zeros must satisfy s_re=0.5. Conclusion is assumed, not proven."
+      ]
+    },
+    {
+      "name": "z3_verify_batch15_final.py",
+      "claims_total": 3,
+      "verdict": "1 VACUOUS/CIRCULAR, 2 acceptable-but-trivial",
+      "vacuity": "1 VACUOUS+CIRCULAR, 2 NON-VACUOUS",
+      "findings": [
+        "off_critical_zero_forbidden: VACUOUS + CIRCULAR. barrier_axiom is literally Implies(E>0, False) - the RH conclusion injected as an axiom; premise set {E>0, Implies(E>0,False)} is unsatisfiable by construction.",
+        "critical_line_capture: NON-VACUOUS but trivial: premises ((s_re-0.5)^2==0) imply s_re==0.5 by real algebra; no zeta content.",
+        "global_energy_positivity: NON-VACUOUS: (sigma-0.5)^2>=0 is a real-algebra fact with no zeta content."
+      ]
+    },
+    {
+      "name": "z3_verify_batch16_infinity.py",
+      "claims_total": 3,
+      "verdict": "1 VACUOUS-CIRCULAR, 1 VACUOUS, 1 CIRCULAR-trivial",
+      "vacuity": "1 VACUOUS, 2 CIRCULAR",
+      "findings": [
+        "von_mangoldt_monotonicity: CIRCULAR-trivial. It sets N_T1==T1 and N_T2==T2 (real Von Mangoldt N(T) replaced by the identity), so 'monotonicity' reduces to T2>T1.",
+        "entropy_bound_forces_zero_energy: VACUOUS. Premises constrain E>=0, E>0, E<=E-0.001; the last is unsatisfiable for every real E, so the whole premise set has no model.",
+        "uniform_rigidity_capture: VACUOUS + CIRCULAR. Injects Implies(sigma==0.5, E==0) and Implies(E==0, sigma==0.5) (the target equivalence) as premises, and adds E_expr<=E_expr-0.001 (unsatisfiable), so premises are inconsistent."
+      ]
+    },
+    {
+      "name": "z3_verify_batch17_barrier.py",
+      "claims_total": 5,
+      "verdict": "3 VACUOUS, 1 CIRCULAR-trivial, 1 non-vacuous-only",
+      "vacuity": "3 VACUOUS, 1 CIRCULAR, 1 NON-VACUOUS",
+      "findings": [
+        "log_bound_axiom_consistent: VACUOUS. Premises log1px<x AND log1px>=x are contradictory; the banner claims to test satisfiability of the axiom but the test itself is inconsistent.",
+        "rigidity_forces_zero_energy: VACUOUS. Same E<=E-0.001 contradiction in premises.",
+        "von_mangoldt_axiom_consistent: CIRCULAR-trivial. D1==T1, D2==T2 reduce density to identity; monotonicity reduces to T2>T1.",
+        "barrier_theorem_off_critical_forbidden: VACUOUS + CIRCULAR. Placeholder Implies(True, E<=E) plus E_expr>0 and E_expr<=E_expr-0.001 make premises unsatisfiable.",
+        "critical_line_capture_axiomatic: NON-VACUOUS but trivial: E_expr==0 implies sigma==0.5 by real algebra."
+      ]
+    }
+  ],
+  "summary": {
+    "claimed_verified_total": 145,
+    "truly_sound_non_vacuous_claims": null,
+    "computed": {
+      "batch1": 6, "batch2": 6, "batch6": 25, "batch9": 4, "batch10": 7, "batch12": 4, "batch13": 3
+    },
+    "batch7_unknown": 3,
+    "batch8_unknown": 2,
+    "unsound_claims_batch14_15_16_17": {
+      "total_claimed": "3+3+3+5 = 14",
+      "vacuous": ["b14#1", "b14#2", "b15#1", "b16#2", "b16#3", "b17#1", "b17#2", "b17#4"],
+      "circular": ["b14#3", "b15#1", "b16#1", "b16#3", "b17#3", "b17#4"]
+    },
+    "honest_readout": "Summing only sound batches (1,2,6,7-V,8-V,9,10,12,13) yields 6+6+25+7+10+4+7+4+3 = 72 genuinely-verified elementary real-arithmetic claims plus 5 UNKNOWN. The flagship 'barrier/entropy/rigidity proves RH' framing in batches 14-17 is NOT supported: those claims are vacuous or circular and must not be presented as independent verification of the Riemann Hypothesis."
+  }
+}

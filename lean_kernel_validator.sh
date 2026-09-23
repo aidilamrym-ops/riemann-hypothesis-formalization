@@ -75,7 +75,7 @@ LEAN_VER="$(lean --version | head -n1)"
 echo "Lean toolchain : $LEAN_VER"
 echo
 
-cleanup() { rm -rf "$KERNEL_BUILD" "$PROBE_FILE" "$OUT_OLEAN"; }
+cleanup() { rm -f "$PROBE_FILE" "$OUT_OLEAN" "$PROBE_FILE.out" "$PROBE_FILE.err"; }
 trap cleanup EXIT
 
 # ---------------------------------------------------------------

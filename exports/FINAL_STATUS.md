@@ -36,6 +36,64 @@ T6 diagonal_trace_formula: unsat  ✅
 Batch 11: 6/6 VERIFIED
 ```
 All six theorems hold: no counterexample exists.
+> **Catatan jujur (Fase 3):** Batch 11 adalah identitas aritmetika real trivial
+> tentang model toy Dirac — korelat UNSAT benar tetapi tidak membawa konten RH.
+
+---
+
+## EXTREME TESTING SUMMARY (5 FASE, 2026-09-23)
+
+### Fase 1 — Kernel Rebuild & Axiom Audit (fresh)
+```
+62/62 modul dibangun ulang dari nol (lean.exe v4.33.1 + LEAN_PATH mirror)
+383 deklarasi diaudit via #print axioms:
+  191 bersih (0 axiom)
+  192 dependen — hanya [propext, Classical.choice, Quot.sound] + 1 postulat
+5 deklarasi bergantung pada AetherZ3Omega.riemann_hypothesis (semua jujur, conditional)
+```
+Ledger: `.kernel_build/sweep/ledger.txt` · Audit penuh: `exports/_axioms_full.txt`
+
+### Fase 2 — Mutation Testing (kernel accepts, scanner catches)
+```
+M1_sorry       lean_compiles=True  detected=True
+M2_admit       lean_compiles=True  detected=True
+M3_rogue_axiom lean_compiles=True  detected=True
+M4_fake_proof  lean_compiles=True  detected=True
+```
+**Kesimpulan:** kernel Lean MENERIMA sorry/admit/axiom (dengan peringatan); scanner
+independen MENANGKAP keempat kelas cacat → detector wajib, bukan duplikat kernel.
+
+### Fase 3 — Z3 Tribunal Vacuity Audit (🔍 temuan integritas)
+```
+13 batch dijalankan end-to-end; setiap premis dicek satisfiability mandiri:
+  Batch 1,2,6,9,10,12,13 : NON-VACUOUS   (aritmetika real elementer)
+  Batch 7 : 7 VERIFIED + 3 UNKNOWN   (Z3 tak bisa putuskan 2^(-s))
+  Batch 8 : 10 VERIFIED + 2 UNKNOWN
+  Batch 14,15,16,17 : 14 klaim → 7 VACUOUS + 6 CIRCULAR
+       - premis kontradiktif:  E>0 ∧ E≤E−0.001  (mustahil utk real)
+       - barrier_axiom = Implies(E>0, False) = kesimpulan RH disuntikkan sbg aksioma
+       - N_T1==T1 (identitas) menggantikan N(T) Von Mangoldt sungguhan
+  BATCH 14-17 TIDAK BOLEH disajikan sebagai verifikasi RH.
+  Skor jujur Z3: 72 klaim non-vacuous + 5 UNKNOWN (bukan 145).
+```
+Detail: `exports/z3_vacuity_report.json`
+
+### Fase 4 — Numeric Re-computation (independent, high precision)
+```
+real_computation_audit : PASS (mpmath 40 digit; 8 fakta F1-F8 terkonfirmasi)
+spectral_verification   : NO zero-correspondence (0-2/20 match, avg error ~5-11;
+                          tidak konvergen dengan N) → Hilbert-Polya OPEN.
+von Mangoldt counting   : worst err 1.88 < O(log T)=5.98  (proven, dipakai sbg truth)
+Berry-Keating           : ratio 0.9788±0.038 (heuristik, bukan bukti)
+Navier-Stokes toy ODE   : konservasi 2.39e-15 (model toy, bukan NSE rigorus)
+Yang-Mills toy ODE      : gap 0.44 GeV; Z3 UNSAT bounds (model toy)
+```
+
+### Fase 5 — Reproducibility
+```
+run_external_audit.ps1          : satu-perintah audit eksternal (P1-P4)
+.github/workflows/external-audit.yml : CI Ubuntu: lake build Mathlib + validator + Z3 + numerik
+```
 
 ### 3. Von Mangoldt Counting (PROVEN theorem, numerically confirmed)
 ```
@@ -102,9 +160,11 @@ This is the honest, correct verdict. The gap is real.
 - Semua yang kami nyatakan "verified" terverifikasi nyata (Lean kernel / Z3 UNSAT / numerik)
 - Semua yang kami nyatakan "open" memang terbuka
 - Tidak ada `sorry`; seluruh proyek punya **satu** postulat terbuka `AetherZ3Omega.riemann_hypothesis`; tidak ada hasil palsu
+- **Audit vacuity Fase 3 memperbaiki skor Z3**: batch 14-17 mengandung premis
+  kontradiktif/melingkar dan secara eksplisit TIDAK dihitung sebagai verifikasi RH.
 
 **Yang masih terbuka:**
-1. Hilbert-Polya spectral correspondence (jantung RH) — butuh ide operator baru
+1. Hilbert-Polya spectral correspondence (jantung RH) — Dirac finite-dim TIDAK mereproduksi zero (0-2/20)
 2. Konstruksi Yang-Mills eksistensi yang rigorus — butuh functional analysis dalam
 3. Perluasan numerik ke >1e5 zeros untuk bukti statistik lebih kuat
 
