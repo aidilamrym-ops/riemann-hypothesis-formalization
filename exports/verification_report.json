@@ -1,17 +1,24 @@
 {
-    "title": "Automated Formal Verification of the Riemann Hypothesis Skeleton",
+    "title": "AetherZ3Omega — Honest Formalization Workspace for the Riemann Hypothesis Skeleton",
     "author": "Muhammad Aidil Amry (Sang Arsitek)",
-    "version": "1.0.0",
+    "version": "2.0.0",
+    "generated_at": "2026-09-23",
     "verification_kernel": {
         "lean_version": "v4.33.1",
-        "theorems_verified": 810,
-        "sorry_count": 0,
-        "build_status": "SAT_VERIFIED"
+        "modules": 62,
+        "theorem_lemma_count": 1780,
+        "def_abbrev_count": 48,
+        "axiom_count": 1,
+        "axiom_location": "RhCore.lean (postulat terbuka AetherZ3Omega.riemann_hypothesis)",
+        "real_sorry_count": 0,
+        "note_sorry_tokens_in_comments": 29,
+        "build_status": "62/62 KERNEL-CLEAN (Mathlib-backed, lean -o build)"
     },
+    "open_postulates": [
+        "AetherZ3Omega.riemann_hypothesis"
+    ],
+    "honest_scope": "RH is carried as an openly-declared postulate; no module claims a proof of RH. Conditional theorems (BarrierTheorem, stress tests, master theorems) are conditional on this postulate. Spectral/Hilbert-Polia correspondence remains OPEN.",
     "z3_telemetry": {
-        "r_squared": 0.977,
-        "pearson_r": 0.988,
-        "sat_assertions": 63001,
-        "guillotine_verdict": "SAT"
+        "role": "auxiliary consistency checks only (UNSAT verifies stated identities within the SMT theory); NOT a substitute for the Lean 4 kernel."
     }
 }

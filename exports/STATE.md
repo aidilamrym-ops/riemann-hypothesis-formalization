@@ -20,7 +20,7 @@ Lean 4 kernel: v4.33.1
 ## Kernel Axiom Audit (2026-09-23)
 - `#print axioms` on flagship theorems after fresh rebuild → every one depends only on
   `[propext, Classical.choice, Quot.sound]`, plus `AetherZ3Omega.riemann_hypothesis` only for the RH-carrying chain.
-- Full listing: `.kernel_build/_axioms.txt`
+- Full listing: `exports/_axioms.txt`
 
 ## Honest Scope
 - `rigidity_at_infinity` is CONDITIONAL on the RH postulate. It does not prove RH.

@@ -1,0 +1,34 @@
+# KERNEL AXIOM AUDIT — FRESH REBUILD (2026-09-23)
+# Build: 62/62 modules compiled from source with `lean.exe` (Lean 4.33.1 kernel).
+# Method: `import` each module, then `#print axioms` on flagship theorems.
+# Result: the ONLY user axiom anywhere in the project is `AetherZ3Omega.riemann_hypothesis`
+#   (RH carried as an open postulate, as documented). All Mathlib-level theorems
+#   depend only on standard Lean foundation axioms (propext, Classical.choice, Quot.sound).
+
+'AetherZ3Omega.barrier_from_riemann_hypothesis' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Barrier.rigidity_at_infinity' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Barrier.advanced_epsilon_rigidity_leakage' depends on axioms: [propext,
+ AetherZ3Omega.riemann_hypothesis,
+ Classical.choice,
+ Quot.sound]
+'Barrier.log_one_plus_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.ExplicitFormula.explicit_formula_bound_consistency' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Sovereign.Goldbach.bounded_goldbach_consistency' depends on axioms: [propext]
+'Sovereign.Goldbach.bounded_goldbach_mono' depends on axioms: [propext]
+'Sovereign.BSD.bsd_rank_zero_consistency' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.Hodge.hodge_conjecture_conditional' does not depend on any axioms
+'Sovereign.Poincare.poincare_3d_conditional' does not depend on any axioms
+'PvsNP.sat_np_complete_open' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Sovereign.YangMills.mass_gap_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+# Source-level scan (`rg "^axiom "`) over all 62 modules:
+#   AetherZ3Omega/Riemann/RhCore.lean  -> axiom riemann_hypothesis : RiemannHypothesis  (ONLY exception)
+# All other modules: 0 axiom declarations. 0 sorry declarations (sorry only inside comments).

@@ -44,8 +44,8 @@
 - Klaim resolusi **TIDAK PERNAH ada** dan **tidak akan diklaim**. Status: **Jujur. Deterministik. Tanpa tuduhan palsu.**
 
 ## Bukti Audit Dapat Direproduksi
-1. Rebuild kernel: `lean.exe -o <dir>/AetherZ3Omega/Riemann/*.olean AetherZ3Omega/Riemann/*.lean` (64/64 PASS).
+1. Rebuild kernel: `lean.exe -o <dir>/AetherZ3Omega/Riemann/*.olean AetherZ3Omega/Riemann/*.lean` (62/62 PASS).
 2. `rg "^axiom "` di `AetherZ3Omega/Riemann/` → hanya `RhCore.lean: axiom riemann_hypothesis`.
 3. `rg` pola sorry (`by sorry|, sorry|:= by[\r\n\s]*sorry|all_goals sorry`) → kosong (sorry hanya dalam komentar).
 4. `#print axioms` flagship → `[propext, Classical.choice, Quot.sound]` + `riemann_hypothesis` (rantai RH saja).
-   Hasil lengkap: `.kernel_build/_axioms.txt`.
+   Hasil lengkap: `exports/_axioms.txt`.

@@ -71,7 +71,7 @@
 - **62/62 modules** in `lean4/AetherZ3Omega/Riemann/` rebuilt from source via `lean.exe` (kernel 4.33.1): 0 error, 0 sorry.
 - **One open postulate only**: `AetherZ3Omega.riemann_hypothesis` (RhCore.lean). RH never claimed as proved.
 - **Kernel `#print axioms` audit** post-rebuild: flagship theorems depend only on
-  `[propext, Classical.choice, Quot.sound]` (+ `riemann_hypothesis` for the RH chain). See `.kernel_build/_axioms.txt`.
+  `[propext, Classical.choice, Quot.sound]` (+ `riemann_hypothesis` for the RH chain). See `exports/_axioms.txt`.
 - All straw-man axioms removed or proved; all impossible "master theorems" re-framed honestly as
   conditional/consistency statements (e.g. `rigidity_at_infinity` conditional on RH postulate;
   `bounded_goldbach_consistency`, `hodge_conjecture_conditional`, `mass_gap_conditional`, etc.).

@@ -3,7 +3,7 @@ import Mathlib.Data.Real.Basic
 
 -- ═══════════════════════════════════════════════════════════════
 -- CHEBYSHEV BOUNDS & ASYMPTOTIC PRIME DISTRIBUTION (Formal SSoT)
--- Framework: AETHER-Z3-OMEGA | rh_project
+-- Framework: AETHER-Z3-OMEGA | lean4/AetherZ3Omega/Riemann
 -- Principle: uji -> titik buta -> perbaiki -> uji lagi
 -- ═══════════════════════════════════════════════════════════════
 

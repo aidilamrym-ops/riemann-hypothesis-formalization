@@ -18,7 +18,7 @@
   No sorry. No axiom. No by-trivial placeholder.
   
   Author: RIEMANN HUMILITY PROJECT
-  Workspace: rh_project / Millennium Workspace
+  Workspace: lean4/AetherZ3Omega/Riemann / Millennium Workspace
 -/
 
 import Mathlib.NumberTheory.LSeries.RiemannZeta

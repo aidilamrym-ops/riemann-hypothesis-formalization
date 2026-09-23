@@ -250,18 +250,17 @@ The sovereign infrastructure is operational. The certifiable lemmas exist. The v
 \appendix
 \section{Repository Structure}
 \begin{verbatim}
-rh_project/
-├── Lean4/
-│   ├── ZetaFunctional.lean
-│   ├── ChebyshevFormal.lean
-│   ├── Stage7Phase3Strengthened.lean
-│   └── ... (checked subset: see Appendix B)
-├── Z3/
-│   ├── z3_verify_batch*.py
-│   ├── Z3_CROSS_VERIFICATION_REPORT.md
-│   └── *.smt2
-├── PaperA_Millennium_Verification.tex
-└── PaperB_Seven_Problems_Unified.tex (deferred)
+FINAL_RH_PROJECT/
+|-- lean4/AetherZ3Omega/Riemann/
+|   |-- 62 modules (.lean), kernel-verified, 0 sorry,
+|   |   single open postulate: AetherZ3Omega.riemann_hypothesis
+|   |-- ZetaFunctional.lean, ChebyshevFormal.lean, ...
+|-- z3_tribunal/          z3_verify_batch*.py (SMT-LIB2 UNSAT checks)
+|-- exports/              FINAL_STATUS.md, STATE.md, VERIFICATION_STATUS.md,
+|                         AUDIT_HONESTY.md, HONESTY_LABELING.md,
+|                         research_paper.tex, verification_report.json
+|-- papers/               PaperA_Millennium_Verification.tex/.pdf
+|-- scripts/              check_sorry.py, spectral_verification.py
 \end{verbatim}
 
 \section{Build-Log Verification}

@@ -1,22 +1,24 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
-title: "Formal Resolution of the Riemann Hypothesis via Spectral Rigidity and Entropy-Energy Coupling"
+title: "AetherZ3Omega: Honest Formalization Workspace for the Riemann Hypothesis Skeleton"
 authors:
   - family-names: "Amry"
     given-names: "Muhammad Aidil"
     orcid: "https://orcid.org/0009-0002-9718-9710"
     affiliation: "Sovereign Orchestrator Project"
 version: "1.0.0"
-date-released: "2026-09-20"
+date-released: "2026-09-23"
 type: "software"
 license: "MIT"
 repository: "https://github.com/aidilamrym-ops/riemann-hypothesis-formalization"
 url: "https://github.com/aidilamrym-ops/riemann-hypothesis-formalization"
 description: |
-  Complete formal verification pipeline for the Riemann Hypothesis combining Lean 4 
-  deductive kernels and Z3 SMT spectral tribunals. Establishes a spectral rigidity 
-  barrier proving all non-trivial zeros lie on the critical line Re(s) = 1/2.
-  Machine-checked with zero sorry, zero axiom in critical path.
+  Lean 4 (v4.33.1) formalization workspace for the Riemann Hypothesis skeleton.
+  62/62 modules in lean4/AetherZ3Omega/Riemann kernel-compile from source with
+  0 sorrys and one explicitly open postulate (AetherZ3Omega.riemann_hypothesis).
+  RH and the Hilbert-Polia spectral correspondence remain OPEN; master theorems
+  are re-framed honestly as conditional/consistency statements. Z3 SMT batches
+  provide auxiliary consistency checks.
 keywords:
   - "Riemann Hypothesis"
   - "Formal Verification"

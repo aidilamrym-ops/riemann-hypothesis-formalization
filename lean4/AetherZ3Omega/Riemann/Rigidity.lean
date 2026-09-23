@@ -9,7 +9,7 @@
   No sorry. No axiom.
   
   Author: ALMIGHTY (Sovereign Intellect)
-  Workspace: rh_project / Millennium Workspace
+  Workspace: lean4/AetherZ3Omega/Riemann / Millennium Workspace
 -/
 
 import Mathlib.NumberTheory.LSeries.RiemannZeta

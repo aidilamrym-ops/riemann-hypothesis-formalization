@@ -40,3 +40,6 @@ Thumbs.db
 
 # Zenodo upload bundles
 zenodo_*.zip
+
+# Regenerable tool outputs
+smt_stress_test_report.json

@@ -25,4 +25,4 @@ Status: HARDENED & FROZEN
 - All files have been standardized to professional technical English.
 - Code ownership is cryptographically and metadata-secured (`CITATION.cff`).
 - Workspace core is locked against further unvetted mutations.
-- Kernel axiom audit regenerated 2026-09-23 (see `.kernel_build/_axioms.txt`).
+- Kernel axiom audit regenerated 2026-09-23 (see `exports/_axioms.txt`).

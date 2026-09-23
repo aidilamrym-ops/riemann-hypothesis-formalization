@@ -8,29 +8,24 @@
 #   1. Probe the Lean 4 kernel/toolchain (compile + run a temp program).
 #   2. Audit axiom / constant / sorry / admit pollution. Comments are
 #      stripped first, so only REAL sorry tokens are counted.
-#   3. Kernel type-check of the critical Mathlib-free corpus
-#      (lean/Almighty) -> real `lean -o` .olean builds.
-#   4. Kernel-level axiom audit: a driver `#print axioms` against the
-#      built .olean modules lists the EXACT axiom dependencies the Lean
-#      kernel resolves for every declaration.
-#   5. Mathlib-backed sweep of the Riemann corpus: iteratively kernel-compiles
-#      every module with real Mathlib oleans (loops until saturation) and
-#      re-runs the `#print axioms` kernel audit on what actually compiles.
-#   6. Honest note about modules that do not compile (blocked by fictional
-#      Mathlib paths, unknown identifiers, or malformed proof terms).
+#   3. Mathlib-backed kernel sweep of the Riemann corpus
+#      (lean4/AetherZ3Omega/Riemann): kernel type-check with real Mathlib
+#      oleans -> real `lean -o` .olean builds, then a driver `#print axioms`
+#      lists the EXACT axiom dependencies the Lean kernel resolves for every
+#      declaration. Modules that do not compile are recorded in a ledger with
+#      the real blocking reason (fictional Mathlib paths, unknown identifiers,
+#      or malformed proof terms).
 #
 #  LEAN 4 FACTS:
 #   - `lean --export` does NOT exist in Lean 4 (Lean 3 / Trepplein flag).
 #   - Modules importing Mathlib can only be verified against real Mathlib
-#     oleans (Step 5); lake targets are unreliable for ad-hoc modules.
+#     oleans (Step 3); lake targets are unreliable for ad-hoc modules.
 # =====================================================================
 
 set -uo pipefail
 
-LEAN_ALMIGHTY_DIR="lean/Almighty"
 LEAN_RIEMANN_DIR="lean4/AetherZ3Omega/Riemann"
 KERNEL_BUILD=".kernel_build"
-DRIVER="$KERNEL_BUILD/Driver.lean"
 
 echo "=============================================================="
 echo "  AETHERZ3OMEGA: LEAN 4 INDEPENDENT KERNEL VALIDATOR"
@@ -71,15 +66,13 @@ if ! has lean; then
     echo "🚨 Error: 'lean' tidak ditemukan di PATH."
     exit 1
 fi
-if [ ! -d "$LEAN_ALMIGHTY_DIR" ] && [ ! -d "$LEAN_RIEMANN_DIR" ]; then
-    echo "🚨 Error: direktori source Lean tidak ditemukan."
+if [ ! -d "$LEAN_RIEMANN_DIR" ]; then
+    echo "🚨 Error: direktori source Lean tidak ditemukan ($LEAN_RIEMANN_DIR)."
     exit 1
 fi
 
 LEAN_VER="$(lean --version | head -n1)"
 echo "Lean toolchain : $LEAN_VER"
-has trepplein && TP=yes || TP=no
-echo "Trepplein      : $TP (Checker Lean 3 artifacts)"
 echo
 
 cleanup() { rm -rf "$KERNEL_BUILD" "$PROBE_FILE" "$OUT_OLEAN"; }
@@ -134,7 +127,6 @@ audit_dir() {
     echo "    admit       : $admits"
 }
 
-audit_dir "$LEAN_ALMIGHTY_DIR"
 audit_dir "$LEAN_RIEMANN_DIR"
 
 echo "  -- Spot-check critical path (sorry berwarna hanya jika kode) --"
@@ -147,7 +139,7 @@ for f in "$LEAN_RIEMANN_DIR"/{BarrierTheorem,Rigidity,ZetaBasic,Axioms,RhCore,Rh
     echo "    $(basename "$f"): thm/lem/def=$th axiom=$ax constant=$ct sorry=$so"
 done
 echo "  -- File dengan sorry SEJATI --"
-for f in "$LEAN_ALMIGHTY_DIR" "$LEAN_RIEMANN_DIR"/*.lean; do
+for f in "$LEAN_RIEMANN_DIR"/*.lean; do
     [ -f "$f" ] || continue
     so="$(count_of "$f" '\bsorry\b')"
     if [ "$so" -gt 0 ]; then
@@ -156,82 +148,10 @@ for f in "$LEAN_ALMIGHTY_DIR" "$LEAN_RIEMANN_DIR"/*.lean; do
 done
 
 # ---------------------------------------------------------------
-# Step 3: Mathlib-free corpus -> kernel .olean build + axiom audit
+# Step 3: Mathlib-backed kernel sweep of the Riemann corpus
 # ---------------------------------------------------------------
 echo
-echo "Step 3: Verifikasi Kernel NYATA - corpus bebas-Mathlib (lean/Almighty)..."
-echo "  (modul yang meng-import Mathlib tidak diverifikasi di sini; "
-echo "   itu domain 'lake build' - lihat Step 4)"
-
-mkdir -p "$KERNEL_BUILD/Almighty"
-BUILT=""
-for f in "$LEAN_ALMIGHTY_DIR"/*.lean; do
-    [ -f "$f" ] || continue
-    b="$(basename "$f" .lean)"
-    [ "$b" = "Goldbach" ] && continue
-    log="$KERNEL_BUILD/_build_$b.log"
-    if lean -R "lean" -o "$KERNEL_BUILD/Almighty/$b.olean" "$f" >"$log" 2>&1; then
-        echo "  ✅ olean  $b"
-        BUILT="$BUILT $b"
-    else
-        echo "  ❌ build $b : $(grep -m1 'error' "$log" | head -c 120)"
-    fi
-    rm -f "$log"
-done
-
-if [ -n "$BUILT" ]; then
-    # generate driver: #print axioms for every theorem/lemma/def
-    {
-        for b in $BUILT; do echo "import Almighty.$b"; done
-        for f in "$LEAN_ALMIGHTY_DIR"/*.lean; do
-            b="$(basename "$f" .lean)"
-            [ "$b" = "Goldbach" ] && continue
-            ns="$(grep -m1 '^namespace' "$f" | sed 's/^namespace[[:space:]]*//; s/[[:space:]]*$//')"
-            [ -z "$ns" ] && ns="Almighty"
-            code_only "$f" | grep -oE '^(theorem|lemma|def)[[:space:]]+[A-Za-z0-9_]+' \
-                | awk -v p="$ns." '{print "#print axioms " p $2}'
-        done
-    } > "$DRIVER"
-
-    LEAN_PATH="$KERNEL_BUILD" lean -R "$KERNEL_BUILD" "$DRIVER" \
-        > "$KERNEL_BUILD/_axioms.txt" 2>&1 || true
-
-    ax_lines="$(grep -c 'does not depend on any axioms' "$KERNEL_BUILD/_axioms.txt" || true)"
-    dep_lines="$(grep -c "depends on axioms" "$KERNEL_BUILD/_axioms.txt" || true)"
-    echo "  Kernel audit #print axioms:"
-    echo "    bersih (0 axiom)                : $ax_lines deklarasi"
-    echo "    bergantung ke foundation-lean   : $dep_lines deklarasi"
-    echo "  -- Deklarasi yang memakai AKSIOMA DI LUAR fondasi Lean standar --"
-    echo "     (fondasi standar = propext, Classical.choice, Quot.sound)"
-    awk '/depends on axioms/ {
-        line=$0; getline rest; while (rest ~ /^[[:space:]]/) { line=line rest; getline rest }
-        if (line !~ /propext, Classical.choice, Quot.sound\]$/) print "     " line }' \
-        "$KERNEL_BUILD/_axioms.txt" | head -n 20
-else
-    echo "  Tidak ada olean yang berhasil dibuat."
-fi
-
-# ---------------------------------------------------------------
-# Step 4: Mathlib-only modules (Riemann corpus) - honest scope
-# ---------------------------------------------------------------
-echo
-echo "Step 4: Corpus Mathlib-only (Riemann) - memerlukan 'lake build'..."
-REQ_MATHLIB=0
-for f in "$LEAN_RIEMANN_DIR"/{BarrierTheorem,Rigidity,ZetaBasic,Axioms,RhCore,RhZetaTower}.lean; do
-    [ -f "$f" ] || continue
-    if grep -qE 'import Mathlib' "$f" || code_only "$f" | grep -qE '\bℝ\b|^\s*axiom\b'; then
-        REQ_MATHLIB=$((REQ_MATHLIB + 1))
-    fi
-    echo "  ⏭ REQ_MATHLIB $(basename "$f")"
-done
-echo "  (kurung: $REQ_MATHLIB/6 modul inti memerlukan Mathlib untuk type-check;"
-echo "   kompilasi NYATA dijalankan pada Step 5)"
-
-# ---------------------------------------------------------------
-# Step 5: Mathlib-backed kernel sweep of the Riemann corpus
-# ---------------------------------------------------------------
-echo
-echo "Step 5: Sweep Korpus Riemann dgn Mathlib NYATA (loop sampai jenuh)..."
+echo "Step 3: Sweep Korpus Riemann dgn Mathlib NYATA..."
 MATHLIB_LIB="lean4/.lake/packages/mathlib/.lake/build/lib/lean"
 SWEEP_DIR="$KERNEL_BUILD/sweep"
 
@@ -322,23 +242,7 @@ if has_match_lib; then
 else
     echo "  Mathlib oleans tidak ditemukan ($MATHLIB_LIB)."
     echo "  Jalankan dulu: cd lean4 && lake update (unduh Mathlib v4.33.1)."
-    echo "  Tanpa Mathlib, verifikasi kernel terbatas pada Step 3 (lean/Almighty)."
-fi
-
-# ---------------------------------------------------------------
-# Step 6: external checker recommendation
-# ---------------------------------------------------------------
-echo
-echo "Step 6: Validasi Eksternal (Trepplein)..."
-if [ "$TP" = "yes" ]; then
-    echo "  trepplein tersedia; jalankan terhadap artefak .oml bila ada."
-else
-    echo "  trepplein tidak terinstall. Catatan:"
-    echo "    - Trepplein = checker Lean 3 (.oml); Lean 4 memakai kernel .olean."
-    echo "    - Step 3 + Step 5 adalah pemeriksaan kernel Otentik yang DAPAT"
-    echo "      direproduksi (bebas-Mathlib + dengan Mathlib nyata)."
-    echo "    - Modul yang TIDAK compile di Step 5 tercatat di ledger dengan"
-    echo "      alasan blokir asli (modul Mathlib fiktif, ident invalid, dll)."
+    echo "  Tanpa Mathlib, verifikasi kernel tidak dapat dijalankan untuk korpus Riemann."
 fi
 
 echo
