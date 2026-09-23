@@ -58,6 +58,24 @@
     "axiom_footprint": "[propext, Classical.choice, Quot.sound] (verified via #print axioms; independent of AetherZ3Omega.riemann_hypothesis postulate)",
     "conclusion": "The Montgomery–Taylor constant c₁* is a genuine probability-like proportion: bounded away from 0 and from 1 by computer-checked proofs, with all three Theorem-D proportions strictly positive (non-vacuous)."
   },
+  "numeric_constants_check": {
+    "method": "scripts/numeric_constants_check.py (mpmath 1.3.0, 40 digits)",
+    "cMT_closed_form": "0.7532960679...",
+    "one_over_cMT": "1.327499296...",
+    "one_over_cMT_via_MontgomeryTaylor_identity": "1.327499296...  (1/2 + 2^{-1/2}·cot(2^{-1/2}))",
+    "abs_diff_one_over_cMT_vs_MontgomeryTaylor_identity": "2.67e-51 (machine agreement)",
+    "two_minus_one_over_cMT": "0.6725007037...",
+    "two_cMT_minus_one": "0.5065921357...",
+    "matches_paper_decimals": {
+      "c1star_0.7532960": true,
+      "one_over_cMT_1.32750": true,
+      "two_minus_one_over_cMT_0.67250": true,
+      "two_cMT_minus_one_0.50659": true,
+      "tolerance": "|computed − paper| ≤ 5e-6"
+    },
+    "consistent_with_lean_bounds": "2/3 < cMT ≤ 4/5 holds numerically (0.753296 < 0.8)",
+    "note": "This validates the pencil-and-Scipy decimals claimed by the paper with an independent high-precision engine (mpmath), not SymPy."
+  },
   "source_scan": {
     "method": "scan_defects.py-style token audit after stripping /- -/ and -- comments",
     "axiom_declarations_in_code": 0,

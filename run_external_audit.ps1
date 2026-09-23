@@ -108,6 +108,7 @@ if (-not $SkipPython) {
 if (-not $SkipPython) {
     Write-Host "--- P4 NUMERIC AUDITS ---" -ForegroundColor Cyan
     python scripts/real_computation_audit.py
+    python scripts/numeric_constants_check.py
     Push-Location scripts
     python spectral_verification.py
     Pop-Location
