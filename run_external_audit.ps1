@@ -17,6 +17,8 @@
 #    P4  NUMERIC  spectral_verification.py + real_computation_audit.py
 #    P5  KERNEL   numeric cross-check of Euler-factor universal bounds
 #                 (Lean: AetherZ3Omega.Riemann.KernelIndependence)
+#    P6  SPECTRAL 100k-zero arb probe: critical-line, von Mangoldt count,
+#                 GUE-Wigner spacing statistics (spectral_big_probe.py)
 #
 #  Artifacts: exports/verification_report.json (regenerated) and the
 #             .kernel_build/ working tree (git-ignored).
@@ -129,6 +131,23 @@ if (-not $SkipPython) {
     python scripts/kernel_independence_check.py
 } else {
     Write-Host "--- P5 SKIPPED (SkipPython) ---" -ForegroundColor DarkGray
+}
+
+# ---------------------------------------------------------------
+# P6: SPECTRAL BIG PROBE (Jalur B item 4)
+#     arb scan of Z(t)=Re(e^{i theta} zeta(0.5+it)) over t in [14, 76420]
+#     -> 102,241 signs changed (von Mangoldt count 102,240), retains 100,000
+#     consecutive critical-line zeros; mpmath nzeros agreement EXACT (0) on a
+#     12-height sweep; spacing statistics vs GUE-Wigner vs Poisson.
+#     Heavy zero computation is cached to exports/spectral_big_zeros.npz
+#     (recompute with: python scripts/spectral_big_probe.py --recompute);
+#     stats/verdicts are re-derived on every run.
+# ---------------------------------------------------------------
+if (-not $SkipPython) {
+    Write-Host "--- P6 SPECTRAL-BIG-PROBE (100k zeros, GUE statistics) ---" -ForegroundColor Cyan
+    python scripts/spectral_big_probe.py
+} else {
+    Write-Host "--- P6 SKIPPED (SkipPython) ---" -ForegroundColor DarkGray
 }
 
 # ---------------------------------------------------------------

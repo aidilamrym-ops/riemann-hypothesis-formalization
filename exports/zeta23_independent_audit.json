@@ -130,6 +130,22 @@
     },
     "zero_gap_closure": "the five UNKNOWN verdicts are no longer evidence gaps: Z3's unknown reflects a decider limitation (symbolic transcendental), and the underlying claims are proven for all admissible kernels"
   },
+  "spectral_big_probe": {
+    "script": "scripts/spectral_big_probe.py (arb interval arithmetic via python-flint; numpy + scipy statistics)",
+    "zeros_cached": "exports/spectral_big_zeros.npz (100,001 consecutive critical-line zeros)",
+    "sign_changes_detected": 102241,
+    "von_mangoldt_expectation": 102240,
+    "count_deviation": 1,
+    "gamma_100000": 74920.827499,
+    "rvm_deviation_at_gamma_100000": -0.59,
+    "mpmath_spot_check_max_delta": 1.455e-11,
+    "mpmath_spot_check_indices": 12,
+    "count_reconciliation_mpmath_nzeros": {"heights": 12, "max_abs_deviation": 0.0},
+    "mean_normalized_spacing": 1.000013,
+    "std_normalized_spacing": 0.400939,
+    "chi2": {"gue_wigner": 619.8, "poisson": 87049.1, "ndf": 56, "ratio": 0.007},
+    "interpretation": "operator Dirac finite-dim tetap tidak mereproduksi zero individual (0-2/20, lihat FINAL_STATUS §7); statistik spacing 100k zero mengikuti GUE-Wigner jauh melampaui Poisson (ratio 0.007) — memperkuat gambaran Hilbert-Polya statistik, RH tetap OPEN"
+  },
   "source_scan": {
     "method": "scan_defects.py-style token audit after stripping /- -/ and -- comments",
     "axiom_declarations_in_code": 0,

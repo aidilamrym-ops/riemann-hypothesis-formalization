@@ -83,6 +83,10 @@ Detail: `exports/z3_vacuity_report.json`
 real_computation_audit : PASS (mpmath 40 digit; 8 fakta F1-F8 terkonfirmasi)
 spectral_verification   : NO zero-correspondence (0-2/20 match, avg error ~5-11;
                           tidak konvergen dengan N) → Hilbert-Polya OPEN.
+spectral_big_probe (P6): 102,241 roots t∈[14,76420] (RvM 102,240, +1);
+                          nzeros exact (Δ=0 di 12 tinggi); GUE-Wigner χ²=619.8
+                          vs Poisson 87,049 (ratio 0.007) — perkuat gambaran HP
+                          statistik, operator toy tetap mati. `spectral_big_probe.json`
 von Mangoldt counting   : worst err 1.88 < O(log T)=5.98  (proven, dipakai sbg truth)
 Berry-Keating           : ratio 0.9788±0.038 (heuristik, bukan bukti)
 Navier-Stokes toy ODE   : konservasi 2.39e-15 (model toy, bukan NSE rigorus)
@@ -132,6 +136,16 @@ This is the Hilbert-Polya PROGRAM — still open, NOT resolved.
 ```
 **The Dirac finite-dim operator does NOT reproduce individual zeta zeros.**  
 This is the honest, correct verdict. The gap is real.
+
+**Statistical angle (strengthens, does not prove):** `scripts/spectral_big_probe.py` (P6) scanned
+Z(t) = Re(e^{iθ(t)}ζ(½ + it)) over t ∈ [14, 76420] with arb interval arithmetic:
+102,241 sign changes detected vs von Mangoldt count 102,240 (+1).
+Spot-check vs mpmath ζ (12 indices) within 1.5e-11; `mpmath.nzeros` exact agreement
+(Δ = 0) on a 12-height sweep (T = 6e4 … 7.49e4); all zeros on the critical line.
+Normalized spacing mean = 1.000013, variance ≈ 0.402²; χ²-fit against GUE-Wigner
+= 619.8 vs Poisson = 87,049 (ndf 56; ratio 0.007) — Odlyzko-style statistics, strongly
+Hilbert–Pólya-friendly. **Interpretation:** the toy Dirac operator stays dead (gap real);
+the statistical Hilbert–Pólya picture is reinforced but remains a conjecture.
 
 ---
 

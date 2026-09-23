@@ -65,7 +65,19 @@ Ganti pondasi toy-discrete dengan perhitungan nyata untuk klaim yang terekspos p
    `2/3 < cMT ≤ 4/5`, `0 < cMT < 1`, dan dua proporsi Theorem D positif
    (`2 − 1/c₁* > 1/2`, `2c₁* − 1 > 1/3`) — aksioma hanya `[propext, Classical.choice, Quot.sound]`,
    tidak tergantung postulat RH proyek.
-4. Numerik: naikkan pengujian spectral dari 20 → probe 10⁵ zero (memperkuat atau menghentikan).
+4. **DONE 2026-09-23:** Probe spektral 10⁵ zero — `scripts/spectral_big_probe.py` (P6 pipeline):
+   - Scan arb (interval aritmetik, python-flint) Z(t)=Re(e^{iθ}ζ(0.5+it)) pada t ∈ [14, 76420]
+     (grid 0.02 prec 53; ekor 0.005 prec 128; recovery band 0.005 prec 128 di (71250, 72500)):
+     **102.241** tanda-ganti terdeteksi vs hitungan von Mangoldt **102.240** (+1).
+   - `γ₁₀₀₀₀₀ = 74920.8275`; RvM di situ dev −0.59; spot-check mpmath 12 indeks Δ ≤ 1.5e-11;
+     rekonsiliasi `mpmath.nzeros` di 12 ketinggian: **0 deviasi**.
+   - Semua di garis kritis (Re=1/2 by construction, dikoreksi mpmath); mean spacing ternormalisasi 1.000013.
+   - Statistik spacing: χ² GUE-Wigner **619.8** vs Poisson **87.049** (ndf 56, ratio 0.007)
+     → konsisten dengan bukti numerik gaya Odlyzko untuk gambaran statistik Hilbert–Pólya;
+     **operator Dirac finite-dim spesifik kertas tetap gagal mencocokkan zero individual (0-2/20)**.
+   - Interpretasi jujur: **STOP** operator toy; gambaran **GUE/HP statistik diperkuat** (tetap OPEN).
+   - Zero cache: `exports/spectral_big_zeros.npz`; regenerasi penuh: `python scripts/spectral_big_probe.py --recompute`.
+   - Keluaran: `exports/spectral_big_probe.json`.
 
 **Nilai:** menutup satu-satunya celah yang bisa dibantah reviewer: "claim numerik tanpa bukti analitik".
 
@@ -91,8 +103,8 @@ Target realistis, bukan RH:
 
 ## 4. Keputusan yang disarankan
 
-1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + `ZetaBounds.lean` + `KernelIndependence.lean` + roadmap + audit Z3 (division-safety/vacuity) + P5 pipeline.
-2. **Berikutnya:** Jalur A tuntas (item 1-5); lanjutkan **Jalur C item 2** (Hardy-ζ titik-titik positif, small formalization) ATAU **Jalur B item 4** (numerik 10⁵ zero, bila sumber daya) — keduanya menaikkan kredibilitas sebagai auditor.
+1. **Sekarang:** commit hasil audit independen (`exports/zeta23_independent_audit.json`) + bukti `CMTBounds.lean` + `ZetaBounds.lean` + `KernelIndependence.lean` + roadmap + audit Z3 (division-safety/vacuity) + P5/P6 pipeline.
+2. **Berikutnya:** Jalur A tuntas (item 1-5), Jalur B item 4 tuntas (probe 10⁵ zero — lihat §3). Lanjutkan **Jalur C item 2** (Hardy-ζ titik-titik positif, small formalization) bila ingin tetap Lean ATAU **Jalur D** (publishing artifact).
 3. **Nanti:** Jalur D (publishing artifact & tawaran audit ke pengelola).
 
 > Prinsip: **Segala sesuatu yang diklaim "verified" harus terverifikasi oleh kernel/decider/numerik-that-can-be-challenged. Segala sesuatu yang belum, diberi label "open".**
