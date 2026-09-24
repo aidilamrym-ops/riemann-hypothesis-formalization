@@ -23,14 +23,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: lean4/.lake
-          key: mathlib-${{ runner.os }}-${{ hashFiles('lean4/lake-manifest.json') }}
+          key: mathlib-v2-${{ runner.os }}-${{ hashFiles('lean4/lake-manifest.json') }}
 
       - name: Verify Lean toolchain
         run: |
           lean --version
           cd lean4 && lake --version
 
-      - name: Fetch Mathlib (olean cache, fallback full build)
+      - name: Fetch Mathlib (olean cache, fallback full build, verify import probe)
         run: |
           set -o pipefail
           cd lean4
@@ -42,6 +42,18 @@ jobs:
           test -n "$(ls .lake/packages/mathlib/.lake/build/lib/lean 2>/dev/null)" || {
             echo "FAIL: mathlib oleans missing after build"; exit 1
           }
+          cd ..
+          ML=""
+          for d in lean4/.lake/packages/*/.lake/build/lib/lean; do
+            [ -d "$d" ] && ML="$ML;$d"
+          done
+          ML="${ML#;}"
+          printf 'import Mathlib\n' > /tmp/probe_import.lean
+          LEAN_PATH="$ML" lean -R lean4 /tmp/probe_import.lean || {
+            echo "FAIL: 'import Mathlib' probe failed with validator LEAN_PATH=$ML"
+            exit 1
+          }
+          echo "PROBE OK: Mathlib importable via validator LEAN_PATH"
 
       - name: Run kernel validator (66 module sweep + #print axioms)
         run: |
