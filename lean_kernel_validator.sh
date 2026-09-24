@@ -158,12 +158,11 @@ SWEEP_DIR="$KERNEL_BUILD/sweep"
 has_match_lib() { [ -d "$MATHLIB_LIB" ] && [ -n "$(ls "$MATHLIB_LIB" 2>/dev/null)" ]; }
 
 if has_match_lib; then
-    ML_PATH=""
-    for d in lean4/.lake/packages/*/.lake/build/lib/lean; do
+    ML_PATH="$SWEEP_DIR"
+    for d in lean4/.lake/build/lib/lean lean4/.lake/packages/*/.lake/build/lib/lean; do
         [ -d "$d" ] && ML_PATH="$ML_PATH;$d"
     done
     ML_PATH="${ML_PATH#;}"
-    ML_PATH="$ML_PATH;$SWEEP_DIR"
 
     mkdir -p "$SWEEP_DIR/AetherZ3Omega/Riemann"
     ledger="$SWEEP_DIR/ledger.txt"

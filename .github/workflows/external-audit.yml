@@ -42,8 +42,11 @@ jobs:
             exit 1
           }
           cd ..
+          echo "-- layout inspection --"
+          echo "root-build lib/lean:"; ls lean4/.lake/build/lib/lean 2>/dev/null | head -6
+          echo "mathlib pkg lib/lean:"; ls lean4/.lake/packages/mathlib/.lake/build/lib/lean 2>/dev/null | head -6
           ML=""
-          for d in lean4/.lake/packages/*/.lake/build/lib/lean; do
+          for d in lean4/.lake/build/lib/lean lean4/.lake/packages/*/.lake/build/lib/lean; do
             [ -d "$d" ] && ML="$ML;$d"
           done
           ML="${ML#;}"
