@@ -30,17 +30,16 @@ jobs:
           lean --version
           cd lean4 && lake --version
 
-      - name: Fetch Mathlib (olean cache, fallback full build, verify import probe)
+      - name: Fetch Mathlib (real lake build; probe import exactly like validator)
         run: |
           set -o pipefail
           cd lean4
           lake update
-          if ! lake exe cache get; then
-            echo "mathlib olean cache unavailable; building Mathlib from source (may take a while)"
-          fi
           lake build Mathlib 2>&1 | tail -n 20
-          test -n "$(ls .lake/packages/mathlib/.lake/build/lib/lean 2>/dev/null)" || {
-            echo "FAIL: mathlib oleans missing after build"; exit 1
+          test -f .lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean || {
+            echo "FAIL: Mathlib.olean missing at .lake/packages/mathlib/.lake/build/lib/lean"
+            find .lake -maxdepth 6 -name 'Mathlib.olean' | head -5
+            exit 1
           }
           cd ..
           ML=""
