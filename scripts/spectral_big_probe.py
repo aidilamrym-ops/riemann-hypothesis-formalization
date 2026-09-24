@@ -6,8 +6,14 @@ import time
 from pathlib import Path
 
 import numpy as np
-import flint
-from flint import acb
+try:
+    import flint
+    from flint import acb
+    HAVE_FLINT = True
+except ImportError:
+    flint = None
+    acb = None
+    HAVE_FLINT = False
 from multiprocessing import Pool
 from scipy.optimize import brentq
 
@@ -26,7 +32,8 @@ RECOVERY_BANDS = [(71250.0, 72500.0)]
 RECOVERY_STEP = float(os.environ.get("SPECTRAL_PROBE_RECOVERY_STEP", "0.005"))
 RECOVERY_PREC = int(os.environ.get("SPECTRAL_PROBE_RECOVERY_PREC", "128"))
 START_T = 14.0
-flint.ctx.prec = COARSE_PREC
+if HAVE_FLINT:
+    flint.ctx.prec = COARSE_PREC
 RECOMPUTE = "--recompute" in sys.argv
 JSON_OUT = EXPORTS / "spectral_big_probe.json"
 NPZ_OUT = EXPORTS / "spectral_big_zeros.npz"
@@ -40,6 +47,8 @@ def theta(t):
 
 
 def zeta_on_point(t):
+    if not HAVE_FLINT:
+        raise SystemExit("--recompute requires python-flint (pip install python-flint)")
     z = acb.zeta(acb(0.5, float(t)))
     return complex(z.real.mid(), z.imag.mid())
 
@@ -114,6 +123,9 @@ def main():
         print(f"loaded cached zeros from {NPZ_OUT} (len={imags.size}); "
               f"use --recompute to regenerate")
     else:
+        if not HAVE_FLINT:
+            raise SystemExit(
+                "--recompute requires python-flint (pip install python-flint)")
         end_t = critical_height(N)
         end_t += 0.02 * end_t
         if end_t > TAIL_FINE_FROM:

@@ -123,5 +123,5 @@
     "stats": "GUE (random-matrix) spacing fit strongly preferred over Poisson; consistent with Odlyzko-class numerical evidence for the Hilbert-Polya statistical picture",
     "exact_correspondence": "individual finite-dimensional Dirac secular-root <-> zeta-zero correspondence remains FAILED (0-2/20, spectral_verification.py) -> the toy operator is falsified (STOP), while GUE statistics STRENGTHEN the spectral/HP program (stays OPEN)"
   },
-  "runtime_seconds": 31.6
+  "runtime_seconds": 36.9
 }

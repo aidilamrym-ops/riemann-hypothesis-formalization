@@ -15,9 +15,8 @@ jobs:
 
       - name: Install elan + Lean toolchain
         run: |
-          curl -sSfL https://github.com/leanprover/elan/releases/download/elan-v4.1.0/elan-x86_64-unknown-linux-gnu.tar.gz -o elan.tar.gz
-          tar xzf elan.tar.gz
-          ./elan-init -y --default-toolchain leanprover/lean4:v4.33.1
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o elan-init.sh
+          sh elan-init.sh -y --default-toolchain leanprover/lean4:v4.33.1
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
 
       - name: Cache mathlib oleans
@@ -36,7 +35,7 @@ jobs:
           cd lean4
           lake build Mathlib 2>&1 | tail -n 20 | tee /dev/stderr
 
-      - name: Run kernel validator (62 module sweep + #print axioms)
+      - name: Run kernel validator (66 module sweep + #print axioms)
         run: |
           bash lean_kernel_validator.sh 2>&1 | tee /tmp/kernel_audit.log
         env:
@@ -86,6 +85,12 @@ jobs:
           python scripts/real_computation_audit.py
           cd scripts && python spectral_verification.py && cd ..
 
+      - name: Kernel-independence cross-check (P5)
+        run: python scripts/kernel_independence_check.py
+
+      - name: Spectral big probe stats (P6, cached-zeros path)
+        run: python scripts/spectral_big_probe.py
+
       - name: Archive python audit artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -97,3 +102,5 @@ jobs:
             exports/real_computation_audit.json
             exports/spectral_verification.json
             exports/z3_vacuity_report.json
+            exports/kernel_independence_numeric.json
+            exports/spectral_big_probe.json
