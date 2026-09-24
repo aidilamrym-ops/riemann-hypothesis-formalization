@@ -73,7 +73,7 @@ jobs:
           echo "=== fresh import probe (no -R) ==="
           printf 'import AetherZ3Omega.Riemann.RhCore\n' > lean4/_t_r.lean
           ( cd lean4 && LEAN_PATH="$SW;$LAKE_LEAN_PATH" lean -o /tmp/_t_r.olean _t_r.lean ) ; echo "variant1 exit=$?"
-          printf 'import AetherZ3Omega.Riemann.RhCore\n' > _t_r2.lean
+          printf 'import AetherZ3Omega.Riemann.RhCore\n' > lean4/_t_r2.lean
           ( cd lean4 && LEAN_PATH="$SW;$LAKE_LEAN_PATH" lean -R "$(pwd)" -o /tmp/_t_r2.olean _t_r2.lean ) ; echo "variant2 exit=$?"
           echo "=== full module compile ==="
           ( cd lean4 && LEAN_PATH="$SW;$LAKE_LEAN_PATH" lean -o /tmp/bt.olean AetherZ3Omega/Riemann/BarrierTheorem.lean ) ; echo "full exit=$?"
