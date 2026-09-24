@@ -175,9 +175,9 @@ if has_match_lib; then
             [ -f "$f" ] || continue
             b="$(basename "$f" .lean)"
             [ -f "$SWEEP_DIR/AetherZ3Omega/Riemann/$b.olean" ] && continue
-            grep -q "^$b|FAIL" "$ledger" && continue
             out="$SWEEP_DIR/AetherZ3Omega/Riemann/$b.olean"
             log="$SWEEP_DIR/_t_$b.log"
+            sed -i "/^$b|/d" "$ledger"
             if LEAN_PATH="$ML_PATH" lean -R "$MONA_ROOT" -o "$out" "$ROOT/$f" >"$log" 2>&1; then
                 echo "$b|PASS" >> "$ledger"
                 built=$((built + 1))
