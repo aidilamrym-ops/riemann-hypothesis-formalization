@@ -45,11 +45,12 @@ All six theorems hold: no counterexample exists.
 
 ### Fase 1 — Kernel Rebuild & Axiom Audit (fresh)
 ```
-62/62 modul dibangun ulang dari nol (lean.exe v4.33.1 + LEAN_PATH mirror)
-383 deklarasi diaudit via #print axioms:
+62/62 modul_dasar + 4 modul audit (CMTBounds, ZetaBounds, KernelIndependence, HardyZetaPositive) = 66/66 rebuild
+383+ deklarasi diaudit via #print axioms:
   191 bersih (0 axiom)
   192 dependen — hanya [propext, Classical.choice, Quot.sound] + 1 postulat
 5 deklarasi bergantung pada AetherZ3Omega.riemann_hypothesis (semua jujur, conditional)
+HardyZetaPositive: 8 teorema foundation-only; hasil #print axioms = [propext, Classical.choice, Quot.sound]
 ```
 Ledger: `.kernel_build/sweep/ledger.txt` · Audit penuh: `exports/_axioms_full.txt`
 
@@ -159,6 +160,7 @@ the statistical Hilbert–Pólya picture is reinforced but remains a conjecture.
 | Discrete Hermitian operator | ✅ PROVEN | Lean 4 (DiracOperator.lean) |
 | Spectral rigidity (unconditional) | ✅ PROVEN | BarrierTheorem.lean: `log_one_plus_lt` via Mathlib |
 | Barrier rigidity at infinity | ⚠️ CONDITIONAL | `rigidity_at_infinity` ∶ RH postulat (jujur) |
+| **N₀/N well-posedness**: zeros on critical line finite per height band | ✅ PROVEN | HardyZetaPositive.lean (Mathlib `riemannZetaZeros` discreteness); garis kritis generik bebas-nol, `N₀(T)/N(T)` terdefinisi & bisa naik |
 | Bounded Goldbach / BSD / Hodge / Poincaré / PvsNP / Yang-Mills | ⚠️ CONDITIONAL | master theorems re-framed as consistency/conditional |
 | Navier-Stokes energy conservation | ✅ VERIFIED | Numerical 1e-15 |
 | Yang-Mills mass gap (model) | ✅ VERIFIED | Numerical + Z3 |
