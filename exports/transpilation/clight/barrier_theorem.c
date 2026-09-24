@@ -3,4 +3,4 @@
    flagship: log_one_plus_lt
    ============================================================ */
 #include <stddef.h>
-int barrier_check(void) { return 1; }
+int barrier_check(void) { return armed = 1; }

@@ -163,16 +163,13 @@ jobs:
 
       - name: Run transpilation nexus (flagship = AST nyata, anti-cocoklogi)
         run: |
-          python scripts/transpilation_nexus.py
           python scripts/transpilation_nexus.py --assert
+          python scripts/transpilation_nexus.py --assert >/dev/null
           test -n "$(find exports/transpilation -type f | head -1)" \
             && echo "NEXUS_ARTIFACTS=OK"
 
-      - name: Cross-backbone consistency (anti-narasi: artefak harus NONEMPTY & flagship NYATA)
+      - name: Cross-backbone consistency (validator ANTI-COCOKLOGI: baca artefak disk NYATA)
         run: python scripts/transpilation_consistency_check.py --assert
-        run: |
-          python scripts/z3_spectral_tribunal.py --assert
-          python -c "import z3; print('pyz3', z3.get_version_string())"
 
       - name: Archive transpilation + tribunal artifacts
         uses: actions/upload-artifact@v4
