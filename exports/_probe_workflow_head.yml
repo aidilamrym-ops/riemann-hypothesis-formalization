@@ -168,7 +168,7 @@ jobs:
           test -n "$(find exports/transpilation -type f | head -1)" \
             && echo "NEXUS_ARTIFACTS=OK"
 
-      - name: Cross-backbone consistency (validator ANTI-COCOKLOGI baca artefak disk NYATA)
+      - name: Cross-backbone consistency (validator ANTI-COCOKLOGI: baca artefak disk NYATA)
         run: python scripts/transpilation_consistency_check.py --assert
 
       - name: Archive transpilation + tribunal artifacts
@@ -176,3 +176,4 @@ jobs:
         with:
           name: transpilation-nexus
           path: exports/transpilation/
+
