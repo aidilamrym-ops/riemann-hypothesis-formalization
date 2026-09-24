@@ -182,10 +182,9 @@ if has_match_lib; then
                 echo "$b|PASS" >> "$ledger"
                 built=$((built + 1))
             else
-                first="$(grep -m1 'error' "$log" | sed 's#^.*: error#error#' | head -c 120)"
+                first="$(grep -m1 'error' "$log" | sed 's#^.*: error#error#' | head -c 140)"
                 echo "$b|FAIL|$first" >> "$ledger"
             fi
-            rm -f "$log"
         done
     }
 
@@ -194,6 +193,11 @@ if has_match_lib; then
         sweep_round
         [ "$built" = "$before" ] && break
     done
+
+    echo "  DEBUG sweep dir listing:"
+    ls -1 "$SWEEP_DIR/AetherZ3Omega/Riemann" 2>/dev/null | grep -c '\.olean$' | sed 's/^/    olean count: /'
+    ls -1 "$SWEEP_DIR/AetherZ3Omega/Riemann" 2>/dev/null | grep -v '\.olean$' | head -10
+    echo "  DEBUG kept per-file logs in sweep: $(ls "$SWEEP_DIR"/_t_*.log 2>/dev/null | wc -l)"
 
     total="$(ls "$LEAN_RIEMANN_DIR"/*.lean 2>/dev/null | wc -l)"
     echo "  🔄 Loop sampai jenuh -> $built PASS / $total modul"

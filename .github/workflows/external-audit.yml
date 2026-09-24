@@ -72,12 +72,14 @@ jobs:
           echo "axiom sweep lines: $final"
 
       - name: Archive kernel audit artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: kernel-audit
           path: |
             .kernel_build/sweep/*.txt
             .kernel_build/sweep/ledger.txt
+            .kernel_build/sweep/_t_*.log
             exports/_axioms_full.txt
             /tmp/kernel_audit.log
 
