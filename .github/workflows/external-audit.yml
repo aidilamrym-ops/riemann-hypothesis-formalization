@@ -42,20 +42,21 @@ jobs:
             exit 1
           }
           cd ..
-          echo "-- layout inspection --"
-          echo "root-build lib/lean:"; ls lean4/.lake/build/lib/lean 2>/dev/null | head -6
-          echo "mathlib pkg lib/lean:"; ls lean4/.lake/packages/mathlib/.lake/build/lib/lean 2>/dev/null | head -6
-          ML=""
-          for d in lean4/.lake/build/lib/lean lean4/.lake/packages/*/.lake/build/lib/lean; do
+          test -f lean4/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean || {
+            echo "FAIL: Mathlib.olean absent at packages path"; exit 1
+          }
+          mkdir -p .kernel_build/sweep
+          ML="$PWD/.kernel_build/sweep;$PWD/lean4/.lake/build/lib/lean"
+          for d in "$PWD"/lean4/.lake/packages/*/.lake/build/lib/lean; do
             [ -d "$d" ] && ML="$ML;$d"
           done
-          ML="${ML#;}"
-          printf 'import Mathlib\n' > /tmp/probe_import.lean
-          LEAN_PATH="$ML" lean -R lean4 /tmp/probe_import.lean || {
-            echo "FAIL: 'import Mathlib' probe failed with validator LEAN_PATH=$ML"
+          printf 'import Mathlib\n' > "$PWD/lean4/_probe_import.lean"
+          LEAN_PATH="$ML" lean -R "$PWD/lean4" -o "$PWD/.kernel_build/sweep/_probe.olean" "$PWD/lean4/_probe_import.lean" || {
+            echo "FAIL: 'import Mathlib' probe failed (absolute LEAN_PATH=$ML)"
             exit 1
           }
-          echo "PROBE OK: Mathlib importable via validator LEAN_PATH"
+          rm -f "$PWD/lean4/_probe_import.lean" "$PWD/.kernel_build/sweep/_probe.olean"
+          echo "PROBE OK: Mathlib importable via absolute validator LEAN_PATH"
 
       - name: Run kernel validator (66 module sweep + #print axioms)
         run: |

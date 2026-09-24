@@ -26,6 +26,8 @@ set -uo pipefail
 
 LEAN_RIEMANN_DIR="lean4/AetherZ3Omega/Riemann"
 KERNEL_BUILD=".kernel_build"
+ROOT="$(pwd)"
+MONA_ROOT="$ROOT/lean4"
 
 echo "=============================================================="
 echo "  AETHERZ3OMEGA: LEAN 4 INDEPENDENT KERNEL VALIDATOR"
@@ -152,17 +154,16 @@ done
 # ---------------------------------------------------------------
 echo
 echo "Step 3: Sweep Korpus Riemann dgn Mathlib NYATA..."
-MATHLIB_LIB="lean4/.lake/packages/mathlib/.lake/build/lib/lean"
-SWEEP_DIR="$KERNEL_BUILD/sweep"
+MATHLIB_LIB="$MONA_ROOT/.lake/packages/mathlib/.lake/build/lib/lean"
+SWEEP_DIR="$ROOT/$KERNEL_BUILD/sweep"
 
 has_match_lib() { [ -d "$MATHLIB_LIB" ] && [ -n "$(ls "$MATHLIB_LIB" 2>/dev/null)" ]; }
 
 if has_match_lib; then
-    ML_PATH="$SWEEP_DIR"
-    for d in lean4/.lake/build/lib/lean lean4/.lake/packages/*/.lake/build/lib/lean; do
+    ML_PATH="$SWEEP_DIR;$MONA_ROOT/.lake/build/lib/lean"
+    for d in "$MONA_ROOT"/.lake/packages/*/.lake/build/lib/lean; do
         [ -d "$d" ] && ML_PATH="$ML_PATH;$d"
     done
-    ML_PATH="${ML_PATH#;}"
 
     mkdir -p "$SWEEP_DIR/AetherZ3Omega/Riemann"
     ledger="$SWEEP_DIR/ledger.txt"
@@ -178,7 +179,7 @@ if has_match_lib; then
             grep -q "^$b|FAIL" "$ledger" && continue
             out="$SWEEP_DIR/AetherZ3Omega/Riemann/$b.olean"
             log="$SWEEP_DIR/_t_$b.log"
-            if LEAN_PATH="$ML_PATH" lean -R "lean4" -o "$out" "$f" >"$log" 2>&1; then
+            if LEAN_PATH="$ML_PATH" lean -R "$MONA_ROOT" -o "$out" "$ROOT/$f" >"$log" 2>&1; then
                 echo "$b|PASS" >> "$ledger"
                 built=$((built + 1))
             else
