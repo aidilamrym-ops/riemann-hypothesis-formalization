@@ -168,7 +168,8 @@ jobs:
           test -n "$(find exports/transpilation -type f | head -1)" \
             && echo "NEXUS_ARTIFACTS=OK"
 
-      - name: Run Z3 spectral tribunal (verdict engine asli)
+      - name: Cross-backbone consistency (anti-narasi: artefak harus NONEMPTY & flagship NYATA)
+        run: python scripts/transpilation_consistency_check.py --assert
         run: |
           python scripts/z3_spectral_tribunal.py --assert
           python -c "import z3; print('pyz3', z3.get_version_string())"
