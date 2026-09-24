@@ -1,0 +1,25 @@
+;; ============================================================
+;; DEDUKTI (lambdaPi-modulo) - BLUEPRINT transpilasi
+;; Flagship (kernel Lean PASS): log_one_plus_lt
+;; ============================================================
+univ : Type.
+eps : univ -> Type.
+real : eps.
+
+def sub : eps real -> eps real -> eps real.
+def mul : eps real -> eps real -> eps real.
+def half : eps real.
+def E : eps real -> eps real.
+def ln : eps real -> eps real.
+def le : eps real -> eps real -> eps prop.
+def lt : eps real -> eps real -> eps prop.
+
+;; E(s) = (s - 1/2)^2  -- definisi AST
+[u] E u --> mul (sub u half) (sub u half).
+
+;; Non-negativitas: 0 <= E(s)  (berasal dari kernel PASS BarrierTheorem)
+[u] le 0 (E u).
+
+;; Kontradiksi spektral: E <= ln(1+E)  /\  ln(1+E) < E  ->  False
+[u] lt (ln (sub (add 1 (E u)) 0)) (E u) -->
+    (le (E u) (ln (sub (add 1 (E u)) 0)) --> False_prop).

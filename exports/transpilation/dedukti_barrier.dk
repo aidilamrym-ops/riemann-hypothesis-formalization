@@ -1,0 +1,4 @@
+univ : Type.
+eps : univ -> Type.
+real : eps.
+log_one_plus_lt

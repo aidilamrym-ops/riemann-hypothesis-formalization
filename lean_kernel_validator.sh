@@ -218,14 +218,16 @@ if has_match_lib; then
 
     if [ -n "$pass_names" ]; then
         {
+            echo "set_option maxErrors 20000"
             for b in $pass_names; do echo "import AetherZ3Omega.Riemann.$b"; done
             for f in "$LEAN_RIEMANN_DIR"/*.lean; do
                 b="$(basename "$f" .lean)"
                 case " $pass_names " in *" $b "*) ;; *) continue ;; esac
                 ns="$(grep -m1 '^namespace' "$f" | sed 's/^namespace[[:space:]]*//; s/[[:space:]]*$//')"
-                [ -z "$ns" ] && ns="$b"
-                code_only "$f" | grep -oE '^(theorem|lemma|def)[[:space:]]+[A-Za-z0-9_]+' \
-                    | awk -v p="$ns." '{print "#print axioms " p $2}'
+                fullpfx="AetherZ3Omega.Riemann.$b."
+                [ -n "$ns" ] && fullpfx="$fullpfx$ns."
+                code_only "$f" | grep -oE '^[[:space:]]*(theorem|lemma|def)[[:space:]]+[A-Za-z0-9_]+' \
+                    | awk -v p="$fullpfx" -v ns="$ns" '{ print "#print axioms " p $2; if (ns != "") print "#print axioms " ns "." $2; print "#print axioms " $2 }'
             done
         } > "$KERNEL_BUILD/_driver_mathlib.lean"
 
