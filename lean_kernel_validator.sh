@@ -178,7 +178,7 @@ if has_match_lib; then
             out="$SWEEP_DIR/AetherZ3Omega/Riemann/$b.olean"
             log="$SWEEP_DIR/_t_$b.log"
             sed -i "/^$b|/d" "$ledger"
-            if LEAN_PATH="$ML_PATH" lean -R "$MONA_ROOT" -o "$out" "$ROOT/$f" >"$log" 2>&1; then
+            if ( cd "$MONA_ROOT" && LEAN_PATH="$ML_PATH" lean -o "$out" "AetherZ3Omega/Riemann/$b.lean" ) >"$log" 2>&1; then
                 echo "$b|PASS" >> "$ledger"
                 built=$((built + 1))
             else
@@ -188,6 +188,9 @@ if has_match_lib; then
         done
     }
 
+    echo "  DEBUG ROOT=[$ROOT] MONA_ROOT=[$MONA_ROOT]"
+    echo "  DEBUG SWEEP_DIR=[$SWEEP_DIR]"
+    echo "  DEBUG ML_PATH=[$ML_PATH]"
     for i in 1 2 3 4 5 6 7 8; do
         before="$built"
         sweep_round
