@@ -41,42 +41,32 @@ jobs:
             find .lake -maxdepth 6 -name 'Mathlib.olean' | head -5
             exit 1
           }
+          lake build AetherZ3Omega 2>&1 | tail -n 20
+          test -f .lake/build/lib/lean/AetherZ3Omega/Riemann/RhCore.olean || {
+            echo "FAIL: project build missing RhCore.olean"
+            find .lake/build/lib/lean/AetherZ3Omega -name '*.olean' 2>/dev/null | head -5
+            exit 1
+          }
           cd ..
           test -f lean4/.lake/packages/mathlib/.lake/build/lib/lean/Mathlib.olean || {
             echo "FAIL: Mathlib.olean absent at packages path"; exit 1
           }
           mkdir -p .kernel_build/sweep
           LAKE_LEAN_PATH="$(cd lean4 && lake env | sed -n 's/^LEAN_PATH=//p')"
-          printf 'import Mathlib\n' > lean4/_probe_import.lean
-          ( cd lean4 && LEAN_PATH="$(pwd)/../.kernel_build/sweep;$LAKE_LEAN_PATH" lean -o "$(pwd)/../.kernel_build/sweep/_probe.olean" _probe_import.lean ) || {
-            echo "FAIL: 'import Mathlib' probe failed using lake env LEAN_PATH (lake-style no -R)"
+          printf 'import Mathlib\nimport AetherZ3Omega.Riemann.RhCore\n' > lean4/_probe_import.lean
+          ( cd lean4 && LEAN_PATH="$LAKE_LEAN_PATH" lean -o "$(pwd)/../.kernel_build/sweep/_probe.olean" _probe_import.lean ) || {
+            echo "FAIL: probe failed using lake env LEAN_PATH (Mathlib + project sibling RhCore)"
             echo "LAKE_LEAN_PATH=$LAKE_LEAN_PATH"
             exit 1
           }
           rm -f lean4/_probe_import.lean .kernel_build/sweep/_probe.olean
-          echo "PROBE OK: Mathlib importable via lake env LEAN_PATH"
+          echo "PROBE OK: Mathlib + project sibling importable via lake env LEAN_PATH"
 
       - name: Run kernel validator (66 module sweep + #print axioms)
         run: |
           bash lean_kernel_validator.sh 2>&1 | tee /tmp/kernel_audit.log
         env:
           LEAN_EXE: lean
-
-      - name: DEBUG repro BarrierTheorem import (temporary)
-        run: |
-          echo "=== dir check ==="
-          ls -ld .kernel_build/sweep/AetherZ3Omega .kernel_build/sweep/AetherZ3Omega/Riemann 2>&1
-          ls .kernel_build/sweep/AetherZ3Omega/Riemann/RhCore.olean 2>&1
-          stat -c '%s %n' .kernel_build/sweep/AetherZ3Omega/Riemann/RhCore.olean 2>&1
-          LAKE_LEAN_PATH="$(cd lean4 && lake env | sed -n 's/^LEAN_PATH=//p')"
-          SW="$(pwd)/.kernel_build/sweep"
-          echo "=== fresh import probe (no -R) ==="
-          printf 'import AetherZ3Omega.Riemann.RhCore\n' > lean4/_t_r.lean
-          ( cd lean4 && LEAN_PATH="$SW;$LAKE_LEAN_PATH" lean -o /tmp/_t_r.olean _t_r.lean ) ; echo "variant1 exit=$?"
-          printf 'import AetherZ3Omega.Riemann.RhCore\n' > lean4/_t_r2.lean
-          ( cd lean4 && LEAN_PATH="$SW;$LAKE_LEAN_PATH" lean -R "$(pwd)" -o /tmp/_t_r2.olean _t_r2.lean ) ; echo "variant2 exit=$?"
-          echo "=== full module compile ==="
-          ( cd lean4 && LEAN_PATH="$SW;$LAKE_LEAN_PATH" lean -o /tmp/bt.olean AetherZ3Omega/Riemann/BarrierTheorem.lean ) ; echo "full exit=$?"
 
       - name: Assert kernel sweep complete (every module kernel-verified)
         run: |

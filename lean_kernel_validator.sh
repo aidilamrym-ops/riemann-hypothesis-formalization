@@ -162,7 +162,7 @@ has_match_lib() { [ -d "$MATHLIB_LIB" ] && [ -n "$(ls "$MATHLIB_LIB" 2>/dev/null
 if has_match_lib; then
     LAKE_LEAN_PATH="$(cd "$MONA_ROOT" && lake env | sed -n 's/^LEAN_PATH=//p')"
     [ -n "$LAKE_LEAN_PATH" ] || LAKE_LEAN_PATH="$(cd "$MONA_ROOT" && for d in .lake/build/lib/lean .lake/packages/*/.lake/build/lib/lean; do [ -d "$d" ] && printf ';%s/%s' "$(pwd)" "$d"; done)"
-    ML_PATH="$SWEEP_DIR;$LAKE_LEAN_PATH"
+    ML_PATH="$LAKE_LEAN_PATH;$SWEEP_DIR"
 
     mkdir -p "$SWEEP_DIR/AetherZ3Omega/Riemann"
     ledger="$SWEEP_DIR/ledger.txt"
