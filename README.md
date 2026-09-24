@@ -7,14 +7,28 @@
 
 ## Status (Honest, 2026-09-23)
 
-- **Lean 4 corpus**: `lean4/AetherZ3Omega/Riemann/` — **62/62 modules** rebuild from source via the
-  Lean 4.33.1 kernel: **0 errors, 0 sorrys**.
+- **Lean 4 corpus**: `lean4/AetherZ3Omega/Riemann/` — **66/66 modules** rebuilt individually from source
+  via the Lean 4.33.1 kernel: **0 errors, 0 sorrys**, 1880 declarations scanned by the transpilation
+  nexus from the live AST.
 - **One open postulate**: `AetherZ3Omega.riemann_hypothesis` (in `RhCore.lean`). The Riemann
   Hypothesis is carried as a genuinely-open postulate — **no module claims a proof of RH**.
 - **Kernel axiom audit** (`#print axioms` on flagship theorems): every declaration depends only on
   `[propext, Classical.choice, Quot.sound]` plus `riemann_hypothesis` for the RH-carrying chain.
-  Full listing: `exports/_axioms.txt`.
+  Full listing: `exports/_axioms.txt`; CI axiom sweep 857 "depends on axioms" lines.
 - The spectral (Hilbert–Pólya) correspondence and RH itself remain **OPEN**.
+
+## Grand Transpilation Nexus + Z3 Spectral Tribunal (2026-09-23)
+
+- **`scripts/transpilation_nexus.py`** — reads the LIVE corpus AST (66 modules / 1880 decls), picks the
+  flagship theorem by its **actually-present name** (`log_one_plus_lt` in `BarrierTheorem.lean`) and
+  **refuses** to emit artifacts when the flagship is missing (exit 3, anti-cocoklogi gate). Generates
+  4 backbone artifacts: **Dedukti** (λΠ-modulo), **Coq** (CIC), **Isabelle/HOL**, **CompCert Clight**,
+  plus `flagship.txt` and `_transpilation_manifest.json`.
+- **`scripts/z3_spectral_tribunal.py`** — real pyz3 5.0.0 spectral tribunal: F1/F2/F4 **UNSAT (NRA
+  PROVEN)**, F3 honest **UNKNOWN** (transcendental `ln` deferred to the Lean kernel, never polished
+  into SAT/UNSAT). Verdict JSON: `exports/z3_spectral_tribunal.json`.
+- **CI**: job `transpile-nexus` in `.github/workflows/external-audit.yml` runs nexus `--assert` +
+  tribunal `--assert` and uploads `exports/transpilation/**`. Last run (HEAD `8182808`): **success**.
 
 ## Repository Structure
 
