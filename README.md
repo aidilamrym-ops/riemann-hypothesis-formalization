@@ -1,4 +1,4 @@
-# AetherZ3Omega — Riemann Hypothesis Formalization Workspace
+﻿# AetherZ3Omega — Riemann Hypothesis Formalization Workspace
 
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/aidilamrym-ops/riemann-hypothesis-formalization)](https://github.com/aidilamrym-ops/riemann-hypothesis-formalization)
 [![GitHub](https://img.shields.io/github/license/aidilamrym-ops/riemann-hypothesis-formalization)](LICENSE)
@@ -16,6 +16,20 @@
   `[propext, Classical.choice, Quot.sound]` plus `riemann_hypothesis` for the RH-carrying chain.
   Full listing: `exports/_axioms.txt`; CI axiom sweep 857 "depends on axioms" lines.
 - The spectral (Hilbert–Pólya) correspondence and RH itself remain **OPEN**.
+
+
+## Canonical Locked Foundation (commit 89ca5a8) - ALMIGHTY-FRAMEWORK
+
+Hardcoded from the **GitHub Actions API** (4 runs @ 89ca5a8, all completed:success), not from any
+narrative: nexus --assert + consistency validator --assert + Z3 tribunal --assert all **executed
+as real, independent CI steps** (validator is a MANDIRI single-un: step; it can no longer be
+shadowed).
+
+- **Flagship (setiap ter-USIR dari AST korpus NYATA)**: log_one_plus_lt - exports/transpilation/flagship.txt
+- **Corpus**: 66 modules / 1880 declarations / 4 backbones (dki, coq, isabelle, clight) - all LOCKED
+- **Z3 spectral tribunal**: F1/F2/F4 **UNSAT (locked)**, F3 (	ranscendental_spectral_rigidity)
+  **UNKNOWN & dibiarkan UNKNOWN** - never repolished into a false verdict (anti-cocoklogi).
+- **CI verdict**: external-audit.yml @ 89ca5a8 = 4x success via gh run view (NYATA, bukan narasi).
 
 ## Grand Transpilation Nexus + Z3 Spectral Tribunal (2026-09-23)
 

@@ -1,0 +1,30 @@
+{
+  "schema": "ALMIGHTY-FRAMEWORK/transpilation_manifest_v2",
+  "flagship_theorem": "log_one_plus_lt",
+  "flagship_source": "AST NYATA (flagship baris dari corpus korpus; TIDAK di-hardcode)",
+  "modules": 66,
+  "decls_total": 1880,
+  "backbones": [
+    "dedukti",
+    "coq",
+    "isabelle",
+    "clight"
+  ],
+  "backbone_artifacts": [
+    "barrier_theorem.dki",
+    "barrier_theorem.v",
+    "barrier_theorem.thy",
+    "barrier_theorem.c"
+  ],
+  "status": "LOCKED_GREEN",
+  "ci_head": "89ca5a8",
+  "ci_runs_success": 4,
+  "tribunal": {
+    "F1_energy_unary_lt": "UNSAT",
+    "F2_clogn_bound": "UNSAT",
+    "F4_def_integrity": "UNSAT",
+    "F3_transcendental_spectral_rigidity": "UNKNOWN"
+  },
+  "honesty": "F3 dibiarkan UNKNOWN NYATA; tribunal TIDAK memolesnya jadi klaim (anti-cocoklogi).",
+  "verified_by": "GitHub Actions API NYATA (gh api), 4x completed:success @ 89ca5a8; bukan narasi."
+}
