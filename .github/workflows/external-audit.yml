@@ -30,16 +30,33 @@ jobs:
           lean --version
           cd lean4 && lake --version
 
-      - name: Fetch Mathlib (olean build)
+      - name: Fetch Mathlib (olean cache, fallback full build)
         run: |
+          set -o pipefail
           cd lean4
-          lake build Mathlib 2>&1 | tail -n 20 | tee /dev/stderr
+          lake update
+          if ! lake exe cache get; then
+            echo "mathlib olean cache unavailable; building Mathlib from source (may take a while)"
+          fi
+          lake build Mathlib 2>&1 | tail -n 20
+          test -n "$(ls .lake/packages/mathlib/.lake/build/lib/lean 2>/dev/null)" || {
+            echo "FAIL: mathlib oleans missing after build"; exit 1
+          }
 
       - name: Run kernel validator (66 module sweep + #print axioms)
         run: |
           bash lean_kernel_validator.sh 2>&1 | tee /tmp/kernel_audit.log
         env:
           LEAN_EXE: lean
+
+      - name: Assert kernel sweep complete (every module kernel-verified)
+        run: |
+          total=$(ls lean4/AetherZ3Omega/Riemann/*.lean | wc -l)
+          pass=$(grep -c 'PASS$' .kernel_build/sweep/ledger.txt || true)
+          echo "kernel sweep: $pass PASS / $total modules"
+          [ "$pass" -ge "$total" ] || { echo "kernel sweep incomplete"; exit 1; }
+          final=`grep -c 'depends on axioms' .kernel_build/sweep/_axioms.txt || true`
+          echo "axiom sweep lines: $final"
 
       - name: Archive kernel audit artifacts
         uses: actions/upload-artifact@v4
